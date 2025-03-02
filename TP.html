@@ -154,18 +154,19 @@
             <a href="#"><img src="media/facebook.png" alt="Facebook">Facebook</a>
             <a href="#"><img src="media/onlyfans.png" alt="onlyFans">OnlyFans</a>
             <a href="#"><img src="media/instagram.png" alt="Instagram">Instagram</a>
-          <script> document.addEventListener("DOMContentLoaded", function () {
-                  const onlyFansAudio = new Audio('media/audio/onlyfans.mp3');
-                  const onlyFansButton = document.querySelector(".socials a[href='#'] img[alt='OnlyFans']");
+          <script> 
+              document.addEventListener("DOMContentLoaded", function () {
+    const onlyFansAudio = new Audio('media/audio/onlyfans.mp3');
+    const onlyFansButton = document.querySelector(".socials a[href='#'] img[alt='OnlyFans']");
 
-                  if (onlyFansButton) {
-                      onlyFansButton.parentElement.addEventListener('click', function (event) {
-                          event.preventDefault(); // Prevent default navigation
-                          onlyFansAudio.play();
-                      });
-                  }
-              });
-</script>
+    if (onlyFansButton) {
+        onlyFansButton.parentElement.addEventListener('click', function (event) {
+            event.preventDefault(); // Prevent default navigation
+            onlyFansAudio.play();
+        });
+    }
+});
+        </script>
         </div>
     </div>
     <div class="container">
