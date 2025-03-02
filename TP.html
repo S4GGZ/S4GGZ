@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -152,8 +152,20 @@
         <a href="index.html" class="home-btn">Home</a>
         <div class="socials">
             <a href="#"><img src="media/facebook.png" alt="Facebook">Facebook</a>
-            <a href="#"><img src="media/onlyfans.png" alt="onlyFans">OnlyFans</a>
+            <a href="#"><img src="media/onlyfans.png" alt="OnlyFans">OnlyFans</a>
             <a href="#"><img src="media/instagram.png" alt="Instagram">Instagram</a>
+          <script> document.addEventListener("DOMContentLoaded", function () {
+                  const onlyFansAudio = new Audio('media/audio/onlyfans.mp3');
+                  const onlyFansButton = document.querySelector(".socials a[href='#'] img[alt='OnlyFans']");
+
+                  if (onlyFansButton) {
+                      onlyFansButton.parentElement.addEventListener('click', function (event) {
+                          event.preventDefault(); // Prevent default navigation
+                          onlyFansAudio.play();
+                      });
+                  }
+              });
+</script>
         </div>
     </div>
     <div class="container">
@@ -179,7 +191,7 @@
             <li><span class="color-box noble"></span> Gaze Nobile</li>
             <li><span class="color-box lanthanide"></span> Lantanide</li>
             <li><span class="color-box actinide"></span> Actinide</li>
-            <li><span class="color-box post-transition"></span> Metale Post-tranziție </li>
+            <li><span class="color-box post-transition"></span> Metale Post-tranziție</li>
         </ul>
     `;
     
@@ -359,19 +371,6 @@
             addElement("No", "actinide"); addElement("Lr", "actinide");
         });
 
-    </script>
-  <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const onlyFansAudio = new Audio('media/audio/onlyfans.mp3');
-            const onlyFansButton = document.querySelector(".socials a[href='#'] img[alt='OnlyFans']");
-
-            if (onlyFansButton) {
-                onlyFansButton.parentElement.addEventListener('click', function (event) {
-                    event.preventDefault(); // Prevent default navigation
-                    onlyFansAudio.play();
-                });
-            }
-        });
     </script>
 </body>
 </html>
