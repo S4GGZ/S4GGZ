@@ -156,16 +156,16 @@
             <a href="#"><img src="media/instagram.png" alt="Instagram">Instagram</a>
           <script> 
               document.addEventListener("DOMContentLoaded", function () {
-    const onlyFansAudio = new Audio('media/audio/onlyfans.mp3');
-    const onlyFansButton = document.querySelector(".socials a[href='#'] img[alt='OnlyFans']");
+            const onlyFansAudio = new Audio('media/audio/onlyfans.mp3');
+            const onlyFansButton = document.querySelector(".socials a[href='#'] img[alt='OnlyFans']");
 
-    if (onlyFansButton) {
-        onlyFansButton.parentElement.addEventListener('click', function (event) {
-            event.preventDefault(); // Prevent default navigation
-            onlyFansAudio.play();
+            if (onlyFansButton) {
+                onlyFansButton.parentElement.addEventListener('click', function (event) {
+                    event.preventDefault(); // Prevent default navigation
+                    onlyFansAudio.play();
+                });
+            }
         });
-    }
-});
         </script>
         </div>
     </div>
