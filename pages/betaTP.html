@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Periodic Table</title>
+    <title>Periodic Table/</title> 
     <style>
-
+ //Sa-mi trag pula defs stiu de stiu de ce nu-i centrat 
         * {
             margin: 0;
             padding: 0;
@@ -132,6 +132,7 @@
         .noble {
             background-color: #9999ff;
         }
+
         .lanthanide {
             background-color: #ff9933; /* Orange */
         }
@@ -139,6 +140,7 @@
         .actinide {
             background-color: #ff3333; /* Red */
         }
+
         .post-transition {
             background-color: #ff9966;
         }
@@ -150,14 +152,14 @@
 </head>
 <body>
     <div class="top-bar">
-        <a href="./pages/home/home.html" class="home-btn">Home</a>
+        <a href="../index.html" class="home-btn">Home</a>
         <div class="socials">
-            <a href="#"><img src="../../assets/images/facebook.png" alt="Facebook">Facebook</a>
-            <a href="#"><img src="../../assets/images/onlyfans.png" alt="OnlyFans">OnlyFans</a>
-            <a href="#"><img src="../../assets/images/instagram.png" alt="Instagram">Instagram</a>
+            <a href="#"><img src="../assets/images/facebook.png" alt="Facebook"> Facebook</a>
+            <a href="#"><img src="../assets/images/onlyfans.png" alt="OnlyFans"> OnlyFans</a>
+            <a href="#"><img src="../assets/images/instagram.png" alt="Instagram"> Instagram</a>
             <script>
-    document.addEventListener("DOMContentLoaded", function () {
-                    const onlyFansAudio = new Audio('../../assets/onlyfans.mp3');
+                document.addEventListener("DOMContentLoaded", function () {
+                    const onlyFansAudio = new Audio('../assets/audio/onlyfans.mp3');
                     const onlyFansButton = document.querySelector(".socials a[href='#'] img[alt='OnlyFans']");
 
                     if (onlyFansButton) {
@@ -182,20 +184,20 @@
             legend.classList.add('legend');
             legend.style.display = 'none';
             legend.innerHTML = `
-            <h2>Legenda</h2>
-            <ul>
-                <li><span class="color-box alkali"></span> Alcaline</li>
-                <li><span class="color-box alkaline"></span> Alcalino-Pământoase</li>
-                <li><span class="color-box transition"></span> Metale de Tranziție</li>
-                <li><span class="color-box metalloid"></span> Metaloizi</li>
-                <li><span class="color-box nonmetal"></span> Nematelale</li>
-                <li><span class="color-box halogen"></span> Halogeni</li>
-                <li><span class="color-box noble"></span> Gaze Nobile</li>
-                <li><span class="color-box lanthanide"></span> Lantanide</li>
-                <li><span class="color-box actinide"></span> Actinide</li>
-                <li><span class="color-box post-transition"></span> Metale Post-tranziție</li>
-            </ul>
-        `;
+                        <h2>Legenda</h2>
+                        <ul>
+                            <li><span class="color-box alkali"></span> Alcaline</li>
+                            <li><span class="color-box alkaline"></span> Alcalino-Pământoase</li>
+                            <li><span class="color-box transition"></span> Metale de Tranziție</li>
+                            <li><span class="color-box metalloid"></span> Metaloizi</li>
+                            <li><span class="color-box nonmetal"></span> Nematelale</li>
+                            <li><span class="color-box halogen"></span> Halogeni</li>
+                            <li><span class="color-box noble"></span> Gaze Nobile</li>
+                            <li><span class="color-box lanthanide"></span> Lantanide</li>
+                            <li><span class="color-box actinide"></span> Actinide</li>
+                            <li><span class="color-box post-transition"></span> Metale Post-tranziție</li>
+                        </ul>
+                    `;
 
             const toggleButton = document.createElement('button');
             toggleButton.textContent = 'Show Legend';
@@ -215,66 +217,66 @@
 
             const style = document.createElement('style');
             style.innerHTML = `
-            .legend {
-                position: absolute;
-                right: 20px;
-                top: 120px;
-                background: #292929;
-                padding: 15px;
-                border-radius: 8px;
-                color: white;
-                font-size: 1rem;
-                width: 200px;
-            }
-            .legend h2 {
-                font-size: 1.2rem;
-                margin-bottom: 10px;
-            }
-            .legend ul {
-                list-style: none;
-                padding: 0;
-            }
-            .legend li {
-                display: flex;
-                align-items: center;
-                margin-bottom: 5px;
-            }
-            .color-box {
-                width: 20px;
-                height: 20px;
-                margin-right: 10px;
-                display: inline-block;
-            }
-            .alkali { background-color: #ff6666; }
-            .alkaline { background-color: #ffcc66; }
-            .transition { background-color: #66ccff; }
-            .metalloid { background-color: #66ff99; }
-            .nonmetal { background-color: #ffff66; }
-            .halogen { background-color: #cc99ff; }
-            .noble { background-color: #9999ff; }
-            .lanthanide { background-color: #ff9933; }
-            .actinide { background-color: #ff3333; }
-            .post-transition { background-color: #ff9966; }
-            .unknown { background-color: #999999; }
-            .legend-toggle {
-                position: absolute;
-                right: 20px;
-                top: 80px;
-                padding: 10px 15px;
-                background: #ff4757;
-                color: white;
-                border: none;
-                border-radius: 8px;
-                cursor: pointer;
-            }
-            .legend-toggle:hover {
-                background: #e8414b;
-            }
-        `;
+                        .legend {
+                            position: absolute;
+                            right: 20px;
+                            top: 120px;
+                            background: #292929;
+                            padding: 15px;
+                            border-radius: 8px;
+                            color: white;
+                            font-size: 1rem;
+                            width: 200px;
+                        }
+                        .legend h2 {
+                            font-size: 1.2rem;
+                            margin-bottom: 10px;
+                        }
+                        .legend ul {
+                            list-style: none;
+                            padding: 0;
+                        }
+                        .legend li {
+                            display: flex;
+                            align-items: center;
+                            margin-bottom: 5px;
+                        }
+                        .color-box {
+                            width: 20px;
+                            height: 20px;
+                            margin-right: 10px;
+                            display: inline-block;
+                        }
+                        .alkali { background-color: #ff6666; }
+                        .alkaline { background-color: #ffcc66; }
+                        .transition { background-color: #66ccff; }
+                        .metalloid { background-color: #66ff99; }
+                        .nonmetal { background-color: #ffff66; }
+                        .halogen { background-color: #cc99ff; }
+                        .noble { background-color: #9999ff; }
+                        .lanthanide { background-color: #ff9933; }
+                        .actinide { background-color: #ff3333; }
+                        .post-transition { background-color: #ff9966; }
+                        .unknown { background-color: #999999; }
+                        .legend-toggle {
+                            position: absolute;
+                            right: 20px;
+                            top: 80px;
+                            padding: 10px 15px;
+                            background: #ff4757;
+                            color: white;
+                            border: none;
+                            border-radius: 8px;
+                            cursor: pointer;
+                        }
+                        .legend-toggle:hover {
+                            background: #e8414b;
+                        }
+                    `;
             document.head.appendChild(style);
 
             // Add audio functionality for element Sr
-            const audio = new Audio('../../assets/audio/surprise.mp3');
+            const audio = new Audio('../assets/audio/surprise.mp3');
             document.addEventListener('click', function (event) {
                 if (event.target.textContent === 'Sr') {
                     audio.play();
@@ -299,9 +301,9 @@
          }
          .table {
          display: grid;
-         grid-template-columns: repeat(18, minmax(50px, 1fr));
+         grid-template-columns: repeat(1, minmax(50px, 1fr));
          gap: 5px;
-         min-width: 900px;
+         min-width: 200px;
          }
          .element {
          width: 50px;
@@ -326,16 +328,88 @@
          grid-template-columns: repeat(9, minmax(40px, 1fr));
          }
          }>
-        <script>
 
+    </div>
+    <p1>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            html, body {
+                width: auto;
+                height: auto;
+                background: #1e1e1e;
+                font-family: 'Inter', sans-serif;
+                color: white;
+                text-align: center;
+                overflow-x: hidden;
+            }
+
+            .table {
+                display: grid;
+                grid-template-columns: repeat(18, 1fr);
+                gap: 5px;
+                margin-top: 20px;
+            }
+
+            .element {
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid white;
+                font-size: 1.2rem;
+                font-weight: bold;
+                cursor: pointer;
+                transition: background 0.3s ease;
+                position: relative;
+                flex-direction: column;
+            }
+
+                .element .name, .element .number {
+                    display: none;
+                    font-size: 0.7rem;
+                    position: absolute;
+                }
+
+                .element .name {
+                    bottom: 5px;
+                }
+
+                .element .number {
+                    top: 5px;
+                    right: 5px;
+                }
+
+                .element:hover .name, .element:hover .number {
+                    display: block;
+                }
+        </style>
+
+        <script>
             document.addEventListener("DOMContentLoaded", function () {
                 const table = document.querySelector('.table');
 
-                function addElement(symbol, category, colspan = 1) {
+                function addElement(symbol, name, number, category, colspan = 1) {
                     const btn = document.createElement('button');
                     btn.classList.add('element', category);
                     btn.textContent = symbol;
                     btn.style.gridColumn = `span ${colspan}`;
+
+                    const nameSpan = document.createElement('span');
+                    nameSpan.classList.add('name');
+                    nameSpan.textContent = name;
+
+                    const numberSpan = document.createElement('span');
+                    numberSpan.classList.add('number');
+                    numberSpan.textContent = number;
+
+                    btn.appendChild(nameSpan);
+                    btn.appendChild(numberSpan);
                     table.appendChild(btn);
                 }
 
@@ -346,175 +420,192 @@
                     table.appendChild(empty);
                 }
 
-                addElement("H", "nonmetal"); addEmpty(16); addElement("He", "noble");
-                addElement("Li", "alkali"); addElement("Be", "alkaline"); addEmpty(10);
-                addElement("B", "metalloid"); addElement("C", "nonmetal"); addElement("N", "nonmetal");
-                addElement("O", "nonmetal"); addElement("F", "halogen"); addElement("Ne", "noble");
-                addElement("Na", "alkali"); addElement("Mg", "alkaline"); addEmpty(10);
-                addElement("Al", "post-transition"); addElement("Si", "metalloid");
-                addElement("P", "nonmetal"); addElement("S", "nonmetal");
-                addElement("Cl", "halogen"); addElement("Ar", "noble");
+                addElement("H", "Hidrogen", 1, "nonmetal"); addEmpty(16); addElement("He", "Heliu", 2, "noble");
+                addElement("Li", "Litiu", 3, "alkali"); addElement("Be", "Beriliu", 4, "alkaline"); addEmpty(10);
+                addElement("B", "Bor", 5, "metalloid"); addElement("C", "Carbon", 6, "nonmetal"); addElement("N", "Azot", 7, "nonmetal");
+                addElement("O", "Oxigen", 8, "nonmetal"); addElement("F", "Fluor", 9, "halogen"); addElement("Ne", "Neon", 10, "noble");
 
-                addElement("K", "alkali"); addElement("Ca", "alkaline");
-                addElement("Sc", "transition"); addElement("Ti", "transition");
-                addElement("V", "transition"); addElement("Cr", "transition");
-                addElement("Mn", "transition"); addElement("Fe", "transition");
-                addElement("Co", "transition"); addElement("Ni", "transition");
-                addElement("Cu", "transition"); addElement("Zn", "transition");
-                addElement("Ga", "post-transition"); addElement("Ge", "metalloid");
-                addElement("As", "metalloid"); addElement("Se", "nonmetal");
-                addElement("Br", "halogen"); addElement("Kr", "noble");
+                addElement("Na", "Sodiu", 11, "alkali"); addElement("Mg", "Magneziu", 12, "alkaline"); addEmpty(10);
+                addElement("Al", "Aluminiu", 13, "post-transition"); addElement("Si", "Siliciu", 14, "metalloid");
+                addElement("P", "Fosfor", 15, "nonmetal"); addElement("S", "Sulf", 16, "nonmetal");
+                addElement("Cl", "Clor", 17, "halogen"); addElement("Ar", "Argon", 18, "noble");
 
-                addElement("Rb", "alkali"); addElement("Sr", "alkaline");
-                addElement("Y", "transition"); addElement("Zr", "transition");
-                addElement("Nb", "transition"); addElement("Mo", "transition");
-                addElement("Tc", "transition"); addElement("Ru", "transition");
-                addElement("Rh", "transition"); addElement("Pd", "transition");
-                addElement("Ag", "transition"); addElement("Cd", "transition");
-                addElement("In", "post-transition"); addElement("Sn", "post-transition");
-                addElement("Sb", "metalloid"); addElement("Te", "metalloid");
-                addElement("I", "halogen"); addElement("Xe", "noble");
-
-                addElement("Cs", "alkali"); addElement("Ba", "alkaline");
-                addElement("La", "lanthanide", 1); addElement("Hf", "transition");
-                addElement("Ta", "transition"); addElement("W", "transition");
-                addElement("Re", "transition"); addElement("Os", "transition");
-                addElement("Ir", "transition"); addElement("Pt", "transition");
-                addElement("Au", "transition"); addElement("Hg", "transition");
-                addElement("Tl", "post-transition"); addElement("Pb", "post-transition");
-                addElement("Bi", "post-transition"); addElement("Po", "metalloid");
-                addElement("At", "halogen"); addElement("Rn", "noble");
-
-                addElement("Fr", "alkali"); addElement("Ra", "alkaline");
-                addElement("Ac", "actinide", 1); addElement("Rf", "transition");
-                addElement("Db", "transition"); addElement("Sg", "transition");
-                addElement("Bh", "transition"); addElement("Hs", "transition");
-                addElement("Mt", "transition"); addElement("Ds", "transition");
-                addElement("Rg", "transition"); addElement("Cn", "transition");
-                addElement("Nh", "post-transition"); addElement("Fl", "post-transition");
-                addElement("Mc", "post-transition"); addElement("Lv", "post-transition");
-                addElement("Ts", "halogen"); addElement("Og", "noble");
+                addElement("K", "Potasiu", 19, "alkali"); addElement("Ca", "Calciu", 20, "alkaline");
+                addElement("Sc", "Scandiu", 21, "transition"); addElement("Ti", "Titan", 22, "transition");
+                addElement("V", "Vanadiu", 23, "transition"); addElement("Cr", "Crom", 24, "transition");
+                addElement("Mn", "Mangan", 25, "transition"); addElement("Fe", "Fier", 26, "transition");
+                addElement("Co", "Cobalt", 27, "transition"); addElement("Ni", "Nichel", 28, "transition");
+                addElement("Cu", "Cupru", 29, "transition"); addElement("Zn", "Zinc", 30, "transition");
+                addElement("Ga", "Galiu", 31, "post-transition"); addElement("Ge", "Germaniu", 32, "metalloid");
+                addElement("As", "Arsen", 33, "metalloid"); addElement("Se", "Seleniu", 34, "nonmetal");
+                addElement("Br", "Brom", 35, "halogen"); addElement("Kr", "Kripton", 36, "noble");
+                addElement("Rb", "Rubidiu", 37, "alkali"); addElement("Sr", "Stronțiu", 38, "alkaline");
+                addElement("Y", "Itriu", 39, "transition"); addElement("Zr", "Zirconiu", 40, "transition");
+                addElement("Nb", "Niobiu", 41, "transition"); addElement("Mo", "Molibden", 42, "transition");
+                addElement("Tc", "Tehnețiu", 43, "transition"); addElement("Ru", "Ruteniu", 44, "transition");
+                addElement("Rh", "Rhodiu", 45, "transition"); addElement("Pd", "Paladiu", 46, "transition");
+                addElement("Ag", "Argint", 47, "transition"); addElement("Cd", "Cadmiu", 48, "transition");
+                addElement("In", "Indiu", 49, "post-transition"); addElement("Sn", "Staniu", 50, "post-transition");
+                addElement("Sb", "Antimoniu", 51, "metalloid"); addElement("Te", "Telur", 52, "metalloid");
+                addElement("I", "Iod", 53, "halogen"); addElement("Xe", "Xenon", 54, "noble");
+                addElement("Cs", "Cesiu", 55, "alkali"); addElement("Ba", "Bariu", 56, "alkaline");
+                addElement("*", "", 1, "lanthanide"); addElement("Hf", "Hafniu", 72, "transition");
+                addElement("Ta", "Tantal", 73, "transition"); addElement("W", "Wolfram", 74, "transition");
+                addElement("Re", "Reniu", 75, "transition"); addElement("Os", "Osmiu", 76, "transition");
+                addElement("Ir", "Iridiu", 77, "transition"); addElement("Pt", "Platină", 78, "transition");
+                addElement("Au", "Aur", 79, "transition"); addElement("Hg", "Mercur", 80, "transition");
+                addElement("Tl", "Taliu", 81, "post-transition"); addElement("Pb", "Plumb", 82, "post-transition");
+                addElement("Bi", "Bismut", 83, "post-transition"); addElement("Po", "Poloniu", 84, "metalloid");
+                addElement("At", "Astatin", 85, "halogen"); addElement("Rn", "Radon", 86, "noble");
+                addElement("Fr", "Franciu", 87, "alkali"); addElement("Ra", "Radiu", 88, "alkaline");
+                addElement("**", "", 2, "actinide"); addElement("Rf", "Rutherfordiu", 104, "transition");
+                addElement("Db", "Dubniu", 105, "transition"); addElement("Sg", "Seaborgiu", 106, "transition");
+                addElement("Bh", "Bohr", 107, "transition"); addElement("Hs", "Hasiu", 108, "transition");
+                addElement("Mt", "Meitneriu", 109, "transition"); addElement("Ds", "Darmstadtiu", 110, "transition");
+                addElement("Rg", "Roentgeniu", 111, "transition"); addElement("Cn", "Coperniciu", 112, "transition");
+                addElement("Nh", "Nihoniu", 113, "post-transition"); addElement("Fl", "Fleroviu", 114, "post-transition");
+                addElement("Mc", "Moscoviu", 115, "post-transition"); addElement("Lv", "Livermoriu", 116, "post-transition");
+                addElement("Ts", "Tennessin", 117, "halogen"); addElement("Og", "Oganesson", 118, "noble");
 
 
-                // Corectare aliniere pentru lantanide si actinide
-                addEmpty(3); // Ajustare aliniere
-                addElement("Ce", "lanthanide"); addElement("Pr", "lanthanide");
-                addElement("Nd", "lanthanide"); addElement("Pm", "lanthanide");
-                addElement("Sm", "lanthanide"); addElement("Eu", "lanthanide");
-                addElement("Gd", "lanthanide"); addElement("Tb", "lanthanide");
-                addElement("Dy", "lanthanide"); addElement("Ho", "lanthanide");
-                addElement("Er", "lanthanide"); addElement("Tm", "lanthanide");
-                addElement("Yb", "lanthanide"); addElement("Lu", "lanthanide");
-
-                addEmpty(3); // Ajustare aliniere pentru actinide
-                addElement("Th", "actinide"); addElement("Pa", "actinide");
-                addElement("U", "actinide"); addElement("Np", "actinide");
-                addElement("Pu", "actinide"); addElement("Am", "actinide");
-                addElement("Cm", "actinide"); addElement("Bk", "actinide");
-                addElement("Cf", "actinide"); addElement("Es", "actinide");
-                addElement("Fm", "actinide"); addElement("Md", "actinide");
-                addElement("No", "actinide"); addElement("Lr", "actinide");
             });
-
         </script>
-    </div>
-    <p1>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html, body {
-            width: auto;
-            height: auto;
-            background: #1e1e1e;
-            font-family: 'Inter', sans-serif;
-            color: white;
-            text-align: center;
-            overflow-x: hidden;
-        }
-
-        .table {
-            display: grid;
-            grid-template-columns: repeat(18, 1fr);
-            gap: 5px;
-            margin-top: 20px;
-        }
-
-        .element {
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid white;
-            font-size: 1.2rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.3s ease;
-            position: relative;
-            flex-direction: column;
-        }
-
-            .element .name, .element .number {
-                display: none;
-                font-size: 0.7rem;
-                position: absolute;
-            }
-
-            .element .name {
-                bottom: 5px;
-            }
-
-            .element .number {
-                top: 5px;
-                right: 5px;
-            }
-
-            .element:hover .name, .element:hover .number {
-                display: block;
-            }
-    </style>
-    </head>
-    <body>
-        <div class="container">
-            <h1>Tabelul Periodic</h1>
-            <div class="table"></div>
-        </div>
         <script>
             document.addEventListener("DOMContentLoaded", function () {
                 const table = document.querySelector('.table');
-                const elements = [
-                    { symbol: "H", name: "Hidrogen", number: 1, category: "nonmetal" },
-                    { symbol: "He", name: "Heliu", number: 2, category: "noble" },
-                    { symbol: "Li", name: "Litiu", number: 3, category: "alkali" },
-                    { symbol: "Be", name: "Beriliu", number: 4, category: "alkaline" }
-                ];
+                const lanthActTable = document.querySelector('.lanthanide-actinide');
+                const audio = document.getElementById("audio");
 
-                function addElement(el) {
-                    const element = document.createElement('button');
-                    element.classList.add('element', el.category);
-                    element.textContent = el.symbol;
+                function addElement(symbol, name, number, category, container, colspan = 1) {
+                    const btn = document.createElement('div');
+                    btn.classList.add('element', category);
+                    btn.textContent = symbol;
+                    btn.style.gridColumn = `span ${colspan}`;
 
-                    const nameSpan = document.createElement('span');
+                    const nameSpan = document.createElement('div');
                     nameSpan.classList.add('name');
-                    nameSpan.textContent = el.name;
+                    nameSpan.textContent = name;
 
-                    const numberSpan = document.createElement('span');
+                    const numberSpan = document.createElement('div');
                     numberSpan.classList.add('number');
-                    numberSpan.textContent = el.number;
+                    numberSpan.textContent = number;
 
-                    element.appendChild(nameSpan);
-                    element.appendChild(numberSpan);
+                    btn.appendChild(nameSpan);
+                    btn.appendChild(numberSpan);
+                    container.appendChild(btn);
 
-                    table.appendChild(element);
+                    if (symbol === "Sr") {
+                        btn.addEventListener("click", function () {
+                            audio.play();
+                        });
+                    }
                 }
-
-                elements.forEach(addElement);
             });
         </script>
-        </p1>
-    </body>
+<style>
+    .table {
+        display: grid;
+        grid-template-columns: repeat(18, 1fr);
+        gap: 5px;
+        max-width: 900px;
+        margin: auto;
+    }
+
+    .lanthanide-actinide {
+        display: grid;
+        grid-template-columns: repeat(15, 1fr);
+        gap: 5px;
+        max-width: 750px;
+        margin: auto;
+    }
+
+    .element {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        flex-direction: column;
+        padding: 10px;
+        border: 1px solid black;
+        text-align: center;
+    }
+
+        .element .name, .element .number {
+            font-size: 0.7rem;
+        }
+</style>
+            </head>
+<div class="container">
+    <div class="lanthanide-actinide"></div>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const table = document.querySelector('.table');
+        const lanthActTable = document.querySelector('.lanthanide-actinide');
+
+        function addElement(symbol, name, number, category, container, colspan = 1) {
+            const btn = document.createElement('div');
+            btn.classList.add('element', category);
+            btn.textContent = symbol;
+            btn.style.gridColumn = `span ${colspan}`;
+
+            const nameSpan = document.createElement('div');
+            nameSpan.classList.add('name');
+            nameSpan.textContent = name;
+
+            const numberSpan = document.createElement('div');
+            numberSpan.classList.add('number');
+            numberSpan.textContent = number;
+
+            btn.appendChild(nameSpan);
+            btn.appendChild(numberSpan);
+            container.appendChild(btn);
+        }
+
+        function addEmpty(container, colspan = 1) {
+            const empty = document.createElement('div');
+            empty.style.visibility = "hidden";
+            empty.style.gridColumn = `span ${colspan}`;
+            container.appendChild(empty);
+        }
+
+        addElement("La", "Lantan", 57, "lanthanide", lanthActTable);
+        addElement("Ce", "Ceriu", 58, "lanthanide", lanthActTable);
+        addElement("Pr", "Praseodim", 59, "lanthanide", lanthActTable);
+        addElement("Nd", "Neodim", 60, "lanthanide", lanthActTable);
+        addElement("Pm", "Prometiu", 61, "lanthanide", lanthActTable);
+        addElement("Sm", "Samariu", 62, "lanthanide", lanthActTable);
+        addElement("Eu", "Europiu", 63, "lanthanide", lanthActTable);
+        addElement("Gd", "Gadoliniu", 64, "lanthanide", lanthActTable);
+        addElement("Tb", "Terbiu", 65, "lanthanide", lanthActTable);
+        addElement("Dy", "Disprosiu", 66, "lanthanide", lanthActTable);
+        addElement("Ho", "Holmiu", 67, "lanthanide", lanthActTable);
+        addElement("Er", "Erbiu", 68, "lanthanide", lanthActTable);
+        addElement("Tm", "Tuliu", 69, "lanthanide", lanthActTable);
+        addElement("Yb", "Yterbiu", 70, "lanthanide", lanthActTable);
+        addElement("Lu", "Luteciu", 71, "lanthanide", lanthActTable);
+
+        addElement("Ac", "Actiniu", 89, "actinide", lanthActTable);
+        addElement("Th", "Toriu", 90, "actinide", lanthActTable);
+        addElement("Pa", "Protactiniu", 91, "actinide", lanthActTable);
+        addElement("U", "Uraniu", 92, "actinide", lanthActTable);
+        addElement("Np", "Neptuniu", 93, "actinide", lanthActTable);
+        addElement("Pu", "Plutoniu", 94, "actinide", lanthActTable);
+        addElement("Am", "Americiu", 95, "actinide", lanthActTable);
+        addElement("Cm", "Curiu", 96, "actinide", lanthActTable);
+        addElement("Bk", "Berkeliu", 97, "actinide", lanthActTable);
+        addElement("Cf", "Californiu", 98, "actinide", lanthActTable);
+        addElement("Es", "Einsteiniu", 99, "actinide", lanthActTable);
+        addElement("Fm", "Fermiu", 100, "actinide", lanthActTable);
+        addElement("Md", "Mendeleviu", 101, "actinide", lanthActTable);
+        addElement("No", "Nobeliu", 102, "actinide", lanthActTable);
+        addElement("Lr", "Lawrenciu", 103, "actinide", lanthActTable);
+
+    });
+   
+</script>
+</body>
 </html>
