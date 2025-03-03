@@ -152,12 +152,12 @@
     <div class="top-bar">
         <a href="./pages/home/home.html" class="home-btn">Home</a>
         <div class="socials">
-            <a href="#"><img src="./assets/images/facebook.png" alt="Facebook">Facebook</a>
-            <a href="#"><img src="./assets/images/onlyfans.png" alt="OnlyFans">OnlyFans</a>
-            <a href="#"><img src="./assets/images/instagram.png" alt="Instagram">Instagram</a>
+            <a href="#"><img src="../../assets/images/facebook.png" alt="Facebook">Facebook</a>
+            <a href="#"><img src="../../assets/images/onlyfans.png" alt="OnlyFans">OnlyFans</a>
+            <a href="#"><img src="../../assets/images/instagram.png" alt="Instagram">Instagram</a>
             <script>
     document.addEventListener("DOMContentLoaded", function () {
-                    const onlyFansAudio = new Audio('./assets/audio/onlyfans.mp3');
+                    const onlyFansAudio = new Audio('../../assets/onlyfans.mp3');
                     const onlyFansButton = document.querySelector(".socials a[href='#'] img[alt='OnlyFans']");
 
                     if (onlyFansButton) {
@@ -274,7 +274,7 @@
             document.head.appendChild(style);
 
             // Add audio functionality for element Sr
-            const audio = new Audio('./assets/audio/surprise.mp3');
+            const audio = new Audio('../../assets/audio/surprise.mp3');
             document.addEventListener('click', function (event) {
                 if (event.target.textContent === 'Sr') {
                     audio.play();
