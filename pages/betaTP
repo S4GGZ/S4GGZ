@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Periodic Table</title>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: auto;
+            height: auto;
+            background: #1e1e1e;
+            font-family: 'Inter', sans-serif;
+            color: white;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        .top-bar {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            font-size: 1rem;
+            background: #292929;
+            z-index: 1000;
+        }
+
+        .socials {
+            display: flex;
+            gap: 20px;
+        }
+
+            .socials a {
+                color: white;
+                text-decoration: none;
+                font-weight: 500;
+                display: flex;
+                align-items: center;
+            }
+
+            .socials img {
+                width: 24px;
+                height: 24px;
+                margin-right: 8px;
+            }
+
+        .home-btn {
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: bold;
+            background-color: #ff4757;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            color: white;
+        }
+
+            .home-btn:hover {
+                background-color: #e8414b;
+            }
+
+        .container {
+            margin-top: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 20px;
+        }
+
+        .table {
+            display: grid;
+            grid-template-columns: repeat(18, 1fr);
+            gap: 5px;
+            margin-top: 20px;
+        }
+
+        .element {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid white;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+            .element:hover {
+                opacity: 0.8;
+            }
+
+        .alkali {
+            background-color: #ff6666;
+        }
+
+        .alkaline {
+            background-color: #ffcc66;
+        }
+
+        .transition {
+            background-color: #66ccff;
+        }
+
+        .metalloid {
+            background-color: #66ff99;
+        }
+
+        .nonmetal {
+            background-color: #ffff66;
+        }
+
+        .halogen {
+            background-color: #cc99ff;
+        }
+
+        .noble {
+            background-color: #9999ff;
+        }
+        .lanthanide {
+            background-color: #ff9933; /* Orange */
+        }
+
+        .actinide {
+            background-color: #ff3333; /* Red */
+        }
+        .post-transition {
+            background-color: #ff9966;
+        }
+
+        .unknown {
+            background-color: #999999;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="index.html" class="home-btn">Home</a>
+        <div class="socials">
+            <a href="#"><img src="media/facebook.png" alt="Facebook">Facebook</a>
+            <a href="#"><img src="media/onlyfans.png" alt="OnlyFans">OnlyFans</a>
+            <a href="#"><img src="media/instagram.png" alt="Instagram">Instagram</a>
+            <script>
+    document.addEventListener("DOMContentLoaded", function () {
+                    const onlyFansAudio = new Audio('media/audio/onlyfans.mp3');
+                    const onlyFansButton = document.querySelector(".socials a[href='#'] img[alt='OnlyFans']");
+
+                    if (onlyFansButton) {
+                        onlyFansButton.parentElement.addEventListener('click', function (event) {
+                            event.preventDefault(); // Prevent default navigation
+                            onlyFansAudio.play();
+                        });
+                    }
+                });
+            </script>
+        </div>
+    </div>
+    <div class="container">
+        <h1>Tabelul Periodic</h1>
+        <div class="table"></div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const container = document.querySelector('.container');
+
+            const legend = document.createElement('div');
+            legend.classList.add('legend');
+            legend.style.display = 'none';
+            legend.innerHTML = `
+            <h2>Legenda</h2>
+            <ul>
+                <li><span class="color-box alkali"></span> Alcaline</li>
+                <li><span class="color-box alkaline"></span> Alcalino-Pământoase</li>
+                <li><span class="color-box transition"></span> Metale de Tranziție</li>
+                <li><span class="color-box metalloid"></span> Metaloizi</li>
+                <li><span class="color-box nonmetal"></span> Nematelale</li>
+                <li><span class="color-box halogen"></span> Halogeni</li>
+                <li><span class="color-box noble"></span> Gaze Nobile</li>
+                <li><span class="color-box lanthanide"></span> Lantanide</li>
+                <li><span class="color-box actinide"></span> Actinide</li>
+                <li><span class="color-box post-transition"></span> Metale Post-tranziție</li>
+            </ul>
+        `;
+
+            const toggleButton = document.createElement('button');
+            toggleButton.textContent = 'Show Legend';
+            toggleButton.classList.add('legend-toggle');
+            toggleButton.onclick = function () {
+                if (legend.style.display === 'none') {
+                    legend.style.display = 'block';
+                    toggleButton.textContent = 'Hide Legend';
+                } else {
+                    legend.style.display = 'none';
+                    toggleButton.textContent = 'Show Legend';
+                }
+            };
+
+            container.appendChild(toggleButton);
+            container.appendChild(legend);
+
+            const style = document.createElement('style');
+            style.innerHTML = `
+            .legend {
+                position: absolute;
+                right: 20px;
+                top: 120px;
+                background: #292929;
+                padding: 15px;
+                border-radius: 8px;
+                color: white;
+                font-size: 1rem;
+                width: 200px;
+            }
+            .legend h2 {
+                font-size: 1.2rem;
+                margin-bottom: 10px;
+            }
+            .legend ul {
+                list-style: none;
+                padding: 0;
+            }
+            .legend li {
+                display: flex;
+                align-items: center;
+                margin-bottom: 5px;
+            }
+            .color-box {
+                width: 20px;
+                height: 20px;
+                margin-right: 10px;
+                display: inline-block;
+            }
+            .alkali { background-color: #ff6666; }
+            .alkaline { background-color: #ffcc66; }
+            .transition { background-color: #66ccff; }
+            .metalloid { background-color: #66ff99; }
+            .nonmetal { background-color: #ffff66; }
+            .halogen { background-color: #cc99ff; }
+            .noble { background-color: #9999ff; }
+            .lanthanide { background-color: #ff9933; }
+            .actinide { background-color: #ff3333; }
+            .post-transition { background-color: #ff9966; }
+            .unknown { background-color: #999999; }
+            .legend-toggle {
+                position: absolute;
+                right: 20px;
+                top: 80px;
+                padding: 10px 15px;
+                background: #ff4757;
+                color: white;
+                border: none;
+                border-radius: 8px;
+                cursor: pointer;
+            }
+            .legend-toggle:hover {
+                background: #e8414b;
+            }
+        `;
+            document.head.appendChild(style);
+
+            // Add audio functionality for element Sr
+            const audio = new Audio('media/audio/surprise.mp3');
+            document.addEventListener('click', function (event) {
+                if (event.target.textContent === 'Sr') {
+                    audio.play();
+                }
+            });
+        });
+
+    </script>
+
+    <div .container {
+         width: 100%;
+         max-width: 100%;
+         margin: auto;
+         padding: 20px;
+         }
+         .table-container {
+         width: 100%;
+         overflow-x: auto;
+         display: flex;
+         justify-content: center;
+         -webkit-overflow-scrolling: touch; /* Permite scroll fluid pe iOS * /
+         }
+         .table {
+         display: grid;
+         grid-template-columns: repeat(18, minmax(50px, 1fr));
+         gap: 5px;
+         min-width: 900px;
+         }
+         .element {
+         width: 50px;
+         height: 50px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         border: 1px solid white;
+         font-size: 1rem;
+         font-weight: bold;
+         cursor: pointer;
+         transition: background 0.3s ease;
+         }
+         /* Ajustări pentru ecrane mici * /
+         @media (max-width: 768px) {
+         .element {
+         width: 40px;
+         height: 40px;
+         font-size: 0.8rem;
+         }
+         .table {
+         grid-template-columns: repeat(9, minmax(40px, 1fr));
+         }
+         }>
+        <script>
+
+            document.addEventListener("DOMContentLoaded", function () {
+                const table = document.querySelector('.table');
+
+                function addElement(symbol, category, colspan = 1) {
+                    const btn = document.createElement('button');
+                    btn.classList.add('element', category);
+                    btn.textContent = symbol;
+                    btn.style.gridColumn = `span ${colspan}`;
+                    table.appendChild(btn);
+                }
+
+                function addEmpty(colspan = 1) {
+                    const empty = document.createElement('div');
+                    empty.style.visibility = "hidden";
+                    empty.style.gridColumn = `span ${colspan}`;
+                    table.appendChild(empty);
+                }
+
+                addElement("H", "nonmetal"); addEmpty(16); addElement("He", "noble");
+                addElement("Li", "alkali"); addElement("Be", "alkaline"); addEmpty(10);
+                addElement("B", "metalloid"); addElement("C", "nonmetal"); addElement("N", "nonmetal");
+                addElement("O", "nonmetal"); addElement("F", "halogen"); addElement("Ne", "noble");
+                addElement("Na", "alkali"); addElement("Mg", "alkaline"); addEmpty(10);
+                addElement("Al", "post-transition"); addElement("Si", "metalloid");
+                addElement("P", "nonmetal"); addElement("S", "nonmetal");
+                addElement("Cl", "halogen"); addElement("Ar", "noble");
+
+                addElement("K", "alkali"); addElement("Ca", "alkaline");
+                addElement("Sc", "transition"); addElement("Ti", "transition");
+                addElement("V", "transition"); addElement("Cr", "transition");
+                addElement("Mn", "transition"); addElement("Fe", "transition");
+                addElement("Co", "transition"); addElement("Ni", "transition");
+                addElement("Cu", "transition"); addElement("Zn", "transition");
+                addElement("Ga", "post-transition"); addElement("Ge", "metalloid");
+                addElement("As", "metalloid"); addElement("Se", "nonmetal");
+                addElement("Br", "halogen"); addElement("Kr", "noble");
+
+                addElement("Rb", "alkali"); addElement("Sr", "alkaline");
+                addElement("Y", "transition"); addElement("Zr", "transition");
+                addElement("Nb", "transition"); addElement("Mo", "transition");
+                addElement("Tc", "transition"); addElement("Ru", "transition");
+                addElement("Rh", "transition"); addElement("Pd", "transition");
+                addElement("Ag", "transition"); addElement("Cd", "transition");
+                addElement("In", "post-transition"); addElement("Sn", "post-transition");
+                addElement("Sb", "metalloid"); addElement("Te", "metalloid");
+                addElement("I", "halogen"); addElement("Xe", "noble");
+
+                addElement("Cs", "alkali"); addElement("Ba", "alkaline");
+                addElement("La", "lanthanide", 1); addElement("Hf", "transition");
+                addElement("Ta", "transition"); addElement("W", "transition");
+                addElement("Re", "transition"); addElement("Os", "transition");
+                addElement("Ir", "transition"); addElement("Pt", "transition");
+                addElement("Au", "transition"); addElement("Hg", "transition");
+                addElement("Tl", "post-transition"); addElement("Pb", "post-transition");
+                addElement("Bi", "post-transition"); addElement("Po", "metalloid");
+                addElement("At", "halogen"); addElement("Rn", "noble");
+
+                addElement("Fr", "alkali"); addElement("Ra", "alkaline");
+                addElement("Ac", "actinide", 1); addElement("Rf", "transition");
+                addElement("Db", "transition"); addElement("Sg", "transition");
+                addElement("Bh", "transition"); addElement("Hs", "transition");
+                addElement("Mt", "transition"); addElement("Ds", "transition");
+                addElement("Rg", "transition"); addElement("Cn", "transition");
+                addElement("Nh", "post-transition"); addElement("Fl", "post-transition");
+                addElement("Mc", "post-transition"); addElement("Lv", "post-transition");
+                addElement("Ts", "halogen"); addElement("Og", "noble");
+
+
+                // Corectare aliniere pentru lantanide si actinide
+                addEmpty(3); // Ajustare aliniere
+                addElement("Ce", "lanthanide"); addElement("Pr", "lanthanide");
+                addElement("Nd", "lanthanide"); addElement("Pm", "lanthanide");
+                addElement("Sm", "lanthanide"); addElement("Eu", "lanthanide");
+                addElement("Gd", "lanthanide"); addElement("Tb", "lanthanide");
+                addElement("Dy", "lanthanide"); addElement("Ho", "lanthanide");
+                addElement("Er", "lanthanide"); addElement("Tm", "lanthanide");
+                addElement("Yb", "lanthanide"); addElement("Lu", "lanthanide");
+
+                addEmpty(3); // Ajustare aliniere pentru actinide
+                addElement("Th", "actinide"); addElement("Pa", "actinide");
+                addElement("U", "actinide"); addElement("Np", "actinide");
+                addElement("Pu", "actinide"); addElement("Am", "actinide");
+                addElement("Cm", "actinide"); addElement("Bk", "actinide");
+                addElement("Cf", "actinide"); addElement("Es", "actinide");
+                addElement("Fm", "actinide"); addElement("Md", "actinide");
+                addElement("No", "actinide"); addElement("Lr", "actinide");
+            });
+
+        </script>
+    </div>
+    <p1>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: auto;
+            height: auto;
+            background: #1e1e1e;
+            font-family: 'Inter', sans-serif;
+            color: white;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        .table {
+            display: grid;
+            grid-template-columns: repeat(18, 1fr);
+            gap: 5px;
+            margin-top: 20px;
+        }
+
+        .element {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            position: relative;
+            flex-direction: column;
+        }
+
+            .element .name, .element .number {
+                display: none;
+                font-size: 0.7rem;
+                position: absolute;
+            }
+
+            .element .name {
+                bottom: 5px;
+            }
+
+            .element .number {
+                top: 5px;
+                right: 5px;
+            }
+
+            .element:hover .name, .element:hover .number {
+                display: block;
+            }
+    </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Tabelul Periodic</h1>
+            <div class="table"></div>
+        </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const table = document.querySelector('.table');
+                const elements = [
+                    { symbol: "H", name: "Hidrogen", number: 1, category: "nonmetal" },
+                    { symbol: "He", name: "Heliu", number: 2, category: "noble" },
+                    { symbol: "Li", name: "Litiu", number: 3, category: "alkali" },
+                    { symbol: "Be", name: "Beriliu", number: 4, category: "alkaline" }
+                ];
+
+                function addElement(el) {
+                    const element = document.createElement('button');
+                    element.classList.add('element', el.category);
+                    element.textContent = el.symbol;
+
+                    const nameSpan = document.createElement('span');
+                    nameSpan.classList.add('name');
+                    nameSpan.textContent = el.name;
+
+                    const numberSpan = document.createElement('span');
+                    numberSpan.classList.add('number');
+                    numberSpan.textContent = el.number;
+
+                    element.appendChild(nameSpan);
+                    element.appendChild(numberSpan);
+
+                    table.appendChild(element);
+                }
+
+                elements.forEach(addElement);
+            });
+        </script>
+        </p1>
+    </body>
+</html>
