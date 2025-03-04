@@ -3,23 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Periodic Table/</title> 
+    <title>Periodic Table/</title>
     <style>
- //Sa-mi trag pula defs stiu de stiu de ce nu-i centrat 
+        //Imi e lene sa adaug kkt urile alea in meniu elementelor amu, o fac eu dupa, momentan il las basic
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        html, body {
-            width: auto;
-            height: auto;
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
             background: #1e1e1e;
             font-family: 'Inter', sans-serif;
             color: white;
             text-align: center;
-            overflow-x: hidden;
         }
 
         .top-bar {
@@ -72,17 +74,16 @@
             }
 
         .container {
-            margin-top: 80px;
+            margin-top: 15px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             width: 100%;
-            padding: 20px;
         }
 
         .table {
-            display: grid;
+            display: flex;
             grid-template-columns: repeat(18, 1fr);
             gap: 5px;
             margin-top: 20px;
@@ -251,7 +252,7 @@
                         .alkaline { background-color: #ffcc66; }
                         .transition { background-color: #66ccff; }
                         .metalloid { background-color: #66ff99; }
-                        .nonmetal { background-color: #ffff66; }
+                        .nonmetal { background-color: #0BEADB; }
                         .halogen { background-color: #cc99ff; }
                         .noble { background-color: #9999ff; }
                         .lanthanide { background-color: #ff9933; }
@@ -286,50 +287,7 @@
 
     </script>
 
-    <div .container {
-         width: 100%;
-         max-width: 100%;
-         margin: auto;
-         padding: 20px;
-         }
-         .table-container {
-         width: 100%;
-         overflow-x: auto;
-         display: flex;
-         justify-content: center;
-         -webkit-overflow-scrolling: touch; /* Permite scroll fluid pe iOS * /
-         }
-         .table {
-         display: grid;
-         grid-template-columns: repeat(1, minmax(50px, 1fr));
-         gap: 5px;
-         min-width: 200px;
-         }
-         .element {
-         width: 50px;
-         height: 50px;
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         border: 1px solid white;
-         font-size: 1rem;
-         font-weight: bold;
-         cursor: pointer;
-         transition: background 0.3s ease;
-         }
-         /* Ajustări pentru ecrane mici * /
-         @media (max-width: 768px) {
-         .element {
-         width: 40px;
-         height: 40px;
-         font-size: 0.8rem;
-         }
-         .table {
-         grid-template-columns: repeat(9, minmax(40px, 1fr));
-         }
-         }>
-
-    </div>
+   
     <p1>
         <style>
             * {
@@ -368,12 +326,14 @@
                 transition: background 0.3s ease;
                 position: relative;
                 flex-direction: column;
+                color: white;
             }
 
                 .element .name, .element .number {
                     display: none;
                     font-size: 0.7rem;
                     position: absolute;
+                    color: white;
                 }
 
                 .element .name {
@@ -470,6 +430,7 @@
 
             });
         </script>
+
         <script>
             document.addEventListener("DOMContentLoaded", function () {
                 const table = document.querySelector('.table');
@@ -502,110 +463,193 @@
                 }
             });
         </script>
-<style>
-    .table {
-        display: grid;
-        grid-template-columns: repeat(18, 1fr);
-        gap: 5px;
-        max-width: 900px;
-        margin: auto;
-    }
+        <style>
+            .table {
+                display: grid;
+                grid-template-columns: repeat(18, 1fr);
+                gap: 5px;
+                max-width: auto;
+                margin: auto;
+            }
 
-    .lanthanide-actinide {
-        display: grid;
-        grid-template-columns: repeat(15, 1fr);
-        gap: 5px;
-        max-width: 750px;
-        margin: auto;
-    }
+            .lanthanide-actinide {
+                display: grid;
+                grid-template-columns: repeat(15, 1fr);
+                gap: 5px;
+                max-width: auto;
+                margin: auto;
+            }
 
-    .element {
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: bold;
-        cursor: pointer;
-        transition: background 0.3s ease;
-        flex-direction: column;
-        padding: 10px;
-        border: 1px solid black;
-        text-align: center;
-    }
+            .element {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: bold;
+                cursor: pointer;
+                transition: background 0.3s ease;
+                flex-direction: column;
+                padding: 10px;
+                border: 1px solid black;
+                text-align: center;
+            }
 
-        .element .name, .element .number {
-            font-size: 0.7rem;
-        }
-</style>
-            </head>
-<div class="container">
-    <div class="lanthanide-actinide"></div>
-</div>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const table = document.querySelector('.table');
-        const lanthActTable = document.querySelector('.lanthanide-actinide');
+                .element .name, .element .number {
+                    font-size: 0.7rem;
+                }
+        </style>
+        </head>
+        <div class="container">
+            <div class="lanthanide-actinide"></div>
+        </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const table = document.querySelector('.table');
+                const lanthActTable = document.querySelector('.lanthanide-actinide');
 
-        function addElement(symbol, name, number, category, container, colspan = 1) {
-            const btn = document.createElement('div');
-            btn.classList.add('element', category);
-            btn.textContent = symbol;
-            btn.style.gridColumn = `span ${colspan}`;
+                function addElement(symbol, name, number, category, container, colspan = 1) {
+                    const btn = document.createElement('div');
+                    btn.classList.add('element', category);
+                    btn.textContent = symbol;
+                    btn.style.gridColumn = `span ${colspan}`;
 
-            const nameSpan = document.createElement('div');
-            nameSpan.classList.add('name');
-            nameSpan.textContent = name;
+                    const nameSpan = document.createElement('div');
+                    nameSpan.classList.add('name');
+                    nameSpan.textContent = name;
 
-            const numberSpan = document.createElement('div');
-            numberSpan.classList.add('number');
-            numberSpan.textContent = number;
+                    const numberSpan = document.createElement('div');
+                    numberSpan.classList.add('number');
+                    numberSpan.textContent = number;
 
-            btn.appendChild(nameSpan);
-            btn.appendChild(numberSpan);
-            container.appendChild(btn);
-        }
+                    btn.appendChild(nameSpan);
+                    btn.appendChild(numberSpan);
+                    container.appendChild(btn);
+                }
 
-        function addEmpty(container, colspan = 1) {
-            const empty = document.createElement('div');
-            empty.style.visibility = "hidden";
-            empty.style.gridColumn = `span ${colspan}`;
-            container.appendChild(empty);
-        }
+                function addEmpty(container, colspan = 1) {
+                    const empty = document.createElement('div');
+                    empty.style.visibility = "hidden";
+                    empty.style.gridColumn = `span ${colspan}`;
+                    container.appendChild(empty);
+                }
 
-        addElement("La", "Lantan", 57, "lanthanide", lanthActTable);
-        addElement("Ce", "Ceriu", 58, "lanthanide", lanthActTable);
-        addElement("Pr", "Praseodim", 59, "lanthanide", lanthActTable);
-        addElement("Nd", "Neodim", 60, "lanthanide", lanthActTable);
-        addElement("Pm", "Prometiu", 61, "lanthanide", lanthActTable);
-        addElement("Sm", "Samariu", 62, "lanthanide", lanthActTable);
-        addElement("Eu", "Europiu", 63, "lanthanide", lanthActTable);
-        addElement("Gd", "Gadoliniu", 64, "lanthanide", lanthActTable);
-        addElement("Tb", "Terbiu", 65, "lanthanide", lanthActTable);
-        addElement("Dy", "Disprosiu", 66, "lanthanide", lanthActTable);
-        addElement("Ho", "Holmiu", 67, "lanthanide", lanthActTable);
-        addElement("Er", "Erbiu", 68, "lanthanide", lanthActTable);
-        addElement("Tm", "Tuliu", 69, "lanthanide", lanthActTable);
-        addElement("Yb", "Yterbiu", 70, "lanthanide", lanthActTable);
-        addElement("Lu", "Luteciu", 71, "lanthanide", lanthActTable);
+                addElement("La", "Lantan", 57, "lanthanide", lanthActTable);
+                addElement("Ce", "Ceriu", 58, "lanthanide", lanthActTable);
+                addElement("Pr", "Praseodim", 59, "lanthanide", lanthActTable);
+                addElement("Nd", "Neodim", 60, "lanthanide", lanthActTable);
+                addElement("Pm", "Prometiu", 61, "lanthanide", lanthActTable);
+                addElement("Sm", "Samariu", 62, "lanthanide", lanthActTable);
+                addElement("Eu", "Europiu", 63, "lanthanide", lanthActTable);
+                addElement("Gd", "Gadoliniu", 64, "lanthanide", lanthActTable);
+                addElement("Tb", "Terbiu", 65, "lanthanide", lanthActTable);
+                addElement("Dy", "Disprosiu", 66, "lanthanide", lanthActTable);
+                addElement("Ho", "Holmiu", 67, "lanthanide", lanthActTable);
+                addElement("Er", "Erbiu", 68, "lanthanide", lanthActTable);
+                addElement("Tm", "Tuliu", 69, "lanthanide", lanthActTable);
+                addElement("Yb", "Yterbiu", 70, "lanthanide", lanthActTable);
+                addElement("Lu", "Luteciu", 71, "lanthanide", lanthActTable);
 
-        addElement("Ac", "Actiniu", 89, "actinide", lanthActTable);
-        addElement("Th", "Toriu", 90, "actinide", lanthActTable);
-        addElement("Pa", "Protactiniu", 91, "actinide", lanthActTable);
-        addElement("U", "Uraniu", 92, "actinide", lanthActTable);
-        addElement("Np", "Neptuniu", 93, "actinide", lanthActTable);
-        addElement("Pu", "Plutoniu", 94, "actinide", lanthActTable);
-        addElement("Am", "Americiu", 95, "actinide", lanthActTable);
-        addElement("Cm", "Curiu", 96, "actinide", lanthActTable);
-        addElement("Bk", "Berkeliu", 97, "actinide", lanthActTable);
-        addElement("Cf", "Californiu", 98, "actinide", lanthActTable);
-        addElement("Es", "Einsteiniu", 99, "actinide", lanthActTable);
-        addElement("Fm", "Fermiu", 100, "actinide", lanthActTable);
-        addElement("Md", "Mendeleviu", 101, "actinide", lanthActTable);
-        addElement("No", "Nobeliu", 102, "actinide", lanthActTable);
-        addElement("Lr", "Lawrenciu", 103, "actinide", lanthActTable);
+                addElement("Ac", "Actiniu", 89, "actinide", lanthActTable);
+                addElement("Th", "Toriu", 90, "actinide", lanthActTable);
+                addElement("Pa", "Protactiniu", 91, "actinide", lanthActTable);
+                addElement("U", "Uraniu", 92, "actinide", lanthActTable);
+                addElement("Np", "Neptuniu", 93, "actinide", lanthActTable);
+                addElement("Pu", "Plutoniu", 94, "actinide", lanthActTable);
+                addElement("Am", "Americiu", 95, "actinide", lanthActTable);
+                addElement("Cm", "Curiu", 96, "actinide", lanthActTable);
+                addElement("Bk", "Berkeliu", 97, "actinide", lanthActTable);
+                addElement("Cf", "Californiu", 98, "actinide", lanthActTable);
+                addElement("Es", "Einsteiniu", 99, "actinide", lanthActTable);
+                addElement("Fm", "Fermiu", 100, "actinide", lanthActTable);
+                addElement("Md", "Mendeleviu", 101, "actinide", lanthActTable);
+                addElement("No", "Nobeliu", 102, "actinide", lanthActTable);
+                addElement("Lr", "Lawrenciu", 103, "actinide", lanthActTable);
 
-    });
-   
-</script>
+            });
+
+        </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const menu = document.createElement('div');
+                menu.classList.add('menu');
+                menu.style.width = '250px';
+                menu.style.background = '#292929';
+                menu.style.padding = '15px';
+                menu.style.borderRadius = '8px';
+                menu.style.display = 'none';
+                menu.style.position = 'absolute';
+                menu.style.left = '20px';
+                menu.style.top = '100px';
+                menu.style.color = 'white';
+                menu.style.textAlign = 'center';
+                document.body.appendChild(menu);
+
+                const closeButton = document.createElement('button');
+                closeButton.textContent = '×';
+                closeButton.style.background = 'none';
+                closeButton.style.border = 'none';
+                closeButton.style.color = 'white';
+                closeButton.style.fontSize = '1.5rem';
+                closeButton.style.cursor = 'pointer';
+                closeButton.style.position = 'absolute';
+                closeButton.style.top = '10px';
+                closeButton.style.right = '10px';
+                closeButton.onclick = function () {
+                    menu.style.display = 'none';
+                    document.querySelector('.table').style.margin = 'auto';
+                    activeElement = null;
+                };
+                menu.appendChild(closeButton);
+
+                const title = document.createElement('h2');
+                title.id = 'element-title';
+                menu.appendChild(title);
+
+                const electronConfig = document.createElement('p');
+                electronConfig.id = 'element-config';
+                electronConfig.style.marginTop = '10px';
+                electronConfig.style.fontSize = '0.9rem';
+                electronConfig.style.fontStyle = 'italic';
+                menu.appendChild(electronConfig);
+
+                const description = document.createElement('p');
+                description.id = 'element-description';
+                description.style.marginTop = '10px';
+                description.style.fontSize = '0.85rem';
+                menu.appendChild(description);
+
+                document.body.appendChild(menu);
+
+                const elementsInfo = {
+                    "H": { name: "Hidrogen", config: "1s¹", description: "Cel mai ușor element, componentă principală a stelelor și apei." },
+                    "He": { name: "Heliu", config: "1s²", description: "Gaz nobil, utilizat în baloane și în răcirea reactoarelor nucleare." },
+                    "Li": { name: "Litiu", config: "[He] 2s¹", description: "Metal alcalin folosit în baterii și tratamente psihiatrice." },
+                    "Be": { name: "Beriliu", config: "[He] 2s²", description: "Metal ușor, utilizat în industria aerospațială și electronică." },
+                    "B": { name: "Bor", config: "[He] 2s² 2p¹", description: "Element esențial pentru plante, folosit în materiale compozite." },
+                    "C": { name: "Carbon", config: "[He] 2s² 2p²", description: "Element fundamental al vieții, regăsit în toate organismele." }
+                };
+
+                let activeElement = null;
+
+                document.querySelectorAll('.element').forEach(el => {
+                    el.addEventListener('click', function () {
+                        const symbol = el.textContent.trim();
+                        if (activeElement === symbol) {
+                            menu.style.display = 'none';
+                            document.querySelector('.table').style.margin = 'auto';
+                            activeElement = null;
+                        } else {
+                            title.textContent = elementsInfo[symbol]?.name || symbol;
+                            electronConfig.textContent = "Configurație electronică: " + (elementsInfo[symbol]?.config || "Necunoscut");
+                            description.textContent = elementsInfo[symbol]?.description || "Descriere indisponibilă.";
+                            menu.style.display = 'block';
+                            document.querySelector('.table').style.marginLeft = '270px';
+                            activeElement = symbol;
+                        }
+                    });
+                });
+            });
+        </script>
+
 </body>
 </html>
