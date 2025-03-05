@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Periodic Table/</title>
+    <title>Periodic Table</title>
+    <! Trag pulentiu-n ele Lantanide si Actinide ca nu functioneaza meniu pt ele .i. -->
     <style>
-        //Imi e lene sa adaug kkt urile alea in meniu elementelor amu, o fac eu dupa, momentan il las basic
         * {
             margin: 0;
             padding: 0;
@@ -177,6 +177,8 @@
         <h1>Tabelul Periodic</h1>
         <div class="table"></div>
     </div>
+
+
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const container = document.querySelector('.container');
@@ -185,20 +187,20 @@
             legend.classList.add('legend');
             legend.style.display = 'none';
             legend.innerHTML = `
-                        <h2>Legenda</h2>
-                        <ul>
-                            <li><span class="color-box alkali"></span> Alcaline</li>
-                            <li><span class="color-box alkaline"></span> Alcalino-Pământoase</li>
-                            <li><span class="color-box transition"></span> Metale de Tranziție</li>
-                            <li><span class="color-box metalloid"></span> Metaloizi</li>
-                            <li><span class="color-box nonmetal"></span> Nematelale</li>
-                            <li><span class="color-box halogen"></span> Halogeni</li>
-                            <li><span class="color-box noble"></span> Gaze Nobile</li>
-                            <li><span class="color-box lanthanide"></span> Lantanide</li>
-                            <li><span class="color-box actinide"></span> Actinide</li>
-                            <li><span class="color-box post-transition"></span> Metale Post-tranziție</li>
-                        </ul>
-                    `;
+                                        <h2>Legenda</h2>
+                                        <ul>
+                                            <li><span class="color-box alkali"></span> Alcaline</li>
+                                            <li><span class="color-box alkaline"></span> Alcalino-Pământoase</li>
+                                            <li><span class="color-box transition"></span> Metale de Tranziție</li>
+                                            <li><span class="color-box metalloid"></span> Metaloizi</li>
+                                            <li><span class="color-box nonmetal"></span> Nematelale</li>
+                                            <li><span class="color-box halogen"></span> Halogeni</li>
+                                            <li><span class="color-box noble"></span> Gaze Nobile</li>
+                                            <li><span class="color-box lanthanide"></span> Lantanide</li>
+                                            <li><span class="color-box actinide"></span> Actinide</li>
+                                            <li><span class="color-box post-transition"></span> Metale Post-tranziție</li>
+                                        </ul>
+                                    `;
 
             const toggleButton = document.createElement('button');
             toggleButton.textContent = 'Show Legend';
@@ -218,62 +220,62 @@
 
             const style = document.createElement('style');
             style.innerHTML = `
-                        .legend {
-                            position: absolute;
-                            right: 20px;
-                            top: 120px;
-                            background: #292929;
-                            padding: 15px;
-                            border-radius: 8px;
-                            color: white;
-                            font-size: 1rem;
-                            width: 200px;
-                        }
-                        .legend h2 {
-                            font-size: 1.2rem;
-                            margin-bottom: 10px;
-                        }
-                        .legend ul {
-                            list-style: none;
-                            padding: 0;
-                        }
-                        .legend li {
-                            display: flex;
-                            align-items: center;
-                            margin-bottom: 5px;
-                        }
-                        .color-box {
-                            width: 20px;
-                            height: 20px;
-                            margin-right: 10px;
-                            display: inline-block;
-                        }
-                        .alkali { background-color: #ff6666; }
-                        .alkaline { background-color: #ffcc66; }
-                        .transition { background-color: #66ccff; }
-                        .metalloid { background-color: #66ff99; }
-                        .nonmetal { background-color: #0BEADB; }
-                        .halogen { background-color: #cc99ff; }
-                        .noble { background-color: #9999ff; }
-                        .lanthanide { background-color: #ff9933; }
-                        .actinide { background-color: #ff3333; }
-                        .post-transition { background-color: #ff9966; }
-                        .unknown { background-color: #999999; }
-                        .legend-toggle {
-                            position: absolute;
-                            right: 20px;
-                            top: 80px;
-                            padding: 10px 15px;
-                            background: #ff4757;
-                            color: white;
-                            border: none;
-                            border-radius: 8px;
-                            cursor: pointer;
-                        }
-                        .legend-toggle:hover {
-                            background: #e8414b;
-                        }
-                    `;
+                                        .legend {
+                                            position: absolute;
+                                            right: 20px;
+                                            top: 120px;
+                                            background: #292929;
+                                            padding: 15px;
+                                            border-radius: 8px;
+                                            color: white;
+                                            font-size: 1rem;
+                                            width: 200px;
+                                        }
+                                        .legend h2 {
+                                            font-size: 1.2rem;
+                                            margin-bottom: 10px;
+                                        }
+                                        .legend ul {
+                                            list-style: none;
+                                            padding: 0;
+                                        }
+                                        .legend li {
+                                            display: flex;
+                                            align-items: center;
+                                            margin-bottom: 5px;
+                                        }
+                                        .color-box {
+                                            width: 20px;
+                                            height: 20px;
+                                            margin-right: 10px;
+                                            display: inline-block;
+                                        }
+                                        .alkali { background-color: #ff6666; }
+                                        .alkaline { background-color: #ffcc66; }
+                                        .transition { background-color: #66ccff; }
+                                        .metalloid { background-color: #66ff99; }
+                                        .nonmetal { background-color: #0BEADB; }
+                                        .halogen { background-color: #cc99ff; }
+                                        .noble { background-color: #9999ff; }
+                                        .lanthanide { background-color: #ff9933; }
+                                        .actinide { background-color: #ff3333; }
+                                        .post-transition { background-color: #ff9966; }
+                                        .unknown { background-color: #999999; }
+                                        .legend-toggle {
+                                            position: absolute;
+                                            right: 20px;
+                                            top: 80px;
+                                            padding: 10px 15px;
+                                            background: #ff4757;
+                                            color: white;
+                                            border: none;
+                                            border-radius: 8px;
+                                            cursor: pointer;
+                                        }
+                                        .legend-toggle:hover {
+                                            background: #e8414b;
+                                        }
+                                    `;
             document.head.appendChild(style);
 
             // Add audio functionality for element Sr
@@ -287,7 +289,7 @@
 
     </script>
 
-   
+
     <p1>
         <style>
             * {
@@ -350,6 +352,43 @@
                 }
         </style>
 
+
+        <style>
+            .table {
+                display: grid;
+                grid-template-columns: repeat(18, 1fr);
+                gap: 5px;
+                max-width: auto;
+                margin: auto;
+            }
+
+            .lanthanide-actinide {
+                display: grid;
+                grid-template-columns: repeat(15, 1fr);
+                gap: 5px;
+                max-width: auto;
+                margin: auto;
+            }
+
+            .element {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: bold;
+                cursor: pointer;
+                transition: background 0.3s ease;
+                flex-direction: column;
+                padding: 10px;
+                border: 1px solid black;
+                text-align: center;
+            }
+
+                .element .name, .element .number {
+                    font-size: 0.7rem;
+                }
+        </style>
+
         <script>
             document.addEventListener("DOMContentLoaded", function () {
                 const table = document.querySelector('.table');
@@ -384,12 +423,10 @@
                 addElement("Li", "Litiu", 3, "alkali"); addElement("Be", "Beriliu", 4, "alkaline"); addEmpty(10);
                 addElement("B", "Bor", 5, "metalloid"); addElement("C", "Carbon", 6, "nonmetal"); addElement("N", "Azot", 7, "nonmetal");
                 addElement("O", "Oxigen", 8, "nonmetal"); addElement("F", "Fluor", 9, "halogen"); addElement("Ne", "Neon", 10, "noble");
-
                 addElement("Na", "Sodiu", 11, "alkali"); addElement("Mg", "Magneziu", 12, "alkaline"); addEmpty(10);
                 addElement("Al", "Aluminiu", 13, "post-transition"); addElement("Si", "Siliciu", 14, "metalloid");
                 addElement("P", "Fosfor", 15, "nonmetal"); addElement("S", "Sulf", 16, "nonmetal");
                 addElement("Cl", "Clor", 17, "halogen"); addElement("Ar", "Argon", 18, "noble");
-
                 addElement("K", "Potasiu", 19, "alkali"); addElement("Ca", "Calciu", 20, "alkaline");
                 addElement("Sc", "Scandiu", 21, "transition"); addElement("Ti", "Titan", 22, "transition");
                 addElement("V", "Vanadiu", 23, "transition"); addElement("Cr", "Crom", 24, "transition");
@@ -429,80 +466,6 @@
 
 
             });
-        </script>
-
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                const table = document.querySelector('.table');
-                const lanthActTable = document.querySelector('.lanthanide-actinide');
-                const audio = document.getElementById("audio");
-
-                function addElement(symbol, name, number, category, container, colspan = 1) {
-                    const btn = document.createElement('div');
-                    btn.classList.add('element', category);
-                    btn.textContent = symbol;
-                    btn.style.gridColumn = `span ${colspan}`;
-
-                    const nameSpan = document.createElement('div');
-                    nameSpan.classList.add('name');
-                    nameSpan.textContent = name;
-
-                    const numberSpan = document.createElement('div');
-                    numberSpan.classList.add('number');
-                    numberSpan.textContent = number;
-
-                    btn.appendChild(nameSpan);
-                    btn.appendChild(numberSpan);
-                    container.appendChild(btn);
-
-                    if (symbol === "Sr") {
-                        btn.addEventListener("click", function () {
-                            audio.play();
-                        });
-                    }
-                }
-            });
-        </script>
-        <style>
-            .table {
-                display: grid;
-                grid-template-columns: repeat(18, 1fr);
-                gap: 5px;
-                max-width: auto;
-                margin: auto;
-            }
-
-            .lanthanide-actinide {
-                display: grid;
-                grid-template-columns: repeat(15, 1fr);
-                gap: 5px;
-                max-width: auto;
-                margin: auto;
-            }
-
-            .element {
-                position: relative;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-weight: bold;
-                cursor: pointer;
-                transition: background 0.3s ease;
-                flex-direction: column;
-                padding: 10px;
-                border: 1px solid black;
-                text-align: center;
-            }
-
-                .element .name, .element .number {
-                    font-size: 0.7rem;
-                }
-        </style>
-        </head>
-        <div class="container">
-            <div class="lanthanide-actinide"></div>
-        </div>
-        <script>
             document.addEventListener("DOMContentLoaded", function () {
                 const table = document.querySelector('.table');
                 const lanthActTable = document.querySelector('.lanthanide-actinide');
@@ -568,88 +531,247 @@
             });
 
         </script>
+        </head>
+        <div class="container">
+            <div class="lanthanide-actinide"></div>
+        </div>
+        <script>
+
+        </script>
         <script>
             document.addEventListener("DOMContentLoaded", function () {
+                const table = document.querySelector('.table');
+
+                if (!table) {
+                    console.error("Eroare: Nu s-a găsit tabelul periodic!");
+                    return;
+                }
+
+                // Creăm meniul pentru afișarea detaliilor elementelor
                 const menu = document.createElement('div');
                 menu.classList.add('menu');
-                menu.style.width = '250px';
-                menu.style.background = '#292929';
-                menu.style.padding = '15px';
-                menu.style.borderRadius = '8px';
-                menu.style.display = 'none';
-                menu.style.position = 'absolute';
-                menu.style.left = '20px';
-                menu.style.top = '100px';
-                menu.style.color = 'white';
-                menu.style.textAlign = 'center';
+                Object.assign(menu.style, {
+                    width: '250px',
+                    background: '#292929',
+                    padding: '15px',
+                    borderRadius: '8px',
+                    display: 'none',
+                    position: 'absolute',
+                    left: '10px',
+                    top: '120px',
+                    color: 'white',
+                    textAlign: 'center',
+                    zIndex: '1000'
+                });
                 document.body.appendChild(menu);
 
+                // Buton de închidere
                 const closeButton = document.createElement('button');
                 closeButton.textContent = '×';
-                closeButton.style.background = 'none';
-                closeButton.style.border = 'none';
-                closeButton.style.color = 'white';
-                closeButton.style.fontSize = '1.5rem';
-                closeButton.style.cursor = 'pointer';
-                closeButton.style.position = 'absolute';
-                closeButton.style.top = '10px';
-                closeButton.style.right = '10px';
-                closeButton.onclick = function () {
+                Object.assign(closeButton.style, {
+                    background: 'none',
+                    border: 'none',
+                    color: 'white',
+                    fontSize: '1.5rem',
+                    cursor: 'pointer',
+                    position: 'absolute',
+                    top: '5px',
+                    right: '10px'
+                });
+
+                closeButton.addEventListener("click", function () {
                     menu.style.display = 'none';
-                    document.querySelector('.table').style.margin = 'auto';
                     activeElement = null;
-                };
+                });
+
                 menu.appendChild(closeButton);
 
+                // Elemente din meniu
                 const title = document.createElement('h2');
                 title.id = 'element-title';
                 menu.appendChild(title);
 
-                const electronConfig = document.createElement('p');
-                electronConfig.id = 'element-config';
-                electronConfig.style.marginTop = '10px';
-                electronConfig.style.fontSize = '0.9rem';
-                electronConfig.style.fontStyle = 'italic';
-                menu.appendChild(electronConfig);
-
                 const description = document.createElement('p');
                 description.id = 'element-description';
                 description.style.marginTop = '10px';
-                description.style.fontSize = '0.85rem';
                 menu.appendChild(description);
 
                 document.body.appendChild(menu);
 
+                // Importăm informațiile din elementsInfo.js
                 const elementsInfo = {
+                    "Sc": { name: "Scandiu", description: "Un metal rar utilizat în aliaje ușoare." },
+                    "Ti": { name: "Titan", description: "Un metal foarte rezistent și ușor, utilizat în industrie și medicină." },
+                    "V": { name: "Vanadiu", description: "Folosit în producția de oțel rezistent la coroziune." },
+                    "Cr": { name: "Crom", description: "Principalul component al inoxului și un metal strălucitor." },
+                    "Mn": { name: "Mangan", description: "Un element esențial în metabolism și producția de oțel." },
+                    "Fe": { name: "Fier", description: "Principalul component al oțelului și un element esențial pentru viață." },
+                    "Co": { name: "Cobalt", description: "Folosit în baterii și aliaje magnetice." },
+                    "Ni": { name: "Nichel", description: "Un metal utilizat pentru protecția împotriva coroziunii." },
+                    "Cu": { name: "Cupru", description: "Un excelent conductor de electricitate, folosit în cabluri și circuite." },
+                    "La": { name: "Lantan", description: "Un metal rar utilizat în catalizatori și sticle optice." },
+                    "Ce": { name: "Ceriu", description: "Folosit în aliaje speciale și în industria chimică." },
+                    "Pr": { name: "Praseodim", description: "Utilizat în magneți puternici și sticle colorate." },
+                    "Nd": { name: "Neodim", description: "Un element cheie în magneți puternici pentru motoare electrice." },
+                    "Pm": { name: "Prometiu", description: "Un element radioactiv folosit în dispozitive de iluminat." },
+                    "Sm": { name: "Samariu", description: "Utilizat în lasere și magneți permanenți." },
+                    "Eu": { name: "Europiu", description: "Un element folosit în ecrane LCD și lămpi fluorescente." },
+                    "Ac": { name: "Actiniu", description: "Un element radioactiv rar, utilizat în cercetarea nucleară." },
+                    "Th": { name: "Toriu", description: "Un posibil combustibil pentru reactoarele nucleare viitoare." },
+                    "Pa": { name: "Protactiniu", description: "Un element foarte rar, utilizat în cercetarea nucleară." },
+                    "U": { name: "Uraniu", description: "Principalul combustibil utilizat în reactoarele nucleare." },
+                    "Np": { name: "Neptuniu", description: "Un element radioactiv utilizat în detectoare de neutroni." },
+                    "Pu": { name: "Plutoniu", description: "Utilizat în reactoare nucleare și arme nucleare." },
                     "H": { name: "Hidrogen", config: "1s¹", description: "Cel mai ușor element, componentă principală a stelelor și apei." },
                     "He": { name: "Heliu", config: "1s²", description: "Gaz nobil, utilizat în baloane și în răcirea reactoarelor nucleare." },
                     "Li": { name: "Litiu", config: "[He] 2s¹", description: "Metal alcalin folosit în baterii și tratamente psihiatrice." },
                     "Be": { name: "Beriliu", config: "[He] 2s²", description: "Metal ușor, utilizat în industria aerospațială și electronică." },
                     "B": { name: "Bor", config: "[He] 2s² 2p¹", description: "Element esențial pentru plante, folosit în materiale compozite." },
-                    "C": { name: "Carbon", config: "[He] 2s² 2p²", description: "Element fundamental al vieții, regăsit în toate organismele." }
+                    "C": { name: "Carbon", config: "[He] 2s² 2p²", description: "Element fundamental al vieții, regăsit în toate organismele." },
+                    "N": { name: "Azot", config: "[He] 2s² 2p³", description: "Gaz esențial pentru viață, componentă majoră a atmosferei." },
+                    "O": { name: "Oxigen", config: "[He] 2s² 2p⁴", description: "Element vital pentru respirație, prezent în apă și aer." },
+                    "F": { name: "Fluor", config: "[He] 2s² 2p⁵", description: "Element foarte reactiv, utilizat în paste de dinți și chimie industrială." },
+                    "Ne": { name: "Neon", config: "[He] 2s² 2p⁶", description: "Gaz nobil utilizat în reclame luminoase și lasere." },
+                    "Na": { name: "Sodiu", config: "[Ne] 3s¹", description: "Metal alcalin esențial pentru funcționarea organismului." },
+                    "Mg": { name: "Magneziu", config: "[Ne] 3s²", description: "Metal ușor, utilizat în aliaje și esențial pentru plante." },
+                    "Al": { name: "Aluminiu", config: "[Ne] 3s² 3p¹", description: "Metal ușor utilizat în construcții și ambalaje." },
+                    "Si": { name: "Siliciu", config: "[Ne] 3s² 3p²", description: "Element esențial în industria electronică și în scoarța terestră." },
+                    "P": { name: "Fosfor", config: "[Ne] 3s² 3p³", description: "Element vital pentru ADN și energie celulară." },
+                    "S": { name: "Sulf", config: "[Ne] 3s² 3p⁴", description: "Componentă a proteinelor și prezent în vulcani." },
+                    "Cl": { name: "Clor", config: "[Ne] 3s² 3p⁵", description: "Folosit în purificarea apei și ca agent de curățare." },
+                    "Ar": { name: "Argon", config: "[Ne] 3s² 3p⁶", description: "Gaz nobil inert, utilizat în iluminat și sudură." },
+                    "K": { name: "Potasiu", config: "[Ar] 4s¹", description: "Metal alcalin esențial pentru funcțiile nervoase și musculare." },
+                    "Ca": { name: "Calciu", config: "[Ar] 4s²", description: "Componentă principală a oaselor și dinților." },
+                    "Zn": { name: "Zinc", config: "[Ar] 3d¹⁰ 4s²", description: "Folosit în galvanizare pentru protejarea fierului împotriva ruginii." },
+                    "Ga": { name: "Galiu", config: "[Ar] 3d¹⁰ 4s² 4p¹", description: "Metal cu punct de topire scăzut, utilizat în electronice." },
+                    "Ge": { name: "Germaniu", config: "[Ar] 3d¹⁰ 4s² 4p²", description: "Semiconductor utilizat în dispozitive optoelectronice." },
+                    "As": { name: "Arsen", config: "[Ar] 3d¹⁰ 4s² 4p³", description: "Utilizat în aliaje și semiconductori, toxic în doze mari." },
+                    "Se": { name: "Seleniu", config: "[Ar] 3d¹⁰ 4s² 4p⁴", description: "Folosit în fotocelule și sticlă colorată." },
+                    "Br": { name: "Brom", config: "[Ar] 3d¹⁰ 4s² 4p⁵", description: "Element lichid la temperatura camerei, utilizat în chimie." },
+                    "Kr": { name: "Kripton", config: "[Ar] 3d¹⁰ 4s² 4p⁶", description: "Gaz nobil utilizat în iluminatul cu descărcare în gaze." },
+                    "Rb": { name: "Rubidiu", config: "[Kr] 5s¹", description: "Metal alcalin reactiv, utilizat în ceasuri atomice." },
+                    "Sr": { name: "Stronțiu", config: "[Kr] 5s²", description: "Utilizat în artificii și în producția de sticlă specială." },
+                    "Y": { name: "Itriu", config: "[Kr] 4d¹ 5s²", description: "Folosit în lasere și supraconductori." },
+                    "Zr": { name: "Zirconiu", config: "[Kr] 4d² 5s²", description: "Utilizat în reactoare nucleare datorită rezistenței la coroziune." },
+                    "Nb": { name: "Niobiu", config: "[Kr] 4d⁴ 5s¹", description: "Folosit în aliaje pentru motoare de avioane și magneți superconductori." },
+                    "Mo": { name: "Molibden", config: "[Kr] 4d⁵ 5s¹", description: "Utilizat în aliaje rezistente la temperaturi ridicate." },
+                    "Tc": { name: "Tehnețiu", config: "[Kr] 4d⁵ 5s²", description: "Primul element sintetic, utilizat în medicină nucleară." },
+                    "Ru": { name: "Ruteniu", config: "[Kr] 4d⁷ 5s¹", description: "Folosit în catalizatori și aliaje pentru contacte electrice." },
+                    "Rh": { name: "Rhodiu", config: "[Kr] 4d⁸ 5s¹", description: "Metal rar utilizat în catalizatori auto și bijuterii." },
+                    "Pd": { name: "Paladiu", config: "[Kr] 4d¹⁰", description: "Utilizat în convertoare catalitice și în industria bijuteriilor." },
+                    "Ag": { name: "Argint", config: "[Kr] 4d¹⁰ 5s¹", description: "Metal prețios utilizat în bijuterii și electronice." },
+                    "Cd": { name: "Cadmiu", config: "[Kr] 4d¹⁰ 5s²", description: "Utilizat în baterii și acoperiri anticorozive, toxic pentru mediu." },
+                    "In": { name: "Indiu", config: "[Kr] 4d¹⁰ 5s² 5p¹", description: "Folosit în ecrane LCD și aliaje cu punct de topire scăzut." },
+                    "Sn": { name: "Staniu", config: "[Kr] 4d¹⁰ 5s² 5p²", description: "Utilizat în aliaje, acoperiri anticorozive și circuite electronice." },
+                    "Sb": { name: "Antimoniu", config: "[Kr] 4d¹⁰ 5s² 5p³", description: "Folosit în semiconductorii din dispozitivele optoelectronice." },
+                    "Te": { name: "Telur", config: "[Kr] 4d¹⁰ 5s² 5p⁴", description: "Utilizat în aliaje și celule solare." },
+                    "I": { name: "Iod", config: "[Kr] 4d¹⁰ 5s² 5p⁵", description: "Esențial pentru glanda tiroidă, folosit în dezinfectanți." },
+                    "Xe": { name: "Xenon", config: "[Kr] 4d¹⁰ 5s² 5p⁶", description: "Gaz nobil utilizat în lămpi flash și lasere." },
+                    "Cs": { name: "Cesiu", config: "[Xe] 6s¹", description: "Metal alcalin foarte reactiv, utilizat în ceasuri atomice." },
+                    "Ba": { name: "Bariu", config: "[Xe] 6s²", description: "Utilizat în radiografii și artificii." },
+                    "La": { name: "Lantan", config: "[Xe] 5d¹ 6s²", description: "Folosit în catalizatori și iluminat." },
+                    "Ce": { name: "Ceriu", config: "[Xe] 4f¹ 5d¹ 6s²", description: "Utilizat în sticlă auto-curățabilă și aliaje speciale." },
+                    "Pr": { name: "Praseodim", config: "[Xe] 4f³ 6s²", description: "Folosit în lasere și magneți puternici." },
+                    "Nd": { name: "Neodim", config: "[Xe] 4f⁴ 6s²", description: "Componentă esențială a magneților puternici." },
+                    "Pm": { name: "Prometiu", config: "[Xe] 4f⁵ 6s²", description: "Element radioactiv utilizat în vopsele luminescente." },
+                    "Sm": { name: "Samariu", config: "[Xe] 4f⁶ 6s²", description: "Utilizat în magneți și reactoare nucleare." },
+                    "Eu": { name: "Europiu", config: "[Xe] 4f⁷ 6s²", description: "Folosit în ecrane și lămpi fluorescente." },
+                    "Gd": { name: "Gadoliniu", config: "[Xe] 4f⁷ 5d¹ 6s²", description: "Utilizat în imagistica prin rezonanță magnetică." },
+                    "Tb": { name: "Terbiu", config: "[Xe] 4f⁹ 6s²", description: "Utilizat în ecrane LCD și aliaje magnetostrictive." },
+                    "Dy": { name: "Disprosiu", config: "[Xe] 4f¹⁰ 6s²", description: "Folosit în magneți și reactoare nucleare." },
+                    "Ho": { name: "Holmiu", config: "[Xe] 4f¹¹ 6s²", description: "Utilizat în magneți și lasere." },
+                    "Er": { name: "Erbiu", config: "[Xe] 4f¹² 6s²", description: "Folosit în cabluri de fibră optică." },
+                    "Tm": { name: "Tuliu", config: "[Xe] 4f¹³ 6s²", description: "Utilizat în surse de radiație pentru dispozitive medicale." },
+                    "Yb": { name: "Yterbiu", config: "[Xe] 4f¹⁴ 6s²", description: "Folosit în lasere și ceasuri atomice." },
+                    "Lu": { name: "Luteciu", config: "[Xe] 4f¹⁴ 5d¹ 6s²", description: "Utilizat în tomografia cu emisie de pozitroni." },
+                    "Hf": { name: "Hafniu", config: "[Xe] 4f¹⁴ 5d² 6s²", description: "Folosit în reactoare nucleare și cipuri electronice." },
+                    "Ta": { name: "Tantal", config: "[Xe] 4f¹⁴ 5d³ 6s²", description: "Utilizat în condensatori și echipamente medicale." },
+                    "W": { name: "Wolfram", config: "[Xe] 4f¹⁴ 5d⁴ 6s²", description: "Metal cu punct de topire ridicat, utilizat în filamente și unelte." },
+                    "Re": { name: "Reniu", config: "[Xe] 4f¹⁴ 5d⁵ 6s²", description: "Utilizat în turbine de avioane și catalizatori." },
+                    "Os": { name: "Osmiu", config: "[Xe] 4f¹⁴ 5d⁶ 6s²", description: "Cel mai dens metal, utilizat în aliaje dure." },
+                    "Ir": { name: "Iridiu", config: "[Xe] 4f¹⁴ 5d⁷ 6s²", description: "Rezistent la coroziune, utilizat în echipamente electrice." },
+                    "Pt": { name: "Platină", config: "[Xe] 4f¹⁴ 5d⁹ 6s¹", description: "Metal prețios utilizat în catalizatori și bijuterii." },
+                    "Au": { name: "Aur", config: "[Xe] 4f¹⁴ 5d¹⁰ 6s¹", description: "Metal prețios utilizat în bijuterii și electronice." },
+                    "Hg": { name: "Mercur", config: "[Xe] 4f¹⁴ 5d¹⁰ 6s²", description: "Singurul metal lichid la temperatura camerei, utilizat în termometre." },
+                    "Tl": { name: "Taliu", config: "[Xe] 4f¹⁴ 5d¹⁰ 6s² 6p¹", description: "Toxic, utilizat în semiconductori și optoelectronică." },
+                    "Pb": { name: "Plumb", config: "[Xe] 4f¹⁴ 5d¹⁰ 6s² 6p²", description: "Utilizat în protecția împotriva radiațiilor și baterii." },
+                    "Bi": { name: "Bismut", config: "[Xe] 4f¹⁴ 5d¹⁰ 6s² 6p³", description: "Metal utilizat în medicamente și aliaje cu punct de topire scăzut." },
+                    "Po": { name: "Poloniu", config: "[Xe] 4f¹⁴ 5d¹⁰ 6s² 6p⁴", description: "Element radioactiv, utilizat în surse de energie termoelectrică." },
+                    "At": { name: "Astatin", config: "[Xe] 4f¹⁴ 5d¹⁰ 6s² 6p⁵", description: "Element rar, utilizat în cercetare medicală." },
+                    "Rn": { name: "Radon", config: "[Xe] 4f¹⁴ 5d¹⁰ 6s² 6p⁶", description: "Gaz radioactiv, rezultat din dezintegrarea uraniului." },
+                    "Fr": { name: "Franciu", config: "[Rn] 7s¹", description: "Element foarte rar, extrem de radioactiv." },
+                    "Ra": { name: "Radiu", config: "[Rn] 7s²", description: "Utilizat istoric în tratamente medicale, puternic radioactiv." },
+                    "Ac": { name: "Actiniu", config: "[Rn] 6d¹ 7s²", description: "Utilizat în terapii pentru tratarea cancerului." },
+                    "Th": { name: "Toriu", config: "[Rn] 6d² 7s²", description: "Utilizat ca combustibil nuclear alternativ." },
+                    "U": { name: "Uraniu", config: "[Rn] 5f³ 6d¹ 7s²", description: "Element radioactiv utilizat în reactoare nucleare și arme." },
+                    "Np": { name: "Neptuniu", config: "[Rn] 5f⁴ 6d¹ 7s²", description: "Element sintetic utilizat în cercetare nucleară." },
+                    "Pu": { name: "Plutoniu", config: "[Rn] 5f⁶ 7s²", description: "Utilizat în reactoare nucleare și armament." },
+                    "Am": { name: "Americiu", config: "[Rn] 5f⁷ 7s²", description: "Folosit în detectoare de fum și în surse de neutroni." },
+                    "Cm": { name: "Curiu", config: "[Rn] 5f⁷ 6d¹ 7s²", description: "Element radioactiv utilizat în generatoare termoelectrice." },
+                    "Bk": { name: "Berkeliu", config: "[Rn] 5f⁹ 7s²", description: "Folosit în cercetare nucleară și sinteza elementelor super-grele." },
+                    "Cf": { name: "Californiu", config: "[Rn] 5f¹⁰ 7s²", description: "Utilizat în surse de neutroni pentru detecția minereurilor." },
+                    "Es": { name: "Einsteiniu", config: "[Rn] 5f¹¹ 7s²", description: "Element sintetic rar, folosit doar în cercetare." },
+                    "Fm": { name: "Fermiu", config: "[Rn] 5f¹² 7s²", description: "Obținut în explozii termonucleare, utilizat în studii științifice." },
+                    "Md": { name: "Mendeleviu", config: "[Rn] 5f¹³ 7s²", description: "Element sintetic, folosit în cercetarea fizicii nucleare." },
+                    "No": { name: "Nobeliu", config: "[Rn] 5f¹⁴ 7s²", description: "Utilizat doar în studii de laborator despre actinide." },
+                    "Lr": { name: "Lawrenciu", config: "[Rn] 5f¹⁴ 7s² 7p¹", description: "Element super-greu, utilizat doar în cercetare." },
+                    "Rf": { name: "Rutherfordiu", config: "[Rn] 5f¹⁴ 6d² 7s²", description: "Element instabil, creat artificial pentru studii nucleare." },
+                    "Db": { name: "Dubniu", config: "[Rn] 5f¹⁴ 6d³ 7s²", description: "Element sintetic, instabil, folosit doar în experimente." },
+                    "Sg": { name: "Seaborgiu", config: "[Rn] 5f¹⁴ 6d⁴ 7s²", description: "Element transuranian instabil, folosit în cercetare." },
+                    "Bh": { name: "Bohr", config: "[Rn] 5f¹⁴ 6d⁵ 7s²", description: "Element extrem de radioactiv, descoperit în anii 1970." },
+                    "Hs": { name: "Hasiu", config: "[Rn] 5f¹⁴ 6d⁶ 7s²", description: "Element greu instabil, folosit doar în cercetare." },
+                    "Mt": { name: "Meitneriu", config: "[Rn] 5f¹⁴ 6d⁷ 7s²", description: "Element super-greu, cu existență de scurtă durată." },
+                    "Ds": { name: "Darmstadtiu", config: "[Rn] 5f¹⁴ 6d⁸ 7s²", description: "Element artificial, cu utilizări limitate în cercetare." },
+                    "Rg": { name: "Roentgeniu", config: "[Rn] 5f¹⁴ 6d⁹ 7s²", description: "Element super-greu, foarte instabil." },
+                    "Cn": { name: "Coperniciu", config: "[Rn] 5f¹⁴ 6d¹⁰ 7s²", description: "Element sintetic cu o viață foarte scurtă." },
+                    "Nh": { name: "Nihoniu", config: "[Rn] 5f¹⁴ 6d¹⁰ 7s² 7p¹", description: "Element sintetic descoperit de cercetători japonezi." },
+                    "Fl": { name: "Fleroviu", config: "[Rn] 5f¹⁴ 6d¹⁰ 7s² 7p²", description: "Element greu, creat artificial pentru studii nucleare." },
+                    "Mc": { name: "Moscoviu", config: "[Rn] 5f¹⁴ 6d¹⁰ 7s² 7p³", description: "Element radioactiv artificial, descoperit în Rusia." },
+                    "Lv": { name: "Livermoriu", config: "[Rn] 5f¹⁴ 6d¹⁰ 7s² 7p⁴", description: "Element sintetic foarte instabil, utilizat în cercetare." },
+                    "Ts": { name: "Tenesin", config: "[Rn] 5f¹⁴ 6d¹⁰ 7s² 7p⁵", description: "Element radioactiv creat artificial." },
+                    "Og": { name: "Oganesson", config: "[Rn] 5f¹⁴ 6d¹⁰ 7s² 7p⁶", description: "Cel mai greu element cunoscut, foarte instabil." }
+
                 };
 
                 let activeElement = null;
 
-                document.querySelectorAll('.element').forEach(el => {
-                    el.addEventListener('click', function () {
-                        const symbol = el.textContent.trim();
-                        if (activeElement === symbol) {
-                            menu.style.display = 'none';
-                            document.querySelector('.table').style.margin = 'auto';
-                            activeElement = null;
+                // Adăugăm event listener pe elementele din tabelul periodic
+                table.addEventListener("click", function (event) {
+                    const el = event.target.closest('.element');
+
+                    if (!el) return; // Dacă nu s-a apăsat pe un element valid, ieșim
+
+                    let fullText = el.textContent.trim();
+
+                    // Extragem doar simbolul elementului (fără numărul atomic sau alte texte)
+                    let symbol = fullText.match(/^[A-Z][a-z]?/); // Căutăm doar simbolul corect
+                    if (!symbol) return;
+                    symbol = symbol[0];
+
+                    // Dacă elementul e deja selectat, închidem meniul
+                    if (activeElement === symbol) {
+                        menu.style.display = 'none';
+                        activeElement = null;
+                    } else {
+                        if (elementsInfo[symbol]) {
+                            title.textContent = elementsInfo[symbol].name; // Numele complet
+                            description.textContent = elementsInfo[symbol].description;
                         } else {
-                            title.textContent = elementsInfo[symbol]?.name || symbol;
-                            electronConfig.textContent = "Configurație electronică: " + (elementsInfo[symbol]?.config || "Necunoscut");
-                            description.textContent = elementsInfo[symbol]?.description || "Descriere indisponibilă.";
-                            menu.style.display = 'block';
-                            document.querySelector('.table').style.marginLeft = '270px';
-                            activeElement = symbol;
+                            title.textContent = symbol; // Simbol fallback
+                            description.textContent = "Descriere indisponibilă.";
                         }
-                    });
+
+                        // Afișăm meniul
+                        menu.style.display = 'block';
+
+                        // Setăm noul element activ
+                        activeElement = symbol;
+                    }
                 });
             });
+
         </script>
+
 
 </body>
 </html>
