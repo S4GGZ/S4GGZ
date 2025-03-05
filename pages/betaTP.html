@@ -541,11 +541,7 @@
         <script>
             document.addEventListener("DOMContentLoaded", function () {
                 const table = document.querySelector('.table');
-
-                if (!table) {
-                    console.error("Eroare: Nu s-a găsit tabelul periodic!");
-                    return;
-                }
+                const lanthActTable = document.querySelector('.lanthanide-actinide');
 
                 // Creăm meniul pentru afișarea detaliilor elementelor
                 const menu = document.createElement('div');
@@ -561,44 +557,25 @@
                     top: '120px',
                     color: 'white',
                     textAlign: 'center',
-                    zIndex: '1000'
+                    zIndex: '1000',
+                    cursor: 'grab',
+                    transition: 'left 0.15s ease-out, top 0.15s ease-out'
                 });
                 document.body.appendChild(menu);
 
-                // Buton de închidere
-                const closeButton = document.createElement('button');
-                closeButton.textContent = '×';
-                Object.assign(closeButton.style, {
-                    background: 'none',
-                    border: 'none',
-                    color: 'white',
-                    fontSize: '1.5rem',
-                    cursor: 'pointer',
-                    position: 'absolute',
-                    top: '5px',
-                    right: '10px'
+                let isDragging = false;
+                let offsetX, offsetY;
+                const initialMenuPos = { left: 10, top: 120 };
+                const tableShift = 50;
+
+                menu.addEventListener("mousedown", function (event) {
+                    isDragging = true;
+                    offsetX = event.clientX - menu.offsetLeft;
+                    offsetY = event.clientY - menu.offsetTop;
+                    menu.style.cursor = "grabbing";
+                    document.body.style.userSelect = "none";
                 });
 
-                closeButton.addEventListener("click", function () {
-                    menu.style.display = 'none';
-                    activeElement = null;
-                });
-
-                menu.appendChild(closeButton);
-
-                // Elemente din meniu
-                const title = document.createElement('h2');
-                title.id = 'element-title';
-                menu.appendChild(title);
-
-                const description = document.createElement('p');
-                description.id = 'element-description';
-                description.style.marginTop = '10px';
-                menu.appendChild(description);
-
-                document.body.appendChild(menu);
-
-                // Importăm informațiile din elementsInfo.js
                 const elementsInfo = {
                     "Sc": { name: "Scandiu", description: "Un metal rar utilizat în aliaje ușoare." },
                     "Ti": { name: "Titan", description: "Un metal foarte rezistent și ușor, utilizat în industrie și medicină." },
@@ -732,43 +709,96 @@
                     "Og": { name: "Oganesson", config: "[Rn] 5f¹⁴ 6d¹⁰ 7s² 7p⁶", description: "Cel mai greu element cunoscut, foarte instabil." }
 
                 };
+                document.addEventListener("mousemove", function (event) {
+                    if (isDragging) {
+                        requestAnimationFrame(() => {
+                            menu.style.left = `${event.clientX - offsetX}px`;
+                            menu.style.top = `${event.clientY - offsetY}px`;
+                            table.style.transform = "translateX(0)";
+                        });
+                    }
+                });
+
+                document.addEventListener("mouseup", function () {
+                    if (isDragging) {
+                        const menuLeft = parseInt(menu.style.left, 10);
+                        const menuTop = parseInt(menu.style.top, 10);
+
+                        if (Math.abs(menuLeft - initialMenuPos.left) < 50 && Math.abs(menuTop - initialMenuPos.top) < 50) {
+                            menu.style.left = `${initialMenuPos.left}px`;
+                            menu.style.top = `${initialMenuPos.top}px`;
+                            table.style.transform = `translateX(${tableShift}px)`;
+                        }
+                    }
+                    isDragging = false;
+                    menu.style.cursor = "grab";
+                    document.body.style.userSelect = "auto";
+                });
+
+                const closeButton = document.createElement('button');
+                closeButton.textContent = '×';
+                Object.assign(closeButton.style, {
+                    background: 'none',
+                    border: 'none',
+                    color: 'white',
+                    fontSize: '1.5rem',
+                    cursor: 'pointer',
+                    position: 'absolute',
+                    top: '5px',
+                    right: '10px'
+                });
+                closeButton.addEventListener("click", function () {
+                    menu.style.display = 'none';
+                    activeElement = null;
+                    table.style.transform = "translateX(0)";
+                });
+                menu.appendChild(closeButton);
+
+                const title = document.createElement('h2');
+                title.id = 'element-title';
+                menu.appendChild(title);
+
+                const description = document.createElement('p');
+                description.id = 'element-description';
+                description.style.marginTop = '10px';
+                menu.appendChild(description);
 
                 let activeElement = null;
 
-                // Adăugăm event listener pe elementele din tabelul periodic
-                table.addEventListener("click", function (event) {
+                function handleElementClick(event) {
                     const el = event.target.closest('.element');
-
-                    if (!el) return; // Dacă nu s-a apăsat pe un element valid, ieșim
+                    if (!el) return;
 
                     let fullText = el.textContent.trim();
-
-                    // Extragem doar simbolul elementului (fără numărul atomic sau alte texte)
-                    let symbol = fullText.match(/^[A-Z][a-z]?/); // Căutăm doar simbolul corect
+                    let symbol = fullText.match(/^[A-Z][a-z]?/);
                     if (!symbol) return;
                     symbol = symbol[0];
 
-                    // Dacă elementul e deja selectat, închidem meniul
                     if (activeElement === symbol) {
                         menu.style.display = 'none';
                         activeElement = null;
+                        table.style.transform = "translateX(0)";
                     } else {
                         if (elementsInfo[symbol]) {
-                            title.textContent = elementsInfo[symbol].name; // Numele complet
+                            title.textContent = elementsInfo[symbol].name;
                             description.textContent = elementsInfo[symbol].description;
                         } else {
-                            title.textContent = symbol; // Simbol fallback
+                            title.textContent = symbol;
                             description.textContent = "Descriere indisponibilă.";
                         }
 
-                        // Afișăm meniul
                         menu.style.display = 'block';
-
-                        // Setăm noul element activ
+                        menu.style.left = `${initialMenuPos.left}px`;
+                        menu.style.top = `${initialMenuPos.top}px`;
                         activeElement = symbol;
+                        table.style.transform = `translateX(${tableShift}px)`;
                     }
-                });
+                }
+
+                table.addEventListener("click", handleElementClick);
+                lanthActTable.addEventListener("click", handleElementClick);
             });
+
 
         </script>
 
