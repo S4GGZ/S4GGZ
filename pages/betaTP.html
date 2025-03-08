@@ -1,12 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="screen-orientation" content="portrait">
+<meta name="viewport" content="orientation=portrait">
     <title>Periodic Table</title>
-    <! Trag pulentiu-n ele Lantanide si Actinide ca nu functioneaza meniu pt ele .i. -->
     <style>
 
+
+#periodic-table {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 2% auto;
+}
+
+body {
+    overflow-x: auto;
+    overflow-y: auto;
+}
+.table-container {
+    overflow: auto;
+    max-width: auto;
+    max-height: auto;
+}
+/* Butonul de închidere */
+.menu button {
+    width: 40px !important; 
+    height: 40px !important;
+    font-size: 2rem !important;
+    top: 0px !important;
+    right: 5px !important;
+}
+
+@media screen and (max-width: 1000px) {
+    .menu button {
+        width: 50px !important; /* Zonă mai mare pentru atingere */
+        height: 50px !important;
+    }
+}
         .menu {
             display: flex;
             flex-direction: column;
@@ -179,6 +212,7 @@
     </style>
 </head>
 <body>
+    
     <div class="top-bar">
         <a href="../index.html" class="home-btn">Home</a>
         <div class="socials">
@@ -207,6 +241,7 @@
 
 
     <script>
+        
         document.addEventListener("DOMContentLoaded", function () {
             const container = document.querySelector('.container');
 
@@ -249,8 +284,19 @@
             style.innerHTML = `
                                             .legend {
                                                 position: absolute;
-                                                right: 20px;
+                                                right: -525px;
                                                 top: 120px;
+                                                background: #292929;
+                                                padding: 15px;
+                                                border-radius: 8px;
+                                                color: white;
+                                                font-size: 1rem;
+                                                width: 200px;
+                                            }
+                                                @media screen and (max-width: 1000px) {
+                                                  position: absolute;
+                                                right: 20px;
+                                                top: 100px;
                                                 background: #292929;
                                                 padding: 15px;
                                                 border-radius: 8px;
@@ -299,6 +345,12 @@
                                                 border-radius: 8px;
                                                 cursor: pointer;
                                             }
+                                                @media screen and (max-width: 1000px) {
+                                            .legend-toggle {
+                                                position: right;
+                                                top: 150px;  /* Poziție modificată pe mobil */
+                                                right: 200px; /* Mută butonul în partea dreaptă pe mobil */
+                                            }
                                             .legend-toggle:hover {
                                                 background: #e8414b;
                                             }
@@ -319,6 +371,7 @@
 
     <p1>
         <style>
+            
             * {
                 margin: 0;
                 padding: 0;
@@ -326,14 +379,24 @@
             }
 
             html, body {
-                width: auto;
-                height: auto;
+                width: 100%;
+                height: 100%;
                 background: #1e1e1e;
                 font-family: 'Inter', sans-serif;
                 color: white;
                 text-align: center;
                 overflow-x: hidden;
             }
+            @media only screen and (max-width: 1000px) {
+             html, body {
+                width: 120%;
+                height: 130%;
+                background: #1e1e1e;
+                font-family: 'Inter', sans-serif;
+                color: white;
+                text-align: right;
+            }
+        }
 
             .table {
                 display: grid;
@@ -576,11 +639,11 @@
                     borderRadius: '8px',
                     display: 'none',
                     position: 'absolute',
-                    left: '10px',
+                    left: '100px',
                     top: '120px',
                     color: 'white',
                     textAlign: 'center',
-                    zIndex: '1000',
+                    zIndex: '100',
                     cursor: 'grab',
                     transition: 'left 0.15s ease-out, top 0.15s ease-out'
                 });
@@ -589,8 +652,16 @@
 
                 let isDragging = false;
                 let offsetX, offsetY;
-                const initialMenuPos = { left: 10, top: 120 };
-                const tableShift = 50;
+                const initialMenuPos = { left: 20, top: 120 };
+               let tableShift = 25; // Valoare implicită
+
+                    if (window.innerWidth <= 1000) {
+                        tableShift = 0; // Dezactivăm pe mobil
+                    }
+
+                    console.log(tableShift); // Verificăm valoarea
+                    
+
 
                 menu.addEventListener("mousedown", function (event) {
                     isDragging = true;
@@ -788,8 +859,8 @@
                 const imgElement = document.createElement('img');
                 imgElement.id = 'element-image';
                 imgElement.style.display = 'center'; 
-                imgElement.style.maxWidth = '230px'; 
-                imgElement.style.maxHeight = '230px';
+                imgElement.style.maxWidth = '220px'; 
+                imgElement.style.maxHeight = '220px';
                 imgElement.style.marginTop = '0';
 
                 
@@ -893,6 +964,56 @@
                         table.style.transform = `translateX(${tableShift}px)`;
                     }
                 }
+                // Adaugă evenimente pentru touch
+        menu.addEventListener("touchstart", function (event) {
+            event.preventDefault();
+            const touch = event.touches[0];
+            isDragging = true;
+            offsetX = touch.clientX - menu.offsetLeft;
+            offsetY = touch.clientY - menu.offsetTop;
+            menu.style.cursor = "grabbing";
+            document.body.style.userSelect = "none";
+        });
+
+        // Actualizează evenimentul de mouse pentru a include touch
+        const handleMove = (clientX, clientY) => {
+            if (isDragging) {
+                requestAnimationFrame(() => {
+                    menu.style.left = `${clientX - offsetX}px`;
+                    menu.style.top = `${clientY - offsetY}px`;
+                    table.style.transform = "translateX(0)";
+                });
+            }
+        };
+
+        // Eveniment comun pentru mouse și touch
+        document.addEventListener("mousemove", (e) => handleMove(e.clientX, e.clientY));
+        document.addEventListener("touchmove", (e) => {
+            e.preventDefault();
+            const touch = e.touches[0];
+            handleMove(touch.clientX, touch.clientY);
+        });
+
+        // Eveniment de finalizare pentru ambele tipuri
+        const handleEnd = () => {
+            if (isDragging) {
+                const menuLeft = parseInt(menu.style.left, 10);
+                const menuTop = parseInt(menu.style.top, 10);
+                
+                if (Math.abs(menuLeft - initialMenuPos.left) < 50 && 
+                    Math.abs(menuTop - initialMenuPos.top) < 50) {
+                    menu.style.left = `${initialMenuPos.left}px`;
+                    menu.style.top = `${initialMenuPos.top}px`;
+                    table.style.transform = `translateX(${tableShift}px)`;
+                }
+            }
+            isDragging = false;
+            menu.style.cursor = "grab";
+            document.body.style.userSelect = "auto";
+        };
+
+        document.addEventListener("mouseup", handleEnd);
+        document.addEventListener("touchend", handleEnd);
 
                 table.addEventListener("click", handleElementClick);
                 lanthActTable.addEventListener("click", handleElementClick);
@@ -902,8 +1023,100 @@
 
 
         </script>
-        
 
+<script>
+    function adjustZoom() {
+    let table = document.getElementById("periodic-table"); // Înlocuiește cu ID-ul corect
+    let screenWidth = window.innerWidth * 0.96; // 2% margine pe stânga și dreapta
+    let screenHeight = window.innerHeight * 0.96; // 2% margine sus și jos
+    let tableWidth = table.scrollWidth;
+    let tableHeight = table.scrollHeight;
+
+    let scaleX = screenWidth / tableWidth;
+    let scaleY = screenHeight / tableHeight;
+    let scale = Math.min(scaleX, scaleY); // Ajustează să încapă complet
+
+    document.body.style.transform = `scale(${scale})`;
+    document.body.style.transformOrigin = "top center";
+}
+function handleCloseMenu(e) {
+    e.preventDefault();
+    e.stopPropagation(); // Oprire propagare eveniment
+    menu.style.display = 'none';
+    activeElement = null;
+    table.style.transform = "translateX(0)";
+}
+
+closeButton.addEventListener("click", handleCloseMenu);
+closeButton.addEventListener("touchend", handleCloseMenu); // Pentru mobil
+    // Actualizează dimensiunile viewport-ului la redimensionare
+    window.addEventListener("resize", () => {
+        viewportWidth = window.innerWidth;
+        viewportHeight = window.innerHeight;
+    });
+
+    const handleMove = (clientX, clientY) => {
+        if (isDragging) {
+            const menuWidth = menu.offsetWidth;
+            const menuHeight = menu.offsetHeight;
+            
+            // Calculează noile poziții cu constrângeri
+            let newLeft = clientX - offsetX;
+            let newTop = clientY - offsetY;
+
+            // Limitează mișcarea în interiorul ecranului
+            newLeft = Math.max(0, Math.min(newLeft, viewportWidth - menuWidth));
+            newTop = Math.max(0, Math.min(newTop, viewportHeight - menuHeight));
+
+            requestAnimationFrame(() => {
+                menu.style.left = `${newLeft}px`;
+                menu.style.top = `${newTop}px`;
+            });
+        }
+    };
+
+    // Gestionează evenimentele de touch pentru închidere
+    closeButton.addEventListener("touchend", function (e) {
+        e.preventDefault();
+        menu.style.display = 'none';
+        activeElement = null;
+        table.style.transform = "translateX(0)";
+        let viewportWidth = window.innerWidth;
+    let viewportHeight = window.innerHeight;
+    const menu = document.querySelector('.menu'); // Selectează meniul
+
+    // Actualizează dimensiunile viewport-ului la redimensionare
+    window.addEventListener("resize", () => {
+        viewportWidth = window.innerWidth;
+        viewportHeight = window.innerHeight;
+    });
+
+    const handleMove = (clientX, clientY) => {
+        if (isDragging) {
+            const menuWidth = menu.offsetWidth;
+            const menuHeight = menu.offsetHeight;
+            
+            // Calculează noile poziții cu constrângeri
+            let newLeft = clientX - offsetX;
+            let newTop = clientY - offsetY;
+
+            // Limitează mișcarea în interiorul ecranului
+            newLeft = Math.max(0, Math.min(newLeft, viewportWidth - menuWidth));
+            newTop = Math.max(0, Math.min(newTop, viewportHeight - menuHeight));
+
+            requestAnimationFrame(() => {
+                menu.style.left = `${newLeft}px`;
+                menu.style.top = `${newTop}px`;
+                
+            });
+        }
+    };
+
+// Aplică zoom automat la încărcarea paginii
+window.addEventListener("load", adjustZoom);
+window.addEventListener("resize", adjustZoom); // Se ajustează și la schimbarea dimensiunii ecranului
+    }
+</script>
 
 </body>
 </html>
