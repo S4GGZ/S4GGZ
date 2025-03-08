@@ -6,7 +6,29 @@
 <meta name="viewport" content="orientation=portrait">
     <title>Periodic Table</title>
     <style>
+/* Adaugă la sfârșitul secțiunii de stiluri */
+@media screen and (max-width: 768px) {
+    .close-btn {
+        width: 50px !important;
+        height: 50px !important;
+        font-size: 32px !important;
+        top: 15px !important;
+        right: 15px !important;
+    }
+    
+    .menu {
+        touch-action: none;
+        user-select: none;
+        max-width: 90vw;
+        left: 5% !important;
+        top: 20% !important;
+    }
+}
 
+/* Previne comportamentul implicit al touch-ului */
+html, body {
+    touch-action: manipulation;
+}
 
 #periodic-table {
     display: flex;
@@ -36,8 +58,10 @@ body {
 
 @media screen and (max-width: 1000px) {
     .menu button {
-        width: 50px !important; /* Zonă mai mare pentru atingere */
-        height: 50px !important;
+        width: 30px !important; /* Zonă mai mare pentru atingere */
+        height: 30px !important;
+        top: px !important;
+        right: 5px !important;
     }
 }
         .menu {
@@ -833,22 +857,41 @@ body {
                 });
 
                 const closeButton = document.createElement('button');
-                closeButton.textContent = '×';
-                Object.assign(closeButton.style, {
-                    background: 'none',
-                    border: 'none',
-                    color: 'white',
-                    fontSize: '1.5rem',
-                    cursor: 'pointer',
-                    position: 'absolute',
-                    top: '5px',
-                    right: '10px'
-                });
-                closeButton.addEventListener("click", function () {
-                    menu.style.display = 'none';
-                    activeElement = null;
-                    table.style.transform = "translateX(0)";
-                });
+closeButton.innerHTML = '×';
+closeButton.classList.add('close-btn');
+
+// Funcție de închidere universală
+const handleCloseMenu = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    menu.style.display = 'none';
+    activeElement = null;
+    table.style.transform = "translateX(0)";
+};
+
+// Adaugă ambele tipuri de evenimente
+closeButton.addEventListener('click', handleCloseMenu);
+closeButton.addEventListener('touchend', handleCloseMenu);
+
+// Stilizare avansată pentru buton (adaugă în CSS)
+Object.assign(closeButton.style, {
+    background: '#ff4757',
+    border: 'none',
+    borderRadius: '50%',
+    width: '40px',
+    height: '40px',
+    color: 'white',
+    fontSize: '28px',
+    position: 'absolute',
+    top: '10px',
+    right: '10px',
+    cursor: 'pointer',
+    zIndex: '1001',
+    touchAction: 'manipulation' // Dezactivează zoom-ul pe dublu-touch
+});
+
+// Adaugă butonul în meniu ÎNAINTE de alte elemente
+menu.insertBefore(closeButton, menu.firstChild);
                 menu.appendChild(closeButton);
 
                 const title = document.createElement('h2');
@@ -965,16 +1008,20 @@ body {
                     }
                 }
                 // Adaugă evenimente pentru touch
-        menu.addEventListener("touchstart", function (event) {
-            event.preventDefault();
-            const touch = event.touches[0];
-            isDragging = true;
-            offsetX = touch.clientX - menu.offsetLeft;
-            offsetY = touch.clientY - menu.offsetTop;
-            menu.style.cursor = "grabbing";
-            document.body.style.userSelect = "none";
-        });
-
+                menu.addEventListener("touchstart", function(event) {
+    // Ignoră touch-urile care încep pe butonul X
+    if (event.target === closeButton || event.target.closest('.close-btn')) {
+        return;
+    }
+    
+    event.preventDefault();
+    const touch = event.touches[0];
+    isDragging = true;
+    offsetX = touch.clientX - menu.offsetLeft;
+    offsetY = touch.clientY - menu.offsetTop;
+    menu.style.cursor = "grabbing";
+    document.body.style.userSelect = "none";
+});
         // Actualizează evenimentul de mouse pentru a include touch
         const handleMove = (clientX, clientY) => {
             if (isDragging) {
