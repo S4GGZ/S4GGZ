@@ -6,13 +6,13 @@
 <meta name="viewport" content="orientation=portrait">
     <title>Periodic Table</title>
     <style>
-/* Adaugă la sfârșitul secțiunii de stiluri */
+        
 @media screen and (max-width: 768px) {
     .close-btn {
         width: 50px !important;
         height: 50px !important;
         font-size: 32px !important;
-        top: 15px !important;
+        top: 5% !important;
         right: 15px !important;
     }
     
@@ -25,7 +25,6 @@
     }
 }
 
-/* Previne comportamentul implicit al touch-ului */
 html, body {
     touch-action: manipulation;
 }
@@ -49,11 +48,11 @@ body {
 }
 /* Butonul de închidere */
 .menu button {
-    width: 40px !important; 
-    height: 40px !important;
-    font-size: 2rem !important;
-    top: 0px !important;
-    right: 5px !important;
+    width: 20px !important; 
+    height: 20px !important;
+    font-size: 1rem !important;
+    top: 10px !important;
+    right: 10px !important;
 }
 
 @media screen and (max-width: 1000px) {
@@ -64,6 +63,7 @@ body {
         right: 5px !important;
     }
 }
+
         .menu {
             display: flex;
             flex-direction: column;
@@ -106,6 +106,7 @@ body {
             font-family: 'Inter', sans-serif;
             color: white;
             text-align: center;
+            
         }
 
         .top-bar {
@@ -172,6 +173,12 @@ body {
             gap: 5px;
             margin-top: 20px;
         }
+      .delimiter {
+        width: 100%;
+        height: 1px;
+        background-color: #444;
+        margin: 10px 0;
+    }
 
         .element {
             width: 60px;
@@ -230,13 +237,13 @@ body {
             background-color: #ff9966;
         }
 
-        .unknown {
-            background-color: #999999;
-        }
+        
     </style>
 </head>
 <body>
     
+    
+   
     <div class="top-bar">
         <a href="../index.html" class="home-btn">Home</a>
         <div class="socials">
@@ -306,10 +313,10 @@ body {
 
             const style = document.createElement('style');
             style.innerHTML = `
-                                            .legend {
+                                           .legend {
                                                 position: absolute;
-                                                right: -525px;
-                                                top: 120px;
+                                                right: 20px;
+                                                top: 100px;
                                                 background: #292929;
                                                 padding: 15px;
                                                 border-radius: 8px;
@@ -317,10 +324,51 @@ body {
                                                 font-size: 1rem;
                                                 width: 200px;
                                             }
-                                                @media screen and (max-width: 1000px) {
-                                                  position: absolute;
+                                                 .legend h2 {
+                                                font-size: 1.2rem;
+                                                margin-bottom: 10px;
+                                            }
+                                            .legend ul {
+                                                list-style: none;
+                                                padding: 0;
+                                            }
+                                            .legend li {
+                                                display: flex;
+                                                align-items: center;
+                                                margin-bottom: 5px;
+                                            }
+                                            .color-box {
+                                                width: 20px;
+                                                height: 20px;
+                                                margin-right: 10px;
+                                                display: inline-block;
+                                            }
+                                            .alkali { background-color: #ff6666; }
+                                            .alkaline { background-color: #ffcc66; }
+                                            .transition { background-color: #66ccff; }
+                                            .metalloid { background-color: #66ff99; }
+                                            .nonmetal { background-color: #0BEADB; }
+                                            .halogen { background-color: #cc99ff; }
+                                            .noble { background-color: #9999ff; }
+                                            .lanthanide { background-color: #ff9933; }
+                                            .actinide { background-color: #ff3333; }
+                                            .post-transition { background-color: #ff9966; }
+                                            .legend-toggle {
+                                                position: absolute;
                                                 right: 20px;
-                                                top: 100px;
+                                                top: 80px;
+                                                padding: 10px 15px;
+                                                background: #ff4757;
+                                                color: white;
+                                                border: none;
+                                                border-radius: 8px;
+                                                cursor: pointer;
+                                            }
+                                                @media screen and (max-width: 1000px) {
+                                                .legend {
+                                                position: absolute;
+                                                right: -525px;
+                                                top: 120px;
                                                 background: #292929;
                                                 padding: 15px;
                                                 border-radius: 8px;
@@ -372,7 +420,7 @@ body {
                                                 @media screen and (max-width: 1000px) {
                                             .legend-toggle {
                                                 position: right;
-                                                top: 150px;  /* Poziție modificată pe mobil */
+                                                top: 50%;  /* Poziție modificată pe mobil */
                                                 right: 200px; /* Mută butonul în partea dreaptă pe mobil */
                                             }
                                             .legend-toggle:hover {
@@ -696,138 +744,1355 @@ body {
                 });
 
                 const elementsInfo = {
-                    "Sc": { name: "Scandiu", config: "[Ar] 3d¹ 4s²", description: "Un metal rar utilizat în aliaje ușoare." },
-                    "Ti": { name: "Titan", config: "[Ar] 3d² 4s²", description: "Un metal foarte rezistent și ușor, utilizat în industrie și medicină." },
-                    "V": { name: "Vanadiu", config: "[Ar] 3d³ 4s²", description: "Folosit în producția de oțel rezistent la coroziune." },
-                    "Cr": { name: "Crom", config: "[Ar] 3d⁵ 4s¹", description: "Principalul component al inoxului și un metal strălucitor." },
-                    "Mn": { name: "Mangan", config: "[Ar] 3d⁵ 4s²", description: "Un element esențial în metabolism și producția de oțel." },
-                    "Fe": { name: "Fier", config: "[Ar] 3d⁶ 4s²", description: "Principalul component al oțelului și un element esențial pentru viață." },
-                    "Co": { name: "Cobalt", config: "[Ar] 3d⁷ 4s²", description: "Folosit în baterii și aliaje magnetice." },
-                    "Ni": { name: "Nichel", config: "[Ar] 3d⁸ 4s²", description: "Un metal utilizat pentru protecția împotriva coroziunii." },
-                    "Cu": { name: "Cupru", config: "[Ar] 3d¹⁰ 4s¹", description: "Un excelent conductor de electricitate, folosit în cabluri și circuite." },
-                    "La": { name: "Lantan", config: "[Xe] 5d¹ 6s²", description: "Un metal rar utilizat în catalizatori și sticle optice." },
-                    "Ce": { name: "Ceriu", config: "[Xe] 4f¹ 5d¹ 6s²", description: "Folosit în aliaje speciale și în industria chimică." },
-                    "Pr": { name: "Praseodim", config: "[Xe] 4f³ 6s²", description: "Utilizat în magneți puternici și sticle colorate." },
-                    "Nd": { name: "Neodim", config: "[Xe] 4f⁴ 6s²", description: "Un element cheie în magneți puternici pentru motoare electrice." },
-                    "Pm": { name: "Prometiu", config: "[Xe] 4f⁵ 6s²", description: "Un element radioactiv folosit în dispozitive de iluminat." },
-                    "Sm": { name: "Samariu", config: "[Xe] 4f⁶ 6s²", description: "Utilizat în lasere și magneți permanenți." },
-                    "Eu": { name: "Europiu", config: "[Xe] 4f⁷ 6s²", description: "Un element folosit în ecrane LCD și lămpi fluorescente." },
-                    "Ac": { name: "Actiniu", config: "[Rn] 6d¹ 7s²", description: "Un element radioactiv rar, utilizat în cercetarea nucleară." },
-                    "Th": { name: "Toriu", config: "[Rn] 6d² 7s²", description: "Un posibil combustibil pentru reactoarele nucleare viitoare." },
-                    "Pa": { name: "Protactiniu", config: "[Rn] 5f² 6d¹ 7s²", description: "Un element foarte rar, utilizat în cercetarea nucleară." },
-                    "U": { name: "Uraniu", config: "[Rn] 5f³ 6d¹ 7s²", description: "Principalul combustibil utilizat în reactoarele nucleare." },
-                    "Np": { name: "Neptuniu", config: "[Rn] 5f⁴ 6d¹ 7s²", description: "Un element radioactiv utilizat în detectoare de neutroni." },
-                    "Pu": { name: "Plutoniu", config: "[Rn] 5f⁶ 7s²", description: "Utilizat în reactoare nucleare și arme nucleare." },
+   
+                    "H": {
+        name: "Hidrogen",
+        config: "1s¹",
+        description: "Cel mai ușor element, component principal al apei și combustibil pentru stele.",
+        meltingPoint: "-259.16°C",
+        boilingPoint: "-252.87°C",
+        atomicMass: "1.008",
+        electronAffinity: "72.8 kJ/mol",
+        electronegativity: "2.20",
+        ionizationEnergy: "1312 kJ/mol"
+    },
+    
+    "He": {
+        name: "Heliu",
+        config: "1s²",
+        description: "Gaz nobil utilizat în baloane și sisteme de răcire criogenică.",
+        meltingPoint: "-272.2°C",
+        boilingPoint: "-268.93°C",
+        atomicMass: "4.0026",
+        electronAffinity: "0",
+        electronegativity: "N/A",
+        ionizationEnergy: "2372.3 kJ/mol"
+    },
 
-                    "H": { name: "Hidrogen", config: "1s¹", description: "Cel mai ușor element, componentă principală a stelelor și apei." },
-                    "He": { name: "Heliu", config: "1s²", description: "Gaz nobil, utilizat în baloane și în răcirea reactoarelor nucleare." },
-                    "Li": { name: "Litiu", config: "[He] 2s¹", description: "Metal alcalin folosit în baterii și tratamente psihiatrice." },
-                    "Be": { name: "Beriliu", config: "[He] 2s²", description: "Metal ușor, utilizat în industria aerospațială și electronică." },
-                    "B": { name: "Bor", config: "[He] 2s² 2p¹", description: "Element esențial pentru plante, folosit în materiale compozite." },
-                    "C": { name: "Carbon", config: "[He] 2s² 2p²", description: "Element fundamental al vieții, regăsit în toate organismele." },
-                    "N": { name: "Azot", config: "[He] 2s² 2p³", description: "Gaz esențial pentru viață, componentă majoră a atmosferei." },
-                    "O": { name: "Oxigen", config: "[He] 2s² 2p⁴", description: "Element vital pentru respirație, prezent în apă și aer." },
-                    "F": { name: "Fluor", config: "[He] 2s² 2p⁵", description: "Element foarte reactiv, utilizat în paste de dinți și chimie industrială." },
-                    "Ne": { name: "Neon", config: "[He] 2s² 2p⁶", description: "Gaz nobil utilizat în reclame luminoase și lasere." },
-                    "Na": { name: "Sodiu", config: "[Ne] 3s¹", description: "Metal alcalin esențial pentru funcționarea organismului." },
-                    "Mg": { name: "Magneziu", config: "[Ne] 3s²", description: "Metal ușor, utilizat în aliaje și esențial pentru plante." },
-                    "Al": { name: "Aluminiu", config: "[Ne] 3s² 3p¹", description: "Metal ușor utilizat în construcții și ambalaje." },
-                    "Si": { name: "Siliciu", config: "[Ne] 3s² 3p²", description: "Element esențial în industria electronică și în scoarța terestră." },
-                    "P": { name: "Fosfor", config: "[Ne] 3s² 3p³", description: "Element vital pentru ADN și energie celulară." },
-                    "S": { name: "Sulf", config: "[Ne] 3s² 3p⁴", description: "Componentă a proteinelor și prezent în vulcani." },
-                    "Cl": { name: "Clor", config: "[Ne] 3s² 3p⁵", description: "Folosit în purificarea apei și ca agent de curățare." },
-                    "Ar": { name: "Argon", config: "[Ne] 3s² 3p⁶", description: "Gaz nobil inert, utilizat în iluminat și sudură." },
-                    "K": { name: "Potasiu", config: "[Ar] 4s¹", description: "Metal alcalin esențial pentru funcțiile nervoase și musculare." },
-                    "Ca": { name: "Calciu", config: "[Ar] 4s²", description: "Componentă principală a oaselor și dinților." },
-                    "Zn": { name: "Zinc", config: "[Ar] 3d¹⁰ 4s²", description: "Folosit în galvanizare pentru protejarea fierului împotriva ruginii." },
-                    "Ga": { name: "Galiu", config: "[Ar] 3d¹⁰ 4s² 4p¹", description: "Metal cu punct de topire scăzut, utilizat în electronice." },
-                    "Ge": { name: "Germaniu", config: "[Ar] 3d¹⁰ 4s² 4p²", description: "Semiconductor utilizat în dispozitive optoelectronice." },
-                    "As": { name: "Arsen", config: "[Ar] 3d¹⁰ 4s² 4p³", description: "Utilizat în aliaje și semiconductori, toxic în doze mari." },
-                    "Se": { name: "Seleniu", config: "[Ar] 3d¹⁰ 4s² 4p⁴", description: "Folosit în fotocelule și sticlă colorată." },
-                    "Br": { name: "Brom", config: "[Ar] 3d¹⁰ 4s² 4p⁵", description: "Element lichid la temperatura camerei, utilizat în chimie." },
-                    "Kr": { name: "Kripton", config: "[Ar] 3d¹⁰ 4s² 4p⁶", description: "Gaz nobil utilizat în iluminatul cu descărcare în gaze." },
-                    "Rb": { name: "Rubidiu", config: "[Kr] 5s¹", description: "Metal alcalin reactiv, utilizat în ceasuri atomice." },
-                    "Sr": { name: "Stronțiu", config: "[Kr] 5s²", description: "Utilizat în artificii și în producția de sticlă specială." },
-                    "Y": { name: "Ytriu", config: "[Kr] 4d¹ 5s²", description: "Folosit în lasere și supraconductori." },
-                    "Zr": { name: "Zirconiu", config: "[Kr] 4d² 5s²", description: "Utilizat în reactoare nucleare datorită rezistenței la coroziune." },
-                    "Nb": { name: "Niobiu", config: "[Kr] 4d⁴ 5s¹", description: "Folosit în aliaje pentru motoare de avioane și magneți superconductori." },
-                    "Mo": { name: "Molibden", config: "[Kr] 4d⁵ 5s¹", description: "Utilizat în aliaje rezistente la temperaturi ridicate." },
-                    "Tc": { name: "Tehnețiu", config: "[Kr] 4d⁵ 5s²", description: "Primul element sintetic, utilizat în medicină nucleară." },
-                    "Ru": { name: "Ruteniu", config: "[Kr] 4d⁷ 5s¹", description: "Folosit în catalizatori și aliaje pentru contacte electrice." },
-                    "Rh": { name: "Rodiu", config: "[Kr] 4d⁸ 5s¹", description: "Metal rar utilizat în catalizatori auto și bijuterii." },
-                    "Pd": { name: "Paladiu", config: "[Kr] 4d¹⁰", description: "Utilizat în convertoare catalitice și în industria bijuteriilor." },
-                    "Ag": { name: "Argint", config: "[Kr] 4d¹⁰ 5s¹", description: "Metal prețios utilizat în bijuterii și electronice." },
-                    "Cd": { name: "Cadmiu", config: "[Kr] 4d¹⁰ 5s²", description: "Utilizat în baterii și acoperiri anticorozive, toxic pentru mediu." },
-                    "In": { name: "Indiu", config: "[Kr] 4d¹⁰ 5s² 5p¹", description: "Folosit în ecrane LCD și aliaje cu punct de topire scăzut." },
-                    "Sn": { name: "Staniu", config: "[Kr] 4d¹⁰ 5s² 5p²", description: "Utilizat în aliaje, acoperiri anticorozive și circuite electronice." },
-                    "Sb": { name: "Stibiu", config: "[Kr] 4d¹⁰ 5s² 5p³", description: "Folosit în semiconductorii din dispozitivele optoelectronice." },
-                    "Te": { name: "Telur", config: "[Kr] 4d¹⁰ 5s² 5p⁴", description: "Utilizat în aliaje și celule solare." },
-                    "I" : { name: "Iod", config: "[Kr] 4d¹⁰ 5s² 5p⁵", description: "Esențial pentru glanda tiroidă, folosit în dezinfectanți." },
-                    "Xe": { name: "Xenon", config: "[Kr] 4d¹⁰ 5s² 5p⁶", description: "Gaz nobil utilizat în lămpi flash și lasere." },
-                    "Cs": { name: "Cesiu", config: "[Xe] 6s¹", description: "Metal alcalin foarte reactiv, utilizat în ceasuri atomice." },
-                    "Ba": { name: "Bariu", config: "[Xe] 6s²", description: "Utilizat în radiografii și artificii." },
-                    "La": { name: "Lantan", config: "[Xe] 5d¹ 6s²", description: "Folosit în catalizatori și iluminat." },
-                    "Ce": { name: "Ceriu", config: "[Xe] 4f¹ 5d¹ 6s²", description: "Utilizat în sticlă auto-curățabilă și aliaje speciale." },
-                    "Pr": { name: "Praseodim", config: "[Xe] 4f³ 6s²", description: "Folosit în lasere și magneți puternici." },
-                    "Nd": { name: "Neodim", config: "[Xe] 4f⁴ 6s²", description: "Componentă esențială a magneților puternici." },
-                    "Pm": { name: "Prometiu", config: "[Xe] 4f⁵ 6s²", description: "Element radioactiv utilizat în vopsele luminescente." },
-                    "Sm": { name: "Samariu", config: "[Xe] 4f⁶ 6s²", description: "Utilizat în magneți și reactoare nucleare." },
-                    "Eu": { name: "Europiu", config: "[Xe] 4f⁷ 6s²", description: "Folosit în ecrane și lămpi fluorescente." },
-                    "Gd": { name: "Gadoliniu", config: "[Xe] 4f⁷ 5d¹ 6s²", description: "Utilizat în imagistica prin rezonanță magnetică." },
-                    "Tb": { name: "Terbiu", config: "[Xe] 4f⁹ 6s²", description: "Utilizat în ecrane LCD și aliaje magnetostrictive." },
-                    "Dy": { name: "Disprosiu", config: "[Xe] 4f¹⁰ 6s²", description: "Folosit în magneți și reactoare nucleare." },
-                    "Ho": { name: "Holmiu", config: "[Xe] 4f¹¹ 6s²", description: "Utilizat în magneți și lasere." },
-                    "Er": { name: "Erbiu", config: "[Xe] 4f¹² 6s²", description: "Folosit în cabluri de fibră optică." },
-                    "Tm": { name: "Tuliu", config: "[Xe] 4f¹³ 6s²", description: "Utilizat în surse de radiație pentru dispozitive medicale." },
-                    "Yb": { name: "Yterbiu", config: "[Xe] 4f¹⁴ 6s²", description: "Folosit în lasere și ceasuri atomice." },
-                    "Lu": { name: "Lutețiu", config: "[Xe] 4f¹⁴ 5d¹ 6s²", description: "Utilizat în tomografia cu emisie de pozitroni." },
-                    "Hf": { name: "Hafniu", config: "[Xe] 4f¹⁴ 5d² 6s²", description: "Folosit în reactoare nucleare și cipuri electronice." },
-                    "Ta": { name: "Tantal", config: "[Xe] 4f¹⁴ 5d³ 6s²", description: "Utilizat în condensatori și echipamente medicale." },
-                    "W":  { name: "Wolfram", config: "[Xe] 4f¹⁴ 5d⁴ 6s²", description: "Metal cu punct de topire ridicat, utilizat în filamente și unelte." },
-                    "Re": { name: "Reniu", config: "[Xe] 4f¹⁴ 5d⁵ 6s²", description: "Utilizat în turbine de avioane și catalizatori." },
-                    "Os": { name: "Osmiu", config: "[Xe] 4f¹⁴ 5d⁶ 6s²", description: "Cel mai dens metal, utilizat în aliaje dure." },
-                    "Ir": { name: "Iridiu", config: "[Xe] 4f¹⁴ 5d⁷ 6s²", description: "Rezistent la coroziune, utilizat în echipamente electrice." },
-                    "Pt": { name: "Platină", config: "[Xe] 4f¹⁴ 5d⁹ 6s¹", description: "Metal prețios utilizat în catalizatori și bijuterii." },
-                    "Au": { name: "Aur", config: "[Xe] 4f¹⁴ 5d¹⁰ 6s¹", description: "Metal prețios utilizat în bijuterii și electronice." },
-                    "Hg": { name: "Mercur", config: "[Xe] 4f¹⁴ 5d¹⁰ 6s²", description: "Singurul metal lichid la temperatura camerei, utilizat în termometre." },
-                    "Tl": { name: "Taliu", config: "[Xe] 4f¹⁴ 5d¹⁰ 6s² 6p¹", description: "Toxic, utilizat în semiconductori și optoelectronică." },
-                    "Pb": { name: "Plumb", config: "[Xe] 4f¹⁴ 5d¹⁰ 6s² 6p²", description: "Utilizat în protecția împotriva radiațiilor și baterii." },
-                    "Bi": { name: "Bismut", config: "[Xe] 4f¹⁴ 5d¹⁰ 6s² 6p³", description: "Metal utilizat în medicamente și aliaje cu punct de topire scăzut." },
-                    "Po": { name: "Poloniu", config: "[Xe] 4f¹⁴ 5d¹⁰ 6s² 6p⁴", description: "Element radioactiv, utilizat în surse de energie termoelectrică." },
-                    "At": { name: "Astatin", config: "[Xe] 4f¹⁴ 5d¹⁰ 6s² 6p⁵", description: "Element rar, utilizat în cercetare medicală." },
-                    "Rn": { name: "Radon", config: "[Xe] 4f¹⁴ 5d¹⁰ 6s² 6p⁶", description: "Gaz radioactiv, rezultat din dezintegrarea uraniului." },
-                    "Fr": { name: "Franciu", config: "[Rn] 7s¹", description: "Element foarte rar, extrem de radioactiv." },
-                    "Ra": { name: "Radiu", config: "[Rn] 7s²", description: "Utilizat istoric în tratamente medicale, puternic radioactiv." },
-                    "Ac": { name: "Actiniu", config: "[Rn] 6d¹ 7s²", description: "Utilizat în terapii pentru tratarea cancerului." },
-                    "Th": { name: "Toriu", config: "[Rn] 6d² 7s²", description: "Utilizat ca combustibil nuclear alternativ." },
-                    "U":  { name: "Uraniu", config: "[Rn] 5f³ 6d¹ 7s²", description: "Element radioactiv utilizat în reactoare nucleare și arme." },
-                    "Np": { name: "Neptuniu", config: "[Rn] 5f⁴ 6d¹ 7s²", description: "Element sintetic utilizat în cercetare nucleară." },
-                    "Pu": { name: "Plutoniu", config: "[Rn] 5f⁶ 7s²", description: "Utilizat în reactoare nucleare și armament." },
-                    "Am": { name: "Americiu", config: "[Rn] 5f⁷ 7s²", description: "Folosit în detectoare de fum și în surse de neutroni." },
-                    "Cm": { name: "Curiu", config: "[Rn] 5f⁷ 6d¹ 7s²", description: "Element radioactiv utilizat în generatoare termoelectrice." },
-                    "Bk": { name: "Berkeliu", config: "[Rn] 5f⁹ 7s²", description: "Folosit în cercetare nucleară și sinteza elementelor super-grele." },
-                    "Cf": { name: "Californiu", config: "[Rn] 5f¹⁰ 7s²", description: "Utilizat în surse de neutroni pentru detecția minereurilor." },
-                    "Es": { name: "Einsteiniu", config: "[Rn] 5f¹¹ 7s²", description: "Element sintetic rar, folosit doar în cercetare." },
-                    "Fm": { name: "Fermiu", config: "[Rn] 5f¹² 7s²", description: "Obținut în explozii termonucleare, utilizat în studii științifice." },
-                    "Md": { name: "Mendeleviu", config: "[Rn] 5f¹³ 7s²", description: "Element sintetic, folosit în cercetarea fizicii nucleare." },
-                    "No": { name: "Nobeliu", config: "[Rn] 5f¹⁴ 7s²", description: "Utilizat doar în studii de laborator despre actinide." },
-                    "Lr": { name: "Lawrenciu", config: "[Rn] 5f¹⁴ 7s² 7p¹", description: "Element super-greu, utilizat doar în cercetare." },
-                    "Rf": { name: "Rutherfordiu", config: "[Rn] 5f¹⁴ 6d² 7s²", description: "Element instabil, creat artificial pentru studii nucleare." },
-                    "Db": { name: "Dubniu", config: "[Rn] 5f¹⁴ 6d³ 7s²", description: "Element sintetic, instabil, folosit doar în experimente." },
-                    "Sg": { name: "Seaborgiu", config: "[Rn] 5f¹⁴ 6d⁴ 7s²", description: "Element transuranian instabil, folosit în cercetare." },
-                    "Bh": { name: "Bohriu", config: "[Rn] 5f¹⁴ 6d⁵ 7s²", description: "Element extrem de radioactiv, descoperit în anii 1970." },
-                    "Hs": { name: "Hassiu", config: "[Rn] 5f¹⁴ 6d⁶ 7s²", description: "Element greu instabil, folosit doar în cercetare." },
-                    "Mt": { name: "Meitneriu", config: "[Rn] 5f¹⁴ 6d⁷ 7s²", description: "Element super-greu, cu existență de scurtă durată." },
-                    "Ds": { name: "Darmstadtiu", config: "[Rn] 5f¹⁴ 6d⁸ 7s²", description: "Element artificial, cu utilizări limitate în cercetare." },
-                    "Rg": { name: "Roentgeniu", config: "[Rn] 5f¹⁴ 6d⁹ 7s²", description: "Element super-greu, foarte instabil." },
-                    "Cn": { name: "Coperniciu", config: "[Rn] 5f¹⁴ 6d¹⁰ 7s²", description: "Element sintetic cu o viață foarte scurtă." },
-                    "Nh": { name: "Nihoniu", config: "[Rn] 5f¹⁴ 6d¹⁰ 7s² 7p¹", description: "Element sintetic descoperit de cercetători japonezi." },
-                    "Fl": { name: "Fleroviu", config: "[Rn] 5f¹⁴ 6d¹⁰ 7s² 7p²", description: "Element greu, creat artificial pentru studii nucleare." },
-                    "Mc": { name: "Moscoviu", config: "[Rn] 5f¹⁴ 6d¹⁰ 7s² 7p³", description: "Element radioactiv artificial, descoperit în Rusia." },
-                    "Lv": { name: "Livermoriu", config: "[Rn] 5f¹⁴ 6d¹⁰ 7s² 7p⁴", description: "Element sintetic foarte instabil, utilizat în cercetare." },
-                    "Ts": { name: "Tennessin", config: "[Rn] 5f¹⁴ 6d¹⁰ 7s² 7p⁵", description: "Element radioactiv creat artificial." },
-                    "Og": { name: "Oganesson", config: "[Rn] 5f¹⁴ 6d¹⁰ 7s² 7p⁶", description: "Cel mai greu element cunoscut, foarte instabil." }
+    "Li": {
+        name: "Litiu",
+        config: "[He] 2s¹",
+        description: "Metal alcalin folosit în baterii și tratamente psihiatrice.",
+        meltingPoint: "180.5°C",
+        boilingPoint: "1342°C",
+        atomicMass: "6.94",
+        electronAffinity: "59.6 kJ/mol",
+        electronegativity: "0.98",
+        ionizationEnergy: "520 kJ/mol"
+    },
 
+    "Be": {
+        name: "Beriliu",
+        config: "[He] 2s²",
+        description: "Metal dur utilizat în industria aerospațială și reactoare nucleare.",
+        meltingPoint: "1287°C",
+        boilingPoint: "2469°C",
+        atomicMass: "9.0122",
+        electronAffinity: "-48 kJ/mol",
+        electronegativity: "1.57",
+        ionizationEnergy: "899.5 kJ/mol"
+    },
+
+    "B": {
+        name: "Bor",
+        config: "[He] 2s² 2p¹",
+        description: "Semimetal cu aplicații în sticlărie specială și materiale ceramice.",
+        meltingPoint: "2076°C",
+        boilingPoint: "3927°C",
+        atomicMass: "10.81",
+        electronAffinity: "26.7 kJ/mol",
+        electronegativity: "2.04",
+        ionizationEnergy: "800.6 kJ/mol"
+    },
+
+    "C": {
+        name: "Carbon",
+        config: "[He] 2s² 2p²",
+        description: "Baza chimiei organice, existent în forme precum diamantul, grafitul și graphene.",
+        meltingPoint: "3550°C",
+        boilingPoint: "4027°C",
+        atomicMass: "12.011",
+        electronAffinity: "153.9 kJ/mol",
+        electronegativity: "2.55",
+        ionizationEnergy: "1086.5 kJ/mol"
+    },
+
+    "N": {
+        name: "Azot",
+        config: "[He] 2s² 2p³",
+        description: "Component principal al atmosferei, esențial în fertilizanți și explozivi.",
+        meltingPoint: "-210°C",
+        boilingPoint: "-195.8°C",
+        atomicMass: "14.007",
+        electronAffinity: "-7 kJ/mol",
+        electronegativity: "3.04",
+        ionizationEnergy: "1402.3 kJ/mol"
+    },
+
+    "O": {
+        name: "Oxigen",
+        config: "[He] 2s² 2p⁴",
+        description: "Esențial pentru respirație, utilizat în medicină și industria metalurgică.",
+        meltingPoint: "-218.8°C",
+        boilingPoint: "-183°C",
+        atomicMass: "16.00",
+        electronAffinity: "141 kJ/mol",
+        electronegativity: "3.44",
+        ionizationEnergy: "1313.9 kJ/mol"
+    },
+
+    "F": {
+        name: "Fluor",
+        config: "[He] 2s² 2p⁵",
+        description: "Gaz toxic folosit în pasta de dinți și refrigeranți.",
+        meltingPoint: "-219.6°C",
+        boilingPoint: "-188.1°C",
+        atomicMass: "19.00",
+        electronAffinity: "328 kJ/mol",
+        electronegativity: "3.98",
+        ionizationEnergy: "1681 kJ/mol"
+    },
+
+    "Ne": {
+        name: "Neon",
+        config: "[He] 2s² 2p⁶",
+        description: "Gaz nobil folosit în iluminatul cu semne și lasere.",
+        meltingPoint: "-248.6°C",
+        boilingPoint: "-246°C",
+        atomicMass: "20.18",
+        electronAffinity: "0",
+        electronegativity: "N/A",
+        ionizationEnergy: "2080.7 kJ/mol"
+    },
+
+    "Na": {
+        name: "Sodiu",
+        config: "[Ne] 3s¹",
+        description: "Metal alcalin reactiv, component al sării de bucătărie.",
+        meltingPoint: "97.7°C",
+        boilingPoint: "883°C",
+        atomicMass: "22.99",
+        electronAffinity: "52.8 kJ/mol",
+        electronegativity: "0.93",
+        ionizationEnergy: "495.8 kJ/mol"
+    },
+
+    "Mg": {
+        name: "Magneziu",
+        config: "[Ne] 3s²",
+        description: "Metal ușor utilizat în aliaje și fotosinteză.",
+        meltingPoint: "650°C",
+        boilingPoint: "1090°C",
+        atomicMass: "24.305",
+        electronAffinity: "0",
+        electronegativity: "1.31",
+        ionizationEnergy: "737.7 kJ/mol"
+    },
+
+    "Al": {
+        name: "Aluminiu",
+        config: "[Ne] 3s² 3p¹",
+        description: "Metal ușor folosit în construcții și ambalaje.",
+        meltingPoint: "660.3°C",
+        boilingPoint: "2470°C",
+        atomicMass: "26.98",
+        electronAffinity: "42.5 kJ/mol",
+        electronegativity: "1.61",
+        ionizationEnergy: "577.5 kJ/mol"
+    },
+
+    "Si": {
+        name: "Siliciu",
+        config: "[Ne] 3s² 3p²",
+        description: "Semiconductor folosit în componente electronice și panouri solare.",
+        meltingPoint: "1414°C",
+        boilingPoint: "3265°C",
+        atomicMass: "28.085",
+        electronAffinity: "133.6 kJ/mol",
+        electronegativity: "1.90",
+        ionizationEnergy: "786.5 kJ/mol"
+    },
+
+    "P": {
+        name: "Fosfor",
+        config: "[Ne] 3s² 3p³",
+        description: "Element esențial pentru viață, folosit în îngrășăminte și incendiere.",
+        meltingPoint: "44.2°C",
+        boilingPoint: "280.5°C",
+        atomicMass: "30.97",
+        electronAffinity: "72 kJ/mol",
+        electronegativity: "2.19",
+        ionizationEnergy: "1011.8 kJ/mol"
+    },
+
+    "S": {
+        name: "Sulf",
+        config: "[Ne] 3s² 3p⁴",
+        description: "Element galben folosit în producția de acid sulfuric și chibrituri.",
+        meltingPoint: "115.2°C",
+        boilingPoint: "444.6°C",
+        atomicMass: "32.06",
+        electronAffinity: "200 kJ/mol",
+        electronegativity: "2.58",
+        ionizationEnergy: "999.6 kJ/mol"
+    },
+
+    "Cl": {
+        name: "Clor",
+        config: "[Ne] 3s² 3p⁵",
+        description: "Gaz toxic folosit în dezinfectanți și producția de plastic.",
+        meltingPoint: "-101.5°C",
+        boilingPoint: "-34.04°C",
+        atomicMass: "35.45",
+        electronAffinity: "349 kJ/mol",
+        electronegativity: "3.16",
+        ionizationEnergy: "1251.2 kJ/mol"
+    },
+
+    "Ar": {
+        name: "Argon",
+        config: "[Ne] 3s² 3p⁶",
+        description: "Gaz nobil inert folosit în iluminat și atmosfere protective.",
+        meltingPoint: "-189.3°C",
+        boilingPoint: "-185.8°C",
+        atomicMass: "39.95",
+        electronAffinity: "0",
+        electronegativity: "N/A",
+        ionizationEnergy: "1520.6 kJ/mol"
+    },
+
+    "K": {
+        name: "Potasiu",
+        config: "[Ar] 4s¹",
+        description: "Metal alcalin reactiv, esențial pentru funcționarea nervoasă.",
+        meltingPoint: "63.5°C",
+        boilingPoint: "759°C",
+        atomicMass: "39.10",
+        electronAffinity: "48.4 kJ/mol",
+        electronegativity: "0.82",
+        ionizationEnergy: "418.8 kJ/mol"
+    },
+
+    "Ca": {
+        name: "Calciu",
+        config: "[Ar] 4s²",
+        description: "Metal alcalino-pământos esențial pentru oase și beton.",
+        meltingPoint: "842°C",
+        boilingPoint: "1484°C",
+        atomicMass: "40.08",
+        electronAffinity: "2.37 kJ/mol",
+        electronegativity: "1.00",
+        ionizationEnergy: "589.8 kJ/mol"
+    },
+    "Sc": {
+        name: "Scandiu",
+        config: "[Ar] 3d¹ 4s²",
+        description: "Metal de tranziție folosit în aliaje ușoare pentru industria aerospațială.",
+        meltingPoint: "1541°C",
+        boilingPoint: "2836°C",
+        atomicMass: "44.956",
+        electronAffinity: "18.1 kJ/mol",
+        electronegativity: "1.36",
+        ionizationEnergy: "633.1 kJ/mol"
+    },
+
+    "Ti": {
+        name: "Titan",
+        config: "[Ar] 3d² 4s²",
+        description: "Metal rezistent la coroziune, utilizat în implanturi medicale și avioane.",
+        meltingPoint: "1668°C",
+        boilingPoint: "3287°C",
+        atomicMass: "47.867",
+        electronAffinity: "7.6 kJ/mol",
+        electronegativity: "1.54",
+        ionizationEnergy: "658.8 kJ/mol"
+    },
+
+    "V": {
+        name: "Vanadiu",
+        config: "[Ar] 3d³ 4s²",
+        description: "Metal dur folosit în oțeluri speciale și baterii redox.",
+        meltingPoint: "1910°C",
+        boilingPoint: "3407°C",
+        atomicMass: "50.942",
+        electronAffinity: "50.6 kJ/mol",
+        electronegativity: "1.63",
+        ionizationEnergy: "650.9 kJ/mol"
+    },
+
+    "Cr": {
+        name: "Crom",
+        config: "[Ar] 3d⁵ 4s¹", // Configurație excepțională
+        description: "Metal lustruit folosit în cromare și oțeluri inoxidabile.",
+        meltingPoint: "1907°C",
+        boilingPoint: "2671°C",
+        atomicMass: "52.00",
+        electronAffinity: "64.3 kJ/mol",
+        electronegativity: "1.66",
+        ionizationEnergy: "652.9 kJ/mol"
+    },
+
+    "Mn": {
+        name: "Mangan",
+        config: "[Ar] 3d⁵ 4s²",
+        description: "Utilizat în producția de oțel și baterii recarregabile.",
+        meltingPoint: "1246°C",
+        boilingPoint: "2061°C",
+        atomicMass: "54.938",
+        electronAffinity: "-50 kJ/mol",
+        electronegativity: "1.55",
+        ionizationEnergy: "717.3 kJ/mol"
+    },
+
+    "Fe": {
+        name: "Fier",
+        config: "[Ar] 3d⁶ 4s²",
+        description: "Metal fundamental în construcții și hemoglobină.",
+        meltingPoint: "1538°C",
+        boilingPoint: "2862°C",
+        atomicMass: "55.845",
+        electronAffinity: "15.7 kJ/mol",
+        electronegativity: "1.83",
+        ionizationEnergy: "762.5 kJ/mol"
+    },
+
+    "Co": {
+        name: "Cobalt",
+        config: "[Ar] 3d⁷ 4s²",
+        description: "Utilizat în baterii Li-ion și pigmenți albastri.",
+        meltingPoint: "1495°C",
+        boilingPoint: "2927°C",
+        atomicMass: "58.933",
+        electronAffinity: "63.7 kJ/mol",
+        electronegativity: "1.88",
+        ionizationEnergy: "760.4 kJ/mol"
+    },
+
+    "Ni": {
+        name: "Nichel",
+        config: "[Ar] 3d⁸ 4s²",
+        description: "Folosit în aliaje rezistente la coroziune și baterii.",
+        meltingPoint: "1455°C",
+        boilingPoint: "2913°C",
+        atomicMass: "58.693",
+        electronAffinity: "112 kJ/mol",
+        electronegativity: "1.91",
+        ionizationEnergy: "737.1 kJ/mol"
+    },
+
+    "Cu": {
+        name: "Cupru",
+        config: "[Ar] 3d¹⁰ 4s¹", // Configurație excepțională
+        description: "Excelent conductor electric, folosit în cabluri și monede.",
+        meltingPoint: "1085°C",
+        boilingPoint: "2562°C",
+        atomicMass: "63.55",
+        electronAffinity: "118.4 kJ/mol",
+        electronegativity: "1.90",
+        ionizationEnergy: "745.5 kJ/mol"
+    },
+
+    "Zn": {
+        name: "Zinc",
+        config: "[Ar] 3d¹⁰ 4s²",
+        description: "Folosit în galvanizare și ca supliment alimentar.",
+        meltingPoint: "419.5°C",
+        boilingPoint: "907°C",
+        atomicMass: "65.38",
+        electronAffinity: "0 kJ/mol",
+        electronegativity: "1.65",
+        ionizationEnergy: "906.4 kJ/mol"
+    },
+
+    "Ga": {
+        name: "Galiu",
+        config: "[Ar] 3d¹⁰ 4s² 4p¹",
+        description: "Metal care se topește în mână, utilizat în semiconductori.",
+        meltingPoint: "29.76°C",
+        boilingPoint: "2400°C",
+        atomicMass: "69.723",
+        electronAffinity: "28.9 kJ/mol",
+        electronegativity: "1.81",
+        ionizationEnergy: "578.8 kJ/mol"
+    },
+
+    "Ge": {
+        name: "Germaniu",
+        config: "[Ar] 3d¹⁰ 4s² 4p²",
+        description: "Semiconductor folosit în electronica timpurie și fibre optice.",
+        meltingPoint: "938.2°C",
+        boilingPoint: "2833°C",
+        atomicMass: "72.63",
+        electronAffinity: "119 kJ/mol",
+        electronegativity: "2.01",
+        ionizationEnergy: "762 kJ/mol"
+    },
+
+    "As": {
+        name: "Arsen",
+        config: "[Ar] 3d¹⁰ 4s² 4p³",
+        description: "Semimetal toxic folosit istoric în pesticide și sticle.",
+        meltingPoint: "817°C", // Sublimează la 614°C
+        boilingPoint: "614°C (sublimare)",
+        atomicMass: "74.922",
+        electronAffinity: "78 kJ/mol",
+        electronegativity: "2.18",
+        ionizationEnergy: "947.0 kJ/mol"
+    },
+
+    "Se": {
+        name: "Seleniu",
+        config: "[Ar] 3d¹⁰ 4s² 4p⁴",
+        description: "Folosit în celule solare și ca antioxidant în suplimente.",
+        meltingPoint: "221°C",
+        boilingPoint: "685°C",
+        atomicMass: "78.96",
+        electronAffinity: "195 kJ/mol",
+        electronegativity: "2.55",
+        ionizationEnergy: "941.0 kJ/mol"
+    },
+
+    "Br": {
+        name: "Brom",
+        config: "[Ar] 3d¹⁰ 4s² 4p⁵",
+        description: "Lichid roșu-toxic folosit în retardanți de flacără și farmaceutice.",
+        meltingPoint: "-7.2°C",
+        boilingPoint: "58.8°C",
+        atomicMass: "79.90",
+        electronAffinity: "324.6 kJ/mol",
+        electronegativity: "2.96",
+        ionizationEnergy: "1139.9 kJ/mol"
+    },
+
+    "Kr": {
+        name: "Kripton",
+        config: "[Ar] 3d¹⁰ 4s² 4p⁶",
+        description: "Gaz nobil folosit în becuri și lasere.",
+        meltingPoint: "-157.4°C",
+        boilingPoint: "-153.4°C",
+        atomicMass: "83.80",
+        electronAffinity: "0",
+        electronegativity: "3.00",
+        ionizationEnergy: "1350.8 kJ/mol"
+    },
+
+    "Rb": {
+        name: "Rubidiu",
+        config: "[Kr] 5s¹",
+        description: "Metal alcalin reactiv folosit în ceasuri atomice.",
+        meltingPoint: "39.3°C",
+        boilingPoint: "688°C",
+        atomicMass: "85.468",
+        electronAffinity: "46.9 kJ/mol",
+        electronegativity: "0.82",
+        ionizationEnergy: "403.0 kJ/mol"
+    },
+
+    "Sr": {
+        name: "Stronțiu",
+        config: "[Kr] 5s²",
+        description: "Folosit în artificii (culoarea roșie) și tratamente pentru oase.",
+        meltingPoint: "777°C",
+        boilingPoint: "1382°C",
+        atomicMass: "87.62",
+        electronAffinity: "5.03 kJ/mol",
+        electronegativity: "0.95",
+        ionizationEnergy: "549.5 kJ/mol"
+    },
+
+    "Y": {
+        name: "Ytriu",
+        config: "[Kr] 4d¹ 5s²",
+        description: "Metal de tranziție folosit în LED-uri și superconductori.",
+        meltingPoint: "1526°C",
+        boilingPoint: "3345°C",
+        atomicMass: "88.906",
+        electronAffinity: "29.6 kJ/mol",
+        electronegativity: "1.22",
+        ionizationEnergy: "600 kJ/mol"
+    },
+
+    "Zr": {
+        name: "Zirconiu",
+        config: "[Kr] 4d² 5s²",
+        description: "Rezistent la coroziune, folosit în reactoare nucleare și bijuterii.",
+        meltingPoint: "1855°C",
+        boilingPoint: "4409°C",
+        atomicMass: "91.22",
+        electronAffinity: "41.1 kJ/mol",
+        electronegativity: "1.33",
+        ionizationEnergy: "640.1 kJ/mol"
+    },
+      "Nb": {
+        name: "Niobiu",
+        config: "[Kr] 4d⁴ 5s¹",
+        description: "Folosit în aliaje pentru motoare cu reacție și materiale superconductoare.",
+        meltingPoint: "2477°C",
+        boilingPoint: "4744°C",
+        atomicMass: "92.906",
+        electronAffinity: "86.1 kJ/mol",
+        electronegativity: "1.6",
+        ionizationEnergy: "652 kJ/mol"
+    },
+
+    "Mo": {
+        name: "Molibden",
+        config: "[Kr] 4d⁵ 5s¹",
+        description: "Esențial în oțeluri rapide și catalizatori industriali.",
+        meltingPoint: "2623°C",
+        boilingPoint: "4639°C",
+        atomicMass: "95.95",
+        electronAffinity: "72.1 kJ/mol",
+        electronegativity: "2.16",
+        ionizationEnergy: "684.3 kJ/mol"
+    },
+
+    "Tc": {
+        name: "Tehnețiu",
+        config: "[Kr] 4d⁶ 5s¹",
+        description: "Primul element sintetic, utilizat în medicină nucleară.",
+        meltingPoint: "2157°C",
+        boilingPoint: "4265°C",
+        atomicMass: "[98]",
+        electronAffinity: "53 kJ/mol",
+        electronegativity: "1.9",
+        ionizationEnergy: "702 kJ/mol"
+    },
+
+    "Ru": {
+        name: "Ruteniu",
+        config: "[Kr] 4d⁷ 5s¹",
+        description: "Folosit în convertoare catalitice și contacte electrice.",
+        meltingPoint: "2334°C",
+        boilingPoint: "4150°C",
+        atomicMass: "101.07",
+        electronAffinity: "100.96 kJ/mol",
+        electronegativity: "2.2",
+        ionizationEnergy: "710.2 kJ/mol"
+    },
+
+    "Rh": {
+        name: "Rodiu",
+        config: "[Kr] 4d⁸ 5s¹",
+        description: "Cel mai rar metal nobil, utilizat în catalizatori auto.",
+        meltingPoint: "1964°C",
+        boilingPoint: "3695°C",
+        atomicMass: "102.91",
+        electronAffinity: "110.27 kJ/mol",
+        electronegativity: "2.28",
+        ionizationEnergy: "719.7 kJ/mol"
+    },
+
+    "Pd": {
+        name: "Paladiu",
+        config: "[Kr] 4d¹⁰",
+        description: "Folosit în catalizatori și bijuterii hipoalergenice.",
+        meltingPoint: "1554.9°C",
+        boilingPoint: "2963°C",
+        atomicMass: "106.42",
+        electronAffinity: "54.24 kJ/mol",
+        electronegativity: "2.20",
+        ionizationEnergy: "804.4 kJ/mol"
+    },
+    "Ag": {
+        name: "Argint",
+        config: "[Kr] 4d¹⁰ 5s¹",
+        description: "Metal prețios utilizat în bijuterii și electronice.",
+        meltingPoint: "961.78°C",
+        boilingPoint: "2162°C",
+        atomicMass: "107.87",
+        electronAffinity: "125.6 kJ/mol",
+        electronegativity: "1.93",
+        ionizationEnergy: "731.0 kJ/mol"
+    },
+    "Cd": {
+        name: "Cadmiu",
+        config: "[Kr] 4d¹⁰ 5s²",
+        description: "Utilizat în baterii și acoperiri anticorozive, toxic pentru mediu.",
+        meltingPoint: "321.1°C",
+        boilingPoint: "767°C",
+        atomicMass: "112.41",
+        electronAffinity: "0 kJ/mol",
+        electronegativity: "1.69",
+        ionizationEnergy: "867.8 kJ/mol"
+    },
+    "In": {
+        name: "Indiu",
+        config: "[Kr] 4d¹⁰ 5s² 5p¹",
+        description: "Folosit în ecrane LCD și aliaje cu punct de topire scăzut.",
+        meltingPoint: "156.6°C",
+        boilingPoint: "2072°C",
+        atomicMass: "114.82",
+        electronAffinity: "28.9 kJ/mol",
+        electronegativity: "1.78",
+        ionizationEnergy: "558.3 kJ/mol"
+    },
+    "Sn": {
+        name: "Staniu",
+        config: "[Kr] 4d¹⁰ 5s² 5p²",
+        description: "Utilizat în aliaje, acoperiri anticorozive și circuite electronice.",
+        meltingPoint: "231.9°C",
+        boilingPoint: "2602°C",
+        atomicMass: "118.71",
+        electronAffinity: "107.3 kJ/mol",
+        electronegativity: "1.96",
+        ionizationEnergy: "708.6 kJ/mol"
+    },
+    "Sb": {
+        name: "Stibiu",
+        config: "[Kr] 4d¹⁰ 5s² 5p³",
+        description: "Folosit în semiconductorii din dispozitivele optoelectronice.",
+        meltingPoint: "630.6°C",
+        boilingPoint: "1587°C",
+        atomicMass: "121.76",
+        electronAffinity: "103.2 kJ/mol",
+        electronegativity: "2.05",
+        ionizationEnergy: "834.0 kJ/mol"
+    },
+    "Te": {
+        name: "Telur",
+        config: "[Kr] 4d¹⁰ 5s² 5p⁴",
+        description: "Utilizat în aliaje și celule solare.",
+        meltingPoint: "449.5°C",
+        boilingPoint: "988°C",
+        atomicMass: "127.60",
+        electronAffinity: "190.2 kJ/mol",
+        electronegativity: "2.1",
+        ionizationEnergy: "869.3 kJ/mol"
+    },
+    "I": {
+        name: "Iod",
+        config: "[Kr] 4d¹⁰ 5s² 5p⁵",
+        description: "Esențial pentru glanda tiroidă, folosit în dezinfectanți.",
+        meltingPoint: "113.7°C",
+        boilingPoint: "184.3°C",
+        atomicMass: "126.90",
+        electronAffinity: "295.2 kJ/mol",
+        electronegativity: "2.66",
+        ionizationEnergy: "1008.4 kJ/mol"
+    },
+    "Xe": {
+        name: "Xenon",
+        config: "[Kr] 4d¹⁰ 5s² 5p⁶",
+        description: "Gaz nobil utilizat în lămpi flash și lasere.",
+        meltingPoint: "-111.8°C",
+        boilingPoint: "-108.1°C",
+        atomicMass: "131.29",
+        electronAffinity: "0 kJ/mol",
+        electronegativity: "2.6",
+        ionizationEnergy: "1170.4 kJ/mol"
+    },
+    "Cs": {
+        name: "Cesiu",
+        config: "[Xe] 6s¹",
+        description: "Metal alcalin foarte reactiv, utilizat în ceasuri atomice.",
+        meltingPoint: "28.5°C",
+        boilingPoint: "671°C",
+        atomicMass: "132.91",
+        electronAffinity: "45.5 kJ/mol",
+        electronegativity: "0.79",
+        ionizationEnergy: "375.7 kJ/mol"
+    },
+    "Ba": {
+        name: "Bariu",
+        config: "[Xe] 6s²",
+        description: "Utilizat în radiografii și artificii.",
+        meltingPoint: "727°C",
+        boilingPoint: "1870°C",
+        atomicMass: "137.33",
+        electronAffinity: "13.95 kJ/mol",
+        electronegativity: "0.89",
+        ionizationEnergy: "502.9 kJ/mol"
+    },
+    "La": {
+        name: "Lantan",
+        config: "[Xe] 5d¹ 6s²",
+        description: "Folosit în catalizatori și iluminat.",
+        meltingPoint: "920°C",
+        boilingPoint: "3464°C",
+        atomicMass: "138.91",
+        electronAffinity: "53 kJ/mol",
+        electronegativity: "1.10",
+        ionizationEnergy: "538.1 kJ/mol"
+    },
+    "Ce": {
+        name: "Ceriu",
+        config: "[Xe] 4f¹ 5d¹ 6s²",
+        description: "Utilizat în sticlă auto-curățabilă și aliaje speciale.",
+        meltingPoint: "795°C",
+        boilingPoint: "3443°C",
+        atomicMass: "140.12",
+        electronAffinity: "50 kJ/mol",
+        electronegativity: "1.12",
+        ionizationEnergy: "534.4 kJ/mol"
+    },
+    "Pr": {
+        name: "Praseodim",
+        config: "[Xe] 4f³ 6s²",
+        description: "Folosit în lasere și magneți puternici.",
+        meltingPoint: "935°C",
+        boilingPoint: "3520°C",
+        atomicMass: "140.91",
+        electronAffinity: "93 kJ/mol",
+        electronegativity: "1.13",
+        ionizationEnergy: "527 kJ/mol"
+    },
+    "Nd": {
+        name: "Neodim",
+        config: "[Xe] 4f⁴ 6s²",
+        description: "Componentă esențială a magneților puternici.",
+        meltingPoint: "1024°C",
+        boilingPoint: "3074°C",
+        atomicMass: "144.24",
+        electronAffinity: "184.87 kJ/mol",
+        electronegativity: "1.14",
+        ionizationEnergy: "533.1 kJ/mol"
+    },
+    "Pm": {
+        name: "Prometiu",
+        config: "[Xe] 4f⁵ 6s²",
+        description: "Element radioactiv utilizat în vopsele luminescente.",
+        meltingPoint: "1042°C",
+        boilingPoint: "3000°C",
+        atomicMass: "145",
+        electronAffinity: "93 kJ/mol",
+        electronegativity: "1.13",
+        ionizationEnergy: "540 kJ/mol"
+    },
+    "Sm": {
+        name: "Samariu",
+        config: "[Xe] 4f⁶ 6s²",
+        description: "Utilizat în magneți și reactoare nucleare.",
+        meltingPoint: "1072°C",
+        boilingPoint: "1900°C",
+        atomicMass: "150.36",
+        electronAffinity: "15.63 kJ/mol",
+        electronegativity: "1.17",
+        ionizationEnergy: "544.5 kJ/mol"
+    },
+    "Eu": {
+        name: "Europiu",
+        config: "[Xe] 4f⁷ 6s²",
+        description: "Folosit în ecrane și lămpi fluorescente.",
+        meltingPoint: "822°C",
+        boilingPoint: "1529°C",
+        atomicMass: "151.96",
+        electronAffinity: "11.2 kJ/mol",
+        electronegativity: "1.2",
+        ionizationEnergy: "547.1 kJ/mol"
+    },
+    "Gd": {
+        name: "Gadoliniu",
+        config: "[Xe] 4f⁷ 5d¹ 6s²",
+        description: "Utilizat în imagistica prin rezonanță magnetică.",
+        meltingPoint: "1312°C",
+        boilingPoint: "3273°C",
+        atomicMass: "157.25",
+        electronAffinity: "13.22 kJ/mol",
+        electronegativity: "1.2",
+        ionizationEnergy: "593.4 kJ/mol"
+    },
+    "Tb": {
+        name: "Terbiu",
+        config: "[Xe] 4f⁹ 6s²",
+        description: "Utilizat în ecrane LCD și aliaje magnetostrictive.",
+        meltingPoint: "1356°C",
+        boilingPoint: "3230°C",
+        atomicMass: "158.93",
+        electronAffinity: "112.4 kJ/mol",
+        electronegativity: "1.2",
+        ionizationEnergy: "565.8 kJ/mol"
+    },
+    "Dy": {
+        name: "Disprosiu",
+        config: "[Xe] 4f¹⁰ 6s²",
+        description: "Folosit în magneți și reactoare nucleare.",
+        meltingPoint: "1407°C",
+        boilingPoint: "2567°C",
+        atomicMass: "162.50",
+        electronAffinity: "33.96 kJ/mol",
+        electronegativity: "1.22",
+        ionizationEnergy: "573 kJ/mol"
+    },
+    "Ho": {
+        name: "Holmiu",
+        config: "[Xe] 4f¹¹ 6s²",
+        description: "Utilizat în magneți și lasere.",
+        meltingPoint: "1461°C",
+        boilingPoint: "2720°C",
+        atomicMass: "164.93",
+        electronAffinity: "32.61 kJ/mol",
+        electronegativity: "1.23",
+        ionizationEnergy: "581 kJ/mol"
+    },
+    "Er": {
+        name: "Erbiu",
+        config: "[Xe] 4f¹² 6s²",
+        description: "Folosit în cabluri de fibră optică.",
+        meltingPoint: "1529°C",
+        boilingPoint: "2868°C",
+        atomicMass: "167.26",
+        electronAffinity: "30.1 kJ/mol",
+        electronegativity: "1.24",
+        ionizationEnergy: "589.3 kJ/mol"
+    },
+    "Tm": {
+        name: "Tuliu",
+        config: "[Xe] 4f¹³ 6s²",
+        description: "Utilizat în surse de radiație pentru dispozitive medicale.",
+        meltingPoint: "1545°C",
+        boilingPoint: "1950°C",
+        atomicMass: "168.93",
+        electronAffinity: "99 kJ/mol",
+        electronegativity: "1.25",
+        ionizationEnergy: "596.7 kJ/mol"
+    },
+    "Yb": {
+        name: "Yterbiu",
+        config: "[Xe] 4f¹⁴ 6s²",
+        description: "Folosit în lasere și ceasuri atomice.",
+        meltingPoint: "824°C",
+        boilingPoint: "1196°C",
+        atomicMass: "173.05",
+        electronAffinity: "0 kJ/mol",
+        electronegativity: "1.1",
+        ionizationEnergy: "603.4 kJ/mol"
+    },
+    "Lu": {
+        name: "Lutețiu",
+        config: "[Xe] 4f¹⁴ 5d¹ 6s²",
+        description: "Utilizat în tomografia cu emisie de pozitroni.",
+        meltingPoint: "1652°C",
+        boilingPoint: "3402°C",
+        atomicMass: "174.97",
+        electronAffinity: "33.4 kJ/mol",
+        electronegativity: "1.27",
+        ionizationEnergy: "523.5 kJ/mol"
+    },
+    "Hf": {
+        name: "Hafniu",
+        config: "[Xe] 4f¹⁴ 5d² 6s²",
+        description: "Folosit în reactoare nucleare și cipuri electronice.",
+        meltingPoint: "2233°C",
+        boilingPoint: "4603°C",
+        atomicMass: "178.49",
+        electronAffinity: "0 kJ/mol",
+        electronegativity: "1.3",
+        ionizationEnergy: "658.5 kJ/mol"
+    },
+    "Ta": {
+        name: "Tantal",
+        config: "[Xe] 4f¹⁴ 5d³ 6s²",
+        description: "Utilizat în condensatori și echipamente medicale.",
+        meltingPoint: "3017°C",
+        boilingPoint: "5458°C",
+        atomicMass: "180.95",
+        electronAffinity: "31 kJ/mol",
+        electronegativity: "1.5",
+        ionizationEnergy: "761 kJ/mol"
+    },
+    "W": {
+        name: "Wolfram",
+        config: "[Xe] 4f¹⁴ 5d⁴ 6s²",
+        description: "Metal cu punct de topire ridicat, utilizat în filamente și unelte.",
+        meltingPoint: "3422°C",
+        boilingPoint: "5930°C",
+        atomicMass: "183.84",
+        electronAffinity: "78.6 kJ/mol",
+        electronegativity: "2.36",
+        ionizationEnergy: "770 kJ/mol"
+    },
+    "Re": {
+        name: "Reniu",
+        config: "[Xe] 4f¹⁴ 5d⁵ 6s²",
+        description: "Utilizat în turbine de avioane și catalizatori.",
+        meltingPoint: "3186°C",
+        boilingPoint: "5596°C",
+        atomicMass: "186.21",
+        electronAffinity: "14.5 kJ/mol",
+        electronegativity: "1.9",
+        ionizationEnergy: "760 kJ/mol"
+    },
+    "Os": {
+        name: "Osmiu",
+        config: "[Xe] 4f¹⁴ 5d⁶ 6s²",
+        description: "Cel mai dens metal, utilizat în aliaje dure.",
+        meltingPoint: "3033°C",
+        boilingPoint: "5012°C",
+        atomicMass: "190.23",
+        electronAffinity: "106.1 kJ/mol",
+        electronegativity: "2.2",
+        ionizationEnergy: "840 kJ/mol"
+    },
+    "Ir": {
+        name: "Iridiu",
+        config: "[Xe] 4f¹⁴ 5d⁷ 6s²",
+        description: "Rezistent la coroziune, utilizat în echipamente electrice.",
+        meltingPoint: "2466°C",
+        boilingPoint: "4428°C",
+        atomicMass: "192.22",
+        electronAffinity: "151 kJ/mol",
+        electronegativity: "2.2",
+        ionizationEnergy: "880 kJ/mol"
+    },
+    "Pt": {
+        name: "Platină",
+        config: "[Xe] 4f¹⁴ 5d⁹ 6s¹",
+        description: "Metal prețios utilizat în catalizatori și bijuterii.",
+        meltingPoint: "1768.3°C",
+        boilingPoint: "3825°C",
+        atomicMass: "195.08",
+        electronAffinity: "205.3 kJ/mol",
+        electronegativity: "2.28",
+        ionizationEnergy: "870 kJ/mol"
+    },
+    "Au": {
+        name: "Aur",
+        config: "[Xe] 4f¹⁴ 5d¹⁰ 6s¹",
+        description: "Metal prețios utilizat în bijuterii și electronice.",
+        meltingPoint: "1064.2°C",
+        boilingPoint: "2970°C",
+        atomicMass: "196.97",
+        electronAffinity: "222.8 kJ/mol",
+        electronegativity: "2.54",
+        ionizationEnergy: "890 kJ/mol"
+    },
+    "Hg": {
+        name: "Mercur",
+        config: "[Xe] 4f¹⁴ 5d¹⁰ 6s²",
+        description: "Singurul metal lichid la temperatura camerei, utilizat în termometre.",
+        meltingPoint: "-38.8°C",
+        boilingPoint: "356.7°C",
+        atomicMass: "200.59",
+        electronAffinity: "0 kJ/mol",
+        electronegativity: "2.00",
+        ionizationEnergy: "1007 kJ/mol"
+    },
+    "Tl": {
+        name: "Taliu",
+        config: "[Xe] 4f¹⁴ 5d¹⁰ 6s² 6p¹",
+        description: "Toxic, utilizat în semiconductori și optoelectronică.",
+        meltingPoint: "304°C",
+        boilingPoint: "1473°C",
+        atomicMass: "204.38",
+        electronAffinity: "19.2 kJ/mol",
+        electronegativity: "1.62",
+        ionizationEnergy: "589.4 kJ/mol"
+    },
+    "Pb": {
+        name: "Plumb",
+        config: "[Xe] 4f¹⁴ 5d¹⁰ 6s² 6p²",
+        description: "Utilizat în protecția împotriva radiațiilor și baterii.",
+        meltingPoint: "327.5°C",
+        boilingPoint: "1749°C",
+        atomicMass: "207.2",
+        electronAffinity: "35.1 kJ/mol",
+        electronegativity: "2.33",
+        ionizationEnergy: "715.6 kJ/mol"
+    },
+    "Bi": {
+        name: "Bismut",
+        config: "[Xe] 4f¹⁴ 5d¹⁰ 6s² 6p³",
+        description: "Metal utilizat în medicamente și aliaje cu punct de topire scăzut.",
+        meltingPoint: "271.4°C",
+        boilingPoint: "1564°C",
+        atomicMass: "208.98",
+        electronAffinity: "91.2 kJ/mol",
+        electronegativity: "2.02",
+        ionizationEnergy: "703 kJ/mol"
+    },
+    "Po": {
+        name: "Poloniu",
+        config: "[Xe] 4f¹⁴ 5d¹⁰ 6s² 6p⁴",
+        description: "Element radioactiv, utilizat în surse de energie termoelectrică.",
+        meltingPoint: "254°C",
+        boilingPoint: "962°C",
+        atomicMass: "209",
+        electronAffinity: "183.3 kJ/mol",
+        electronegativity: "2.0",
+        ionizationEnergy: "812.1 kJ/mol"
+    },
+    "At": {
+        name: "Astatin",
+        config: "[Xe] 4f¹⁴ 5d¹⁰ 6s² 6p⁵",
+        description: "Element rar, utilizat în cercetare medicală.",
+        meltingPoint: "302°C",
+        boilingPoint: "337°C",
+        atomicMass: "210",
+        electronAffinity: "270.1 kJ/mol",
+        electronegativity: "2.2",
+        ionizationEnergy: "899.0 kJ/mol"
+    },
+    "Rn": {
+        name: "Radon",
+        config: "[Xe] 4f¹⁴ 5d¹⁰ 6s² 6p⁶",
+        description: "Gaz radioactiv, rezultat din dezintegrarea uraniului.",
+        meltingPoint: "-71°C",
+        boilingPoint: "-61.7°C",
+        atomicMass: "222",
+        electronAffinity: "0 kJ/mol",
+        electronegativity: "N/A",
+        ionizationEnergy: "1037 kJ/mol"
+    },
+    "Fr": {
+        name: "Franciu",
+        config: "[Rn] 7s¹",
+        description: "Element foarte rar, extrem de radioactiv.",
+        meltingPoint: "27°C",
+        boilingPoint: "677°C",
+        atomicMass: "223",
+        electronAffinity: "46.9 kJ/mol",
+        electronegativity: "0.7",
+        ionizationEnergy: "380 kJ/mol"
+    },
+    "Ra": {
+        name: "Radiu",
+        config: "[Rn] 7s²",
+        description: "Utilizat istoric în tratamente medicale, puternic radioactiv.",
+        meltingPoint: "700°C",
+        boilingPoint: "1737°C",
+        atomicMass: "226",
+        electronAffinity: "9.3 kJ/mol",
+        electronegativity: "0.9",
+        ionizationEnergy: "509.3 kJ/mol"
+    },
+    "Ac": {
+        name: "Actiniu",
+        config: "[Rn] 6d¹ 7s²",
+        description: "Utilizat în terapii pentru tratarea cancerului.",
+        meltingPoint: "1050°C",
+        boilingPoint: "3200°C",
+        atomicMass: "227",
+        electronAffinity: "33.8 kJ/mol",
+        electronegativity: "1.1",
+        ionizationEnergy: "499 kJ/mol"
+    },
+    "Th": {
+        name: "Toriu",
+        config: "[Rn] 6d² 7s²",
+        description: "Utilizat ca combustibil nuclear alternativ.",
+        meltingPoint: "1750°C",
+        boilingPoint: "4788°C",
+        atomicMass: "232.04",
+        electronAffinity: "112.72 kJ/mol",
+        electronegativity: "1.3",
+        ionizationEnergy: "587 kJ/mol"
+    },
+    "Pa": {
+        name: "Protactiniu",
+        config: "[Rn] 5f² 6d¹ 7s²",
+        description: "Un element foarte rar, utilizat în cercetarea nucleară.",
+        meltingPoint: "1568°C",
+        boilingPoint: "4027°C",
+        atomicMass: "231.04",
+        electronAffinity: "53.03 kJ/mol",
+        electronegativity: "1.5",
+        ionizationEnergy: "568 kJ/mol"
+    },
+    "U": {
+        name: "Uraniu",
+        config: "[Rn] 5f³ 6d¹ 7s²",
+        description: "Element radioactiv utilizat în reactoare nucleare și arme.",
+        meltingPoint: "1135°C",
+        boilingPoint: "4131°C",
+        atomicMass: "238.03",
+        electronAffinity: "50.94 kJ/mol",
+        electronegativity: "1.38",
+        ionizationEnergy: "597.6 kJ/mol"
+    },
+    "Np": {
+        name: "Neptuniu",
+        config: "[Rn] 5f⁴ 6d¹ 7s²",
+        description: "Element sintetic utilizat în cercetare nucleară.",
+        meltingPoint: "644°C",
+        boilingPoint: "3902°C",
+        atomicMass: "237",
+        electronAffinity: "48 kJ/mol",
+        electronegativity: "1.36",
+        ionizationEnergy: "604.5 kJ/mol"
+    },
+    "Pu": {
+        name: "Plutoniu",
+        config: "[Rn] 5f⁶ 7s²",
+        description: "Utilizat în reactoare nucleare și armament.",
+        meltingPoint: "639.4°C",
+        boilingPoint: "3228°C",
+        atomicMass: "244",
+        electronAffinity: "48.6 kJ/mol",
+    },
+   
+    "Am": {
+        name: "Americiu",
+        config: "[Rn] 5f⁷ 7s²",
+        description: "Folosit în detectoare de fum și în surse de neutroni.",
+        meltingPoint: "1176°C",
+        boilingPoint: "2607°C",
+        atomicMass: "243"
+    },
+    "Am": {
+        name: "Americiu",
+        config: "[Rn] 5f⁷ 7s²",
+        description: "Folosit în detectoare de fum și în surse de neutroni.",
+        meltingPoint: "1176°C",
+        boilingPoint: "2607°C",
+        atomicMass: "243",
+        electronAffinity: "9.93 kJ/mol",
+        electronegativity: "1.3",
+        ionizationEnergy: "578 kJ/mol"
+    },
+    "Cm": {
+        name: "Curiu",
+        config: "[Rn] 5f⁷ 6d¹ 7s²",
+        description: "Element radioactiv utilizat în generatoare termoelectrice.",
+        meltingPoint: "1340°C",
+        boilingPoint: "3110°C",
+        atomicMass: "247",
+        electronAffinity: "27.17 kJ/mol",
+        electronegativity: "1.3",
+        ionizationEnergy: "581 kJ/mol"
+    },
+    "Bk": {
+        name: "Berkeliu",
+        config: "[Rn] 5f⁹ 7s²",
+        description: "Folosit în cercetare nucleară și sinteza elementelor super-grele.",
+        meltingPoint: "986°C",
+        boilingPoint: "N/A",
+        atomicMass: "247",
+        electronAffinity: "N/A",
+        electronegativity: "1.3",
+        ionizationEnergy: "601 kJ/mol"
+    },
+    "Cf": {
+        name: "Californiu",
+        config: "[Rn] 5f¹⁰ 7s²",
+        description: "Utilizat în surse de neutroni pentru detecția minereurilor.",
+        meltingPoint: "900°C",
+        boilingPoint: "N/A",
+        atomicMass: "251",
+        electronAffinity: "N/A",
+        electronegativity: "1.3",
+        ionizationEnergy: "608 kJ/mol"
+    },
+    "Es": {
+        name: "Einsteiniu",
+        config: "[Rn] 5f¹¹ 7s²",
+        description: "Element sintetic rar, folosit doar în cercetare.",
+        meltingPoint: "860°C",
+        boilingPoint: "N/A",
+        atomicMass: "252",
+        electronAffinity: "N/A",
+        electronegativity: "1.3",
+        ionizationEnergy: "619 kJ/mol"
+    },
+    "Fm": {
+        name: "Fermiu",
+        config: "[Rn] 5f¹² 7s²",
+        description: "Obținut în explozii termonucleare, utilizat în studii științifice.",
+        meltingPoint: "1527°C",
+        boilingPoint: "N/A",
+        atomicMass: "257",
+        electronAffinity: "N/A",
+        electronegativity: "1.3",
+        ionizationEnergy: "627 kJ/mol"
+    },
+    "Md": {
+        name: "Mendeleviu",
+        config: "[Rn] 5f¹³ 7s²",
+        description: "Element sintetic, folosit în cercetarea fizicii nucleare.",
+        meltingPoint: "827°C",
+        boilingPoint: "N/A",
+        atomicMass: "258",
+        electronAffinity: "N/A",
+        electronegativity: "1.3",
+        ionizationEnergy: "635 kJ/mol"
+    },
+    "No": {
+        name: "Nobeliu",
+        config: "[Rn] 5f¹⁴ 7s²",
+        description: "Utilizat doar în studii de laborator despre actinide.",
+        meltingPoint: "827°C",
+        boilingPoint: "N/A",
+        atomicMass: "259",
+        electronAffinity: "N/A",
+        electronegativity: "1.3",
+        ionizationEnergy: "642 kJ/mol"
+    },
+    "Lr": {
+        name: "Lawrenciu",
+        config: "[Rn] 5f¹⁴ 7s² 7p¹",
+        description: "Element super-greu, utilizat doar în cercetare.",
+        meltingPoint: "1627°C",
+        boilingPoint: "N/A",
+        atomicMass: "262",
+        electronAffinity: "N/A",
+        electronegativity: "1.3",
+        ionizationEnergy: "470 kJ/mol"
+    },
+    "Rf": {
+        name: "Rutherfordiu",
+        config: "[Rn] 5f¹⁴ 6d² 7s²",
+        description: "Element instabil, creat artificial pentru studii nucleare.",
+        meltingPoint: "2100°C",
+        boilingPoint: "N/A",
+        atomicMass: "267",
+        electronAffinity: "N/A",
+        electronegativity: "N/A",
+        ionizationEnergy: "580 kJ/mol"
+    },
+    "Db": {
+        name: "Dubniu",
+        config: "[Rn] 5f¹⁴ 6d³ 7s²",
+        description: "Element sintetic, instabil, folosit doar în experimente.",
+        meltingPoint: "N/A",
+        boilingPoint: "N/A",
+        atomicMass: "268",
+        electronAffinity: "N/A",
+        electronegativity: "N/A",
+        ionizationEnergy: "664 kJ/mol"
+    },
+    "Sg": {
+        name: "Seaborgiu",
+        config: "[Rn] 5f¹⁴ 6d⁴ 7s²",
+        description: "Element transuranian instabil, folosit în cercetare.",
+        meltingPoint: "N/A",
+        boilingPoint: "N/A",
+        atomicMass: "271",
+        electronAffinity: "N/A",
+        electronegativity: "N/A",
+        ionizationEnergy: "757 kJ/mol"
+    },
+    "Bh": {
+        name: "Bohriu",
+        config: "[Rn] 5f¹⁴ 6d⁵ 7s²",
+        description: "Element extrem de radioactiv, descoperit în anii 1970.",
+        meltingPoint: "N/A",
+        boilingPoint: "N/A",
+        atomicMass: "270",
+        electronAffinity: "N/A",
+        electronegativity: "N/A",
+        ionizationEnergy: "742 kJ/mol"
+    },
+    "Hs": {
+        name: "Hassiu",
+        config: "[Rn] 5f¹⁴ 6d⁶ 7s²",
+        description: "Element greu instabil, folosit doar în cercetare.",
+        meltingPoint: "N/A",
+        boilingPoint: "N/A",
+        atomicMass: "269",
+        electronAffinity: "N/A",
+        electronegativity: "N/A",
+        ionizationEnergy: "733 kJ/mol"
+    },
+    "Mt": {
+        name: "Meitneriu",
+        config: "[Rn] 5f¹⁴ 6d⁷ 7s²",
+        description: "Element super-greu, cu existență de scurtă durată.",
+        meltingPoint: "N/A",
+        boilingPoint: "N/A",
+        atomicMass: "278",
+        electronAffinity: "N/A",
+        electronegativity: "N/A",
+        ionizationEnergy: "800 kJ/mol"
+    },
+    "Ds": {
+        name: "Darmstadtiu",
+        config: "[Rn] 5f¹⁴ 6d⁸ 7s²",
+        description: "Element artificial, cu utilizări limitate în cercetare.",
+        meltingPoint: "N/A",
+        boilingPoint: "N/A",
+        atomicMass: "281",
+        electronAffinity: "N/A",
+        electronegativity: "N/A",
+        ionizationEnergy: "760 kJ/mol"
+    },
+    "Rg": {
+        name: "Roentgeniu",
+        config: "[Rn] 5f¹⁴ 6d⁹ 7s²",
+        description: "Element super-greu, foarte instabil.",
+        meltingPoint: "N/A",
+        boilingPoint: "N/A",
+        atomicMass: "282",
+        electronAffinity: "N/A",
+        electronegativity: "N/A",
+        ionizationEnergy: "1020 kJ/mol"
+    },
+    "Cn": {
+        name: "Coperniciu",
+        config: "[Rn] 5f¹⁴ 6d¹⁰ 7s²",
+        description: "Element sintetic cu o viață foarte scurtă.",
+        meltingPoint: "N/A",
+        boilingPoint: "N/A",
+        atomicMass: "285",
+        electronAffinity: "N/A",
+        electronegativity: "N/A",
+        ionizationEnergy: "1150 kJ/mol"
+    },
+    "Nh": {
+        name: "Nihoniu",
+        config: "[Rn] 5f¹⁴ 6d¹⁰ 7s² 7p¹",
+        description: "Element sintetic descoperit de cercetători japonezi.",
+        meltingPoint: "N/A",
+        boilingPoint: "N/A",
+        atomicMass: "286",
+        electronAffinity: "N/A",
+        electronegativity: "N/A",
+        ionizationEnergy: "1130 kJ/mol"
+    },
+    "Fl": {
+        name: "Fleroviu",
+        config: "[Rn] 5f¹⁴ 6d¹⁰ 7s² 7p²",
+        description: "Element greu, creat artificial pentru studii nucleare.",
+        meltingPoint: "N/A",
+        boilingPoint: "N/A",
+        atomicMass: "289",
+        electronAffinity: "N/A",
+        electronegativity: "N/A",
+        ionizationEnergy: "1080 kJ/mol"
+    },
+    "Mc": {
+        name: "Moscoviu",
+        config: "[Rn] 5f¹⁴ 6d¹⁰ 7s² 7p³",
+        description: "Element radioactiv artificial, descoperit în Rusia.",
+        meltingPoint: "N/A",
+        boilingPoint: "N/A",
+        atomicMass: "290",
+        electronAffinity: "N/A",
+        electronegativity: "N/A",
+        ionizationEnergy: "1050 kJ/mol"
+    },
+    "Lv": {
+        name: "Livermoriu",
+        config: "[Rn] 5f¹⁴ 6d¹⁰ 7s² 7p⁴",
+        description: "Element sintetic foarte instabil, utilizat în cercetare.",
+        meltingPoint: "N/A",
+        boilingPoint: "N/A",
+        atomicMass: "293",
+        electronAffinity: "N/A",
+        electronegativity: "N/A",
+        ionizationEnergy: "1030 kJ/mol"
+    },
+    "Ts": {
+        name: "Tennessin",
+        config: "[Rn] 5f¹⁴ 6d¹⁰ 7s² 7p⁵",
+        description: "Element radioactiv creat artificial.",
+        meltingPoint: "N/A",
+        boilingPoint: "N/A",
+        atomicMass: "294",
+        electronAffinity: "N/A",
+        electronegativity: "N/A",
+        ionizationEnergy: "1020 kJ/mol"
+    },
+    "Og": {
+        name: "Oganesson",
+        config: "[Rn] 5f¹⁴ 6d¹⁰ 7s² 7p⁶",
+        description: "Cel mai greu element cunoscut, foarte instabil.",
+        meltingPoint: "N/A",
+        boilingPoint: "N/A",
+        atomicMass: "294",
+        electronAffinity: "N/A",
+        electronegativity: "N/A",
+        ionizationEnergy: "920 kJ/mol"
+    }
                 };
 
                 document.addEventListener("mousemove", function (event) {
@@ -898,115 +2163,211 @@ menu.insertBefore(closeButton, menu.firstChild);
                 title.id = 'element-title';
                 menu.appendChild(title);
 
-               
-                const imgElement = document.createElement('img');
-                imgElement.id = 'element-image';
-                imgElement.style.display = 'center'; 
-                imgElement.style.maxWidth = '220px'; 
-                imgElement.style.maxHeight = '220px';
-                imgElement.style.marginTop = '0';
+              
+    const name = document.createElement('h2');
+    title.id = 'element-title';
+    menu.appendChild(title);
 
-                
-                menu.appendChild(imgElement);
+    
+    const imgElement = document.createElement('img');
+    imgElement.id = 'element-image';
+    imgElement.style.display = 'center';
+    imgElement.style.maxWidth = '220px';
+    imgElement.style.maxHeight = '220px';
+    imgElement.style.marginTop = '0';
+    menu.appendChild(imgElement);
 
+    const description = document.createElement('p');
+    description.id = 'element-description';
+    description.style.marginTop = '10px';
+    menu.appendChild(description);
 
-                const description = document.createElement('p');
-                description.id = 'element-description';
-                description.style.marginTop = '10px';
-                menu.appendChild(description);
+    const config = document.createElement('p');
+    config.id = 'element-config';
+    config.style.marginTop = '10px';
+    config.style.display = 'block';
+    config.style.textAlign = 'center';
+    config.style.marginTop = '10px';
+    menu.appendChild(config);
 
-                const config = document.createElement('p');
-                config.id = 'element-config ';
-                config.style.marginTop = '10px';
-                config.style.display = 'block';
-                config.style.textAlign = 'center';
-                config.style.marginTop = '10px';
+    const meltingPoint = document.createElement('p');
+    meltingPoint.id = 'element-melting-point';
+    meltingPoint.style.marginTop = '10px';
+    menu.appendChild(meltingPoint);
 
+    const boilingPoint = document.createElement('p');
+    boilingPoint.id = 'element-boiling-point';
+    boilingPoint.style.marginTop = '10px';
+    menu.appendChild(boilingPoint);
 
+    const atomicMass = document.createElement('p');
+    atomicMass.id = 'element-atomic-mass';
+    atomicMass.style.marginTop = '10px';
+    menu.appendChild(atomicMass);
 
-                menu.appendChild(config);
+    const electronAffinity = document.createElement('p');
+    electronAffinity.id = 'element-electron-affinity';
+    electronAffinity.style.marginTop = '10px';
+    menu.appendChild(electronAffinity);
 
+    const electronegativity = document.createElement('p');
+    electronegativity.id = 'element-electronegativity';
+    electronegativity.style.marginTop = '10px';
+    menu.appendChild(electronegativity);
 
-                let activeElement = null;
+    const ionizationEnergy = document.createElement('p');
+    ionizationEnergy.id = 'element-ionization-energy';
+    ionizationEnergy.style.marginTop = '10px';
+    menu.appendChild(ionizationEnergy);
 
-                function handleElementClick(event) {
+    let activeElement = null;
 
+    function handleElementClick(event) {
+        const el = event.target.closest('.element');
+        if (!el) return;
 
+        let fullText = el.textContent.trim();
+        let symbol = fullText.match(/^[A-Z][a-z]?/);
+        if (!symbol) return;
+        symbol = symbol[0];
 
-                    const el = event.target.closest('.element');
-                    if (!el) return;
+        if (activeElement === symbol) {
+            menu.style.display = 'none';
+            activeElement = null;
+            table.style.transform = "translateX(0)";
+        } else {
+            if (elementsInfo[symbol]) {
+                title.textContent = elementsInfo[symbol].name;
+                description.textContent = elementsInfo[symbol].description;
+                config.textContent = "Configurație electronică: " + elementsInfo[symbol].config;
 
-                    let fullText = el.textContent.trim();
-                    let symbol = fullText.match(/^[A-Z][a-z]?/);
-                    if (!symbol) return;
-                    symbol = symbol[0];
+                // Punct de topire
+                const meltingPointLabel = document.createElement('span');
+                meltingPointLabel.textContent = "Punct de topire: ";
+                meltingPointLabel.style.color = "white";
 
-                    if (activeElement === symbol) {
-                        menu.style.display = 'none';
-                        activeElement = null;
-                        table.style.transform = "translateX(0)";
-                    } else {
-                        if (elementsInfo[symbol]) {
-                            title.textContent = elementsInfo[symbol].name;
-                            description.textContent = elementsInfo[symbol].description;
-                        } else {
-                            title.textContent = symbol;
-                            description.textContent = "Descriere indisponibilă.";
-                        }
-                        if (elementsInfo[symbol]) {
-                            title.textContent = elementsInfo[symbol].name;
-                            description.textContent = elementsInfo[symbol].description;
-                            config.textContent = "Configurație electronică: " + elementsInfo[symbol].config;
-                        } else {
-                            title.textContent = symbol;
-                            description.textContent = "Descriere indisponibilă.";
-                            config.textContent = "";
-                        }
-                        // Setăm calea imaginii (bazată pe numele elementului)
-                        const imagePath = `../assets/images/elements/${elementsInfo[symbol].name}.png`;
+                const meltingPointValue = document.createElement('span');
+                meltingPointValue.textContent = elementsInfo[symbol].meltingPoint;
 
-                        // Încercăm să încărcăm imaginea
-                        imgElement.src = imagePath;
-                        imgElement.style.display = 'block'; // Afișăm imaginea
+                meltingPoint.innerHTML = '';
+                meltingPoint.appendChild(meltingPointLabel);
+                meltingPoint.appendChild(meltingPointValue);
 
-                        // Dacă imaginea nu se poate încărca, o ascundem
-                        imgElement.onerror = function () {
-                            imgElement.style.display = 'none';
-                        };
+                // Adaugă delimitator
+                const meltingPointDelimiter = document.createElement('div');
+                meltingPointDelimiter.classList.add('delimiter');
+                meltingPoint.appendChild(meltingPointDelimiter);
 
-                        // Verificăm dacă `elementsInfo[symbol]` există
-                        if (elementsInfo[symbol]) {
-                            title.textContent = elementsInfo[symbol].name;
-                            description.textContent = elementsInfo[symbol].description;
+                // Punct de fierbere
+                const boilingPointLabel = document.createElement('span');
+                boilingPointLabel.textContent = "Punct de fierbere: ";
+                boilingPointLabel.style.color = "white";
 
-                            // Încercăm să setăm imaginea
-                            const imagePath = `../assets/images/elements/${elementsInfo[symbol].name}.png`;
-                            imgElement.src = imagePath;
-                            imgElement.style.display = 'block';
-                            imgElement.style.marginTop = '10px';
+                const boilingPointValue = document.createElement('span');
+                boilingPointValue.textContent = elementsInfo[symbol].boilingPoint;
 
-                            // Dacă imaginea nu se poate încărca, o ascundem fără să afectăm restul meniului
-                            imgElement.onerror = function () {
-                                console.log("Imaginea nu există pentru", symbol);
-                                imgElement.style.display = 'none';
-                            };
-                        } else {
-                            title.textContent = symbol;
-                            description.textContent = "Descriere indisponibilă.";
-                            imgElement.style.display = 'none';
-                        }
+                boilingPoint.innerHTML = '';
+                boilingPoint.appendChild(boilingPointLabel);
+                boilingPoint.appendChild(boilingPointValue);
 
-                        // Afișăm meniul (dacă totul este ok)
-                        menu.style.display = 'block';
+                // Adaugă delimitator
+                const boilingPointDelimiter = document.createElement('div');
+                boilingPointDelimiter.classList.add('delimiter');
+                boilingPoint.appendChild(boilingPointDelimiter);
 
+                // Masă atomică
+                const atomicMassLabel = document.createElement('span');
+                atomicMassLabel.textContent = "Masă atomică: ";
+                atomicMassLabel.style.color = "white";
 
-                        menu.style.display = 'block';
-                        menu.style.left = `${initialMenuPos.left}px`;
-                        menu.style.top = `${initialMenuPos.top}px`;
-                        activeElement = symbol;
-                        table.style.transform = `translateX(${tableShift}px)`;
-                    }
-                }
+                const atomicMassValue = document.createElement('span');
+                atomicMassValue.textContent = elementsInfo[symbol].atomicMass + " g/mol";
+
+                atomicMass.innerHTML = '';
+                atomicMass.appendChild(atomicMassLabel);
+                atomicMass.appendChild(atomicMassValue);
+
+                // Adaugă delimitator
+                const atomicMassDelimiter = document.createElement('div');
+                atomicMassDelimiter.classList.add('delimiter');
+                atomicMass.appendChild(atomicMassDelimiter);
+
+                // Afinitate electronică
+                const electronAffinityLabel = document.createElement('span');
+                electronAffinityLabel.textContent = "Afinitate electronică: ";
+                electronAffinityLabel.style.color = "white";
+
+                const electronAffinityValue = document.createElement('span');
+                electronAffinityValue.textContent = elementsInfo[symbol].electronAffinity;
+
+                electronAffinity.innerHTML = '';
+                electronAffinity.appendChild(electronAffinityLabel);
+                electronAffinity.appendChild(electronAffinityValue);
+
+                // Adaugă delimitator
+                const electronAffinityDelimiter = document.createElement('div');
+                electronAffinityDelimiter.classList.add('delimiter');
+                electronAffinity.appendChild(electronAffinityDelimiter);
+
+                // Electronegativitate
+                const electronegativityLabel = document.createElement('span');
+                electronegativityLabel.textContent = "Electronegativitate: ";
+                electronegativityLabel.style.color = "white";
+
+                const electronegativityValue = document.createElement('span');
+                electronegativityValue.textContent = elementsInfo[symbol].electronegativity;
+
+                electronegativity.innerHTML = '';
+                electronegativity.appendChild(electronegativityLabel);
+                electronegativity.appendChild(electronegativityValue);
+
+                // Adaugă delimitator
+                const electronegativityDelimiter = document.createElement('div');
+                electronegativityDelimiter.classList.add('delimiter');
+                electronegativity.appendChild(electronegativityDelimiter);
+
+                // Energie de ionizare
+                const ionizationEnergyLabel = document.createElement('span');
+                ionizationEnergyLabel.textContent = "Energie de ionizare: ";
+                ionizationEnergyLabel.style.color = "white";
+
+                const ionizationEnergyValue = document.createElement('span');
+                ionizationEnergyValue.textContent = elementsInfo[symbol].ionizationEnergy;
+
+                ionizationEnergy.innerHTML = '';
+                ionizationEnergy.appendChild(ionizationEnergyLabel);
+                ionizationEnergy.appendChild(ionizationEnergyValue);
+
+                // Adaugă delimitator
+                const ionizationEnergyDelimiter = document.createElement('div');
+                ionizationEnergyDelimiter.classList.add('delimiter');
+                ionizationEnergy.appendChild(ionizationEnergyDelimiter);
+            } else {
+                title.textContent = symbol;
+                description.textContent = "Descriere indisponibilă.";
+                config.textContent = "";
+                meltingPoint.textContent = "";
+                boilingPoint.textContent = "";
+                atomicMass.textContent = "";
+                electronAffinity.textContent = "";
+                electronegativity.textContent = "";
+                ionizationEnergy.textContent = "";
+            }
+
+            const imagePath = `../assets/images/elements/${elementsInfo[symbol].name}.png`;
+            imgElement.src = imagePath;
+            imgElement.style.display = 'block';
+            imgElement.onerror = function () {
+                imgElement.style.display = 'none';
+            };
+
+            menu.style.display = 'block';
+            menu.style.left = `${initialMenuPos.left}px`;
+            menu.style.top = `${initialMenuPos.top}px`;
+            activeElement = symbol;
+            table.style.transform = `translateX(${tableShift}px)`;
+        }
+    }
                 // Adaugă evenimente pentru touch
                 menu.addEventListener("touchstart", function(event) {
     // Ignoră touch-urile care încep pe butonul X
@@ -1158,11 +2519,9 @@ closeButton.addEventListener("touchend", handleCloseMenu); // Pentru mobil
             });
         }
     };
+});
 
-// Aplică zoom automat la încărcarea paginii
-window.addEventListener("load", adjustZoom);
-window.addEventListener("resize", adjustZoom); // Se ajustează și la schimbarea dimensiunii ecranului
-    }
+
 </script>
 
 </body>
