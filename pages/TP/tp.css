@@ -1,0 +1,333 @@
+     
+@media screen and (max-width: 768px) {
+    .close-btn {
+        width: 50px !important;
+        height: 50px !important;
+        font-size: 32px !important;
+        top: 5% !important;
+        right: 15px !important;
+    }
+    
+    .menu {
+        touch-action: none;
+        user-select: none;
+        max-width: 90vw;
+        left: 5% !important;
+        top: 20% !important;
+    }
+}
+
+html, body {
+    touch-action: manipulation;
+}
+
+#periodic-table {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 2% auto;
+}
+
+body {
+    overflow-x: auto;
+    overflow-y: auto;
+}
+.table-container {
+    overflow: auto;
+    max-width: auto;
+    max-height: auto;
+}
+/* Butonul de închidere */
+.menu button {
+    width: 20px !important; 
+    height: 20px !important;
+    font-size: 1rem !important;
+    top: 10px !important;
+    right: 10px !important;
+}
+
+@media screen and (max-width: 1000px) {
+    .menu button {
+        width: 30px !important; /* Zonă mai mare pentru atingere */
+        height: 30px !important;
+        top: px !important;
+        right: 5px !important;
+    }
+}
+
+        .menu {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center; 
+            text-align: center;
+            width: 300px; 
+            min-height: 250px; 
+            position: absolute;
+        }
+
+            .menu img {
+                display: block;
+                max-width: 100%;
+                max-height: 200px; 
+                margin: 0px auto; 
+            }
+
+        .menu {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center; 
+            text-align: center;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #1e1e1e;
+            font-family: 'Inter', sans-serif;
+            color: white;
+            text-align: center;
+            
+        }
+
+        .top-bar {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            font-size: 1rem;
+            background: #292929;
+            z-index: 1000;
+        }
+
+        .socials {
+            display: flex;
+            gap: 20px;
+        }
+
+            .socials a {
+                color: white;
+                text-decoration: none;
+                font-weight: 500;
+                display: flex;
+                align-items: center;
+            }
+
+            .socials img {
+                width: 24px;
+                height: 24px;
+                margin-right: 8px;
+            }
+
+        .home-btn {
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: bold;
+            background-color: #ff4757;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            color: white;
+        }
+
+            .home-btn:hover {
+                background-color: #e8414b;
+            }
+
+        .container {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .table {
+            display: flex;
+            grid-template-columns: repeat(18, 1fr);
+            gap: 5px;
+            margin-top: 20px;
+        }
+      .delimiter {
+        width: 100%;
+        height: 1px;
+        background-color: #444;
+        margin: 10px 0;
+    }
+
+        .element {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid white;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+            .element:hover {
+                opacity: 0.8;
+            }
+
+        .alkali {
+            background-color: #ff6666;
+        }
+
+        .alkaline {
+            background-color: #ffcc66;
+        }
+
+        .transition {
+            background-color: #66ccff;
+        }
+
+        .metalloid {
+            background-color: #66ff99;
+        }
+
+        .nonmetal {
+            background-color: #ffff66;
+        }
+
+        .halogen {
+            background-color: #cc99ff;
+        }
+
+        .noble {
+            background-color: #9999ff;
+        }
+
+        .lanthanide {
+            background-color: #ff9933; 
+        }
+
+        .actinide {
+            background-color: #ff3333;
+        }
+
+        .post-transition {
+            background-color: #ff9966;
+        }
+ 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    background: #1e1e1e;
+    font-family: 'Inter', sans-serif;
+    color: white;
+    text-align: center;
+    overflow-x: hidden;
+}
+@media only screen and (max-width: 1000px) {
+ html, body {
+    width: 120%;
+    height: 130%;
+    background: #1e1e1e;
+    font-family: 'Inter', sans-serif;
+    color: white;
+    text-align: right;
+}
+}
+
+.table {
+    display: grid;
+    grid-template-columns: repeat(18, 1fr);
+    gap: 5px;
+    margin-top: 20px;
+}
+
+.element {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    position: relative;
+    flex-direction: column;
+    color: white;
+}
+
+    .element .name, .element .number {
+        display: none;
+        font-size: 0.7rem;
+        position: absolute;
+        color: white;
+    }
+
+    .element .name {
+        bottom: 5px;
+    }
+
+    .element .number {
+        top: 5px;
+        right: 5px;
+    }
+
+    .element:hover .name, .element:hover .number {
+        display: block;
+    }
+
+    .table {
+        display: grid;
+        grid-template-columns: repeat(18, 1fr);
+        gap: 5px;
+        max-width: auto;
+        margin: auto;
+    }
+
+    .lanthanide-actinide {
+        display: grid;
+        grid-template-columns: repeat(15, 1fr);
+        gap: 5px;
+        max-width: auto;
+        margin: auto;
+    }
+
+    .element {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        flex-direction: column;
+        padding: 10px;
+        border: 1px solid black;
+        text-align: center;
+    }
+
+        .element .name, .element .number {
+            font-size: 0.7rem;
+        }
