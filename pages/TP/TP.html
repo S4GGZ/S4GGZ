@@ -396,6 +396,7 @@
 
 
                 menu.addEventListener("mousedown", function (event) {
+
                     isDragging = true;
                     offsetX = event.clientX - menu.offsetLeft;
                     offsetY = event.clientY - menu.offsetTop;
@@ -1770,7 +1771,7 @@
                         const menuLeft = parseInt(menu.style.left, 10);
                         const menuTop = parseInt(menu.style.top, 10);
 
-                        if (Math.abs(menuLeft - initialMenuPos.left) < 50 && Math.abs(menuTop - initialMenuPos.top) < 50) {
+                        if (Math.abs(menuLeft - initialMenuPos.left) < 100 && Math.abs(menuTop - initialMenuPos.top) < 150) {
                             menu.style.left = `${initialMenuPos.left}px`;
                             menu.style.top = `${initialMenuPos.top}px`;
                             table.style.transform = `translateX(${tableShift}px)`;
