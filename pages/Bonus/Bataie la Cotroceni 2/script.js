@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let backgroundImage = null; // For JS background drawing
     const backgroundImagePath = 'assets/background/CasaPoporului.png'; // For JS background
     let powerUpImage = null;
-    const powerUpImagePath = 'assets/characters/Consti.jpg';
+    const powerUpImagePath = 'assets/characters/consti.jpg';
     const characterData = [
         { id: 'basescu', name: 'Basescu', menuImage: 'assets/characters/Basescu.png', gameImage: 'assets/characters/Base.png' },
         { id: 'simion', name: 'Simion', menuImage: 'assets/characters/Simion.png', gameImage: 'assets/characters/Simi.png' },
