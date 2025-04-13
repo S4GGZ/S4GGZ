@@ -341,6 +341,79 @@ main#game-container { /* Target the main content area */
      align-items: center;
      padding: 20px 0; /* Add some padding */
 }
+/* Popup Ad Styling */
+#popup-ad {
+    position: absolute;
+    top: 20%; /* Adjust the vertical position */
+    right: 10px; /* Position it to the right of the game container */
+    width: 200px; /* Set the width of the ad */
+    z-index: 1000; /* Ensure it appears above other elements */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Add a shadow for a modern look */
+    border-radius: 8px; /* Rounded corners */
+    overflow: hidden; /* Ensure the image stays within the rounded corners */
+    animation: fadeIn 1s ease-in-out; /* Add a fade-in animation */
+}
+
+#popup-ad img {
+    width: 100%; /* Make the image fit the container */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+/* Close Button Styling */
+/* Popup Ad Styling */
+#popup-ad {
+    position: absolute;
+    top: 20%; /* Adjust the vertical position */
+    right: 10px; /* Position it to the right of the game container */
+    width: 300px; /* Increased width for a larger ad */
+    z-index: 1000; /* Ensure it appears above other elements */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4); /* Slightly larger shadow for depth */
+    border-radius: 12px; /* Rounded corners */
+    overflow: hidden; /* Ensure the image stays within the rounded corners */
+    animation: fadeIn 1s ease-in-out; /* Add a fade-in animation */
+}
+
+#popup-ad img {
+    width: 100%; /* Make the image fit the container */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Close Button Styling */
+#popup-ad .close-btn {
+    position: absolute;
+    top: 10px; /* Adjusted for larger ad */
+    right: 10px; /* Adjusted for larger ad */
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px; /* Increased size for larger ad */
+    height: 30px; /* Increased size for larger ad */
+    font-size: 1.5rem; /* Increased font size */
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s ease;
+    z-index: 10; /* Ensure it appears above the ad */
+}
+
+#popup-ad .close-btn:hover {
+    background: rgba(0, 0, 0, 0.9); /* Darker background on hover */
+}
 
 footer {
     width: 100%;
