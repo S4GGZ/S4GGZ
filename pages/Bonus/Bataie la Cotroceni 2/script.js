@@ -31,7 +31,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const ccrMessageDisplay = document.getElementById('ccr-message'); // Displays Consti power-up msg
     const popupAd = document.getElementById('popup-ad');
     const closeAdBtn = document.getElementById('close-ad-btn');
-
+    const basescuAudioPath = './assets/audio/Basescu.mp3'; // Path to Traian Băsescu's audio
+    const NormalAudioPath = './assets/audio/background.mp3';   // Path to normal background audio
+    const preloadBasescu = new Audio(basescuAudioPath);
+    preloadBasescu.preload = 'auto';
+    const preloadNormal = new Audio(NormalAudioPath);
+    preloadNormal.preload = 'auto';
     // =========================================================================
     // Popup Ad Logic
     // =========================================================================
@@ -138,9 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const muteIconPath = 'assets/images/unmute.png'; // Icon when muted
     const unmuteIconPath = 'assets/images/mute.png';   // Icon when not muted
     // Specific audio paths (example)
-    const basescuAudioPath = 'assets/audio/Basescu.mp3';
-    const NormalAudioPath = 'assets/audio/background.mp3';
-
+   
     // =========================================================================
     // Game State & Configuration Variables
     // =========================================================================
@@ -406,6 +409,20 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        // Stop any previous audio and reset mute button
+        stopCharacterAudio();
+        removeMuteButton();
+
+        // Play the appropriate audio based on the selected character
+        characterAudio = new Audio(selectedCharacter === 'basescu' ? basescuAudioPath : NormalAudioPath);
+        characterAudio.loop = true;
+        characterAudio.volume = 0.75;
+        characterAudio.muted = isMuted; // Respect the mute state
+        characterAudio.play().catch(err => console.warn("Audio play failed:", err));
+
+        // Add the mute button to the game area
+        createMuteButton();
+
         if (startMenu) startMenu.style.display = 'none';
         if (gameArea) gameArea.style.display = 'block';
 
@@ -463,12 +480,6 @@ document.addEventListener('DOMContentLoaded', () => {
         cameraX = canvas.width / 2 - worldMidPoint;
 
         spawnBoxTowers(); // Spawn towers after players are positioned
-
-        // Audio Setup
-        stopCharacterAudio(); // Stop any previous audio
-        removeMuteButton();   // Remove old mute button if exists
-        createMuteButton();   // Add mute button to game area
-        // playCharacterAudio(); // Start background music (adjust based on character?)
 
         updateUI(); // Set initial HP display and turn indicator
 
