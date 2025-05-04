@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const popupAd = document.getElementById('popup-ad');
     const closeAdBtn = document.getElementById('close-ad-btn');
     const basescuAudioPath = './assets/audio/Basescu.mp3'; // Path to Traian Băsescu's audio
+    const oveAudioPath = './assets/audio/ONLAP - Nevermind.mp3';
     const NormalAudioPath = './assets/audio/background.mp3';   // Path to normal background audio
     const preloadBasescu = new Audio(basescuAudioPath);
     preloadBasescu.preload = 'auto';
@@ -412,24 +413,31 @@ document.addEventListener('DOMContentLoaded', () => {
             resetGame(); // Go back to selection
             return;
         }
-
+    
         // Stop any previous audio and reset mute button
         stopCharacterAudio();
         removeMuteButton();
-
+    
         // Play the appropriate audio based on the selected character
-        characterAudio = new Audio(selectedCharacter === 'basescu' ? basescuAudioPath : NormalAudioPath);
+        if (selectedCharacter === 'basescu') {
+            characterAudio = new Audio(basescuAudioPath);
+        } else if (selectedCharacter === 'ove') {
+            characterAudio = new Audio(oveAudioPath); // Redă melodia lui Ovidiu
+        } else {
+            characterAudio = new Audio(NormalAudioPath);
+        }
+    
         characterAudio.loop = true;
         characterAudio.volume = 0.75;
         characterAudio.muted = isMuted; // Respect the mute state
         characterAudio.play().catch(err => console.warn("Audio play failed:", err));
-
+    
         // Add the mute button to the game area
         createMuteButton();
-
+    
         if (startMenu) startMenu.style.display = 'none';
         if (gameArea) gameArea.style.display = 'block';
-
+    
         // Reset core game state variables
         gameOver = false;
         activeProjectile = null;
@@ -444,7 +452,7 @@ document.addEventListener('DOMContentLoaded', () => {
         aimAngle = -Math.PI / 4; // Reset aim
         mousePos = { x: 0, y: 0 };
         isCharging = false;
-
+    
         // Position Player
         const edgePadding = -75; // Negative padding brings them closer to center
         player = {
@@ -459,7 +467,7 @@ document.addEventListener('DOMContentLoaded', () => {
             isHit: false, // For hit animation state
             hitStartTime: 0 // Timestamp for hit animation
         };
-
+    
         // Select and Position Opponent
         const availableOpponents = characterData.filter(c => c.id !== selectedCharacter);
         const randomOpponentData = availableOpponents.length > 0
@@ -477,16 +485,16 @@ document.addEventListener('DOMContentLoaded', () => {
             isHit: false,
             hitStartTime: 0
         };
-
+    
         // Initial camera position (centered between players)
         const worldMidPoint = (player.x + player.width / 2 + opponent.x + opponent.width / 2) / 2;
         // Calculate cameraX so the world midpoint appears at canvas center
         cameraX = canvas.width / 2 - worldMidPoint;
-
+    
         spawnBoxTowers(); // Spawn towers after players are positioned
-
+    
         updateUI(); // Set initial HP display and turn indicator
-
+    
         // Add game input listeners
         if (canvas) {
             canvas.addEventListener('mousedown', handleMouseDown);
@@ -498,11 +506,10 @@ document.addEventListener('DOMContentLoaded', () => {
             alert("Critical error: Canvas disappeared!");
             return;
         }
-
+    
         console.log("Game setup complete. Starting game loop...");
         requestAnimationFrame(gameLoop); // Start the main game loop
     }
-
     /** Resets the game state to return to the start menu. */
     function resetGame() {
         console.log("Resetting game state for new selection or restart.");
