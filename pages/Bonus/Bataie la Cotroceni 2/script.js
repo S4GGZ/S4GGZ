@@ -133,7 +133,9 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 'simion', name: 'Simion', menuImage: 'assets/characters/Simion.png', gameImage: 'assets/characters/Simi.png' },
         { id: 'nicusor', name: 'Nicusor', menuImage: 'assets/characters/Nicusor.png', gameImage: 'assets/characters/Mucusor.png' },
         { id: 'lasconi', name: 'Lasconi', menuImage: 'assets/characters/Lasconi.png', gameImage: 'assets/characters/TusaConi.png' },
-        { id: 'ponta', name: 'Ciolacu', menuImage: 'assets/characters/Ciolacu.png', gameImage: 'assets/characters/Ciorapu.png' }, // Note: ID vs Name difference
+        { id: 'ponta', name: 'Ciolacu', menuImage: 'assets/characters/Ciolacu.png', gameImage: 'assets/characters/Ciorapu.png' },
+        { id: 'monta', name: 'Monta', menuImage: 'assets/characters/Monta.png', gameImage: 'assets/characters/Ponta.png' }, // Added Monta
+        { id: 'ove', name: 'Ove', menuImage: 'assets/characters/Ove.png', gameImage: 'assets/characters/Ovidiu.png' }       // Added Ove // Note: ID vs Name difference
     ];
 
     // Audio & Mute State
@@ -337,69 +339,71 @@ document.addEventListener('DOMContentLoaded', () => {
     function spawnBoxTowers() {
         boxTower1 = [];
         boxTower2 = [];
-        const groundY = canvas.height - 10; // Ground level
+        const groundY = canvas.height - 20; // Ground level
         const towerBaseActualY = groundY - TOWER_BASE_Y_OFFSET; // Y position for the bottom-most box
-    
+
         if (!player || !opponent) {
             console.error("Cannot spawn towers: Player or opponent object is missing.");
             return;
         }
-    
+
         // Calculate positions based on player/opponent locations
         const playerEdge = player.x + player.width;
         const opponentEdge = opponent.x;
         const gap = opponentEdge - playerEdge; // Space between characters
-    
+
         // Increase the gap between the towers
-        const minTowerGap = 450; // Minimum pixel gap between the two towers (increase this value)
-        const desiredTowerGap = Math.max(minTowerGap, gap / 6); // Adjust the fraction to control spacing
-        const totalTowerWidth = BOX_WIDTH * 2 + desiredTowerGap; // Total width occupied by both towers + gap
+        const minTowerGap = 500;
+        const desiredTowerGap = Math.max(minTowerGap, gap / 6);
+        const totalTowerWidth = BOX_WIDTH * 2 + desiredTowerGap;
         let tower1X, tower2X;
-    
+
         if (gap >= totalTowerWidth) {
-            // If enough space, center the towers in the gap
             const groupStartX = playerEdge + (gap - totalTowerWidth) / 2;
             tower1X = groupStartX;
             tower2X = groupStartX + BOX_WIDTH + desiredTowerGap;
         } else {
-            // If space is tight, place them close together centered in the small gap
             console.warn("Gap between players is very small for towers. Placing tightly.");
             const centerPoint = playerEdge + gap / 2;
             tower1X = centerPoint - BOX_WIDTH - (minTowerGap / 2);
             tower2X = centerPoint + (minTowerGap / 2);
         }
-    
+
+        // --- ADAUGĂM SUPRAPUNERE ---
+        const overlap = -3; // Suprapunere de 1 pixel
+
         // Create boxes for each tower from bottom to top
         for (let i = 0; i < TOWER_HEIGHT; i++) {
-            const boxY = towerBaseActualY - (i + 1) * BOX_HEIGHT;
-    
+            // --- MODIFICĂM CALCULUL LUI boxY ---
+            // Fiecare cutie (cu excepția i=0) va fi plasată cu 'i * overlap' pixeli mai jos
+            const boxY = towerBaseActualY - (i + 1) * BOX_HEIGHT - i * overlap;
+
             // Assign random initial types for Tower 1
             const type1 = initialBoxTypes[Math.floor(Math.random() * initialBoxTypes.length)];
             const image1 = loadedPropImages[type1] || loadedPropImages.mystery; // Fallback to mystery img
             boxTower1.push({
-                x: tower1X, y: boxY,
+                x: tower1X, y: boxY, // Folosim boxY modificat
                 width: BOX_WIDTH, height: BOX_HEIGHT,
                 vy: 0, // Initial vertical velocity
                 img: image1, type: type1,
                 active: true, // Box is part of the game
                 isFalling: false // Box starts stationary
             });
-    
+
             // Assign random initial types for Tower 2
             const type2 = initialBoxTypes[Math.floor(Math.random() * initialBoxTypes.length)];
             const image2 = loadedPropImages[type2] || loadedPropImages.mystery;
             boxTower2.push({
-                x: tower2X, y: boxY,
+                x: tower2X, y: boxY, // Folosim boxY modificat
                 width: BOX_WIDTH, height: BOX_HEIGHT,
                 vy: 0, img: image2, type: type2,
                 active: true, isFalling: false
             });
         }
-    
+
         console.log(`Box towers spawned (Gap: ${gap.toFixed(0)}, T1X: ${tower1X.toFixed(0)}, T2X: ${tower2X.toFixed(0)})`);
         updateBoxTypes(); // Enforce initial mystery/special box rules immediately
     }
-
     /** Starts a new game session after character selection. */
     function startGame() {
         const chosenCharData = characterData.find(c => c.id === selectedCharacter);
@@ -977,35 +981,45 @@ document.addEventListener('DOMContentLoaded', () => {
                     box.isFalling = false;
                     supported = true;
                 } else {
-                    // Check for support from another active box directly below
-                    let supportBoxY = -1; // Y-coordinate of the highest supporting box found
-                    for (let j = 0; j < tower.length; j++) {
-                        if (i === j) continue; // Don't check against self
-                        const lowerBox = tower[j];
+                  // Check for support from another active box directly below
+                  let supportBoxY = -20; // Y-coordinate of the highest supporting box found
+                  for (let j = 0; j < tower.length; j++) {
+                      if (i === j) continue; // Don't check against self
+                      const lowerBox = tower[j];
 
-                        // Check if lowerBox is active, approximately aligned horizontally,
-                        // and positioned directly below the current box
-                        if (lowerBox.active &&
-                            Math.abs(box.x - lowerBox.x) < 5 && // Allow slight horizontal misalign
-                            boxBottom <= lowerBox.y + 1 &&    // Box bottom is at or slightly above lowerBox top
-                            box.y < lowerBox.y) {             // Ensure lowerBox is actually below
+                      // Check if lowerBox is active, approximately aligned horizontally,
+                      // and positioned below the current box
+                      if (lowerBox.active &&
+                          Math.abs(box.x - lowerBox.x) < 2 && // Allow slight horizontal misalign
+                          box.y < lowerBox.y) {              // Ensure lowerBox is actually below
 
-                            // Check if the box is close enough to land on the lower box in the next step
-                            if (boxBottom >= lowerBox.y - BOX_FALL_SPEED) {
-                                // Found a potential support, track the highest one
-                                if(lowerBox.y > supportBoxY) {
-                                     supportBoxY = lowerBox.y;
-                                }
-                            }
-                        }
-                    }
-                    // If a supporting box was found below
-                    if (supportBoxY > -1) {
-                        box.y = supportBoxY - box.height; // Rest on top of the supporting box
-                        box.vy = 0;
-                        box.isFalling = false;
-                        supported = true;
-                    }
+                          // --- ÎNLOCUIEȘTE LOGICA DE VERIFICARE CU ACEASTA ---
+                          const targetLandingY = lowerBox.y - box.height; // Y-ul ideal unde cutia ar trebui să aterizeze
+
+                          // Verifică dacă fundul cutiei este EXACT pe sau foarte aproape (ex. 1px toleranță)
+                          // de partea de sus a cutiei de dedesubt SAU dacă va ajunge/depăși în frame-ul următor
+                          const boxBottom = box.y + box.height;
+                          const lowerBoxTop = lowerBox.y;
+                          const tolerance = 1; // 1 pixel toleranță pentru aterizare
+
+                          if (boxBottom >= lowerBoxTop - tolerance && boxBottom <= lowerBoxTop + tolerance + BOX_FALL_SPEED) {
+                              // Verifică dacă această cutie de suport este cea mai înaltă găsită până acum
+                              if(lowerBox.y > supportBoxY) {
+                                  supportBoxY = lowerBox.y; // Păstrează Y-ul cutiei de suport (nu y-ul de aterizare)
+                              }
+                          }
+                          // --- SFÂRȘITUL LOGICII ÎNLOCUITE ---
+                      }
+                  } // Sfârșitul buclei interioare (j)
+
+                  // If a supporting box was found below
+                  if (supportBoxY > -1) {
+                       // Asigură-te că aterizează EXACT deasupra cutiei de suport
+                       box.y = supportBoxY - box.height;
+                       box.vy = 0;
+                       box.isFalling = false;
+                       supported = true;
+                   }
                 }
 
                 // If not supported by ground or another box, make it fall
@@ -1185,8 +1199,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     // Check if hit with enough power to grant a power-up from a special box
                     if (p.powerRatio >= POWER_THRESHOLD && specialBoxTypes.includes(originalType)) {
-                         console.log(`Box hit with ~${(p.powerRatio * 100).toFixed(0)}% power! Granting power-up: ${originalType} to ${p.owner}`);
-                         const hittingPlayerIsPlayer = (p.owner === 'player');
+                        console.log(`Box hit with ~${(p.powerRatio * 100).toFixed(0)}% power! Granting power-up: ${originalType} to ${p.owner}`);
+                        const hittingPlayerIsPlayer = (p.owner === 'player');
 
                          // Assign power-up based on box type
                          switch (originalType) {
@@ -1204,13 +1218,39 @@ document.addEventListener('DOMContentLoaded', () => {
                                      opponentPowerUp = { type: 'dosare', multiplier: DOSARE_MULTIPLIER, ballImage: null };
                                  }
                                 break;
-                            case 'arme': // 'Arme' gives the *other* player the Consti/CCR power-up
+                                case 'arme': // 'Arme' gives the *other* player the Consti/CCR power-up
+                                const damageToApply = 5; // Definim damage-ul fix
                                 if (hittingPlayerIsPlayer) {
-                                     console.log("Player hit ARME box, Opponent gets Consti buff for next shot.");
-                                     opponentPowerUp = { type: 'consti_target', multiplier: POWERUP_DAMAGE_MULTIPLIER, ballImage: null };
+                                    console.log("Player hit ARME box, Opponent gets Consti buff for next shot AND takes damage.");
+                                    opponentPowerUp = { type: 'consti_target', multiplier: POWERUP_DAMAGE_MULTIPLIER, ballImage: null };
+   
+                                    // --- ADAUGĂ ACESTE LINII ---
+                                    if (opponent) { // Verifică dacă oponentul există
+                                        opponent.hp = Math.max(0, opponent.hp - damageToApply); // Aplică damage-ul
+                                        opponent.isHit = true; // Activează animația de lovitură
+                                        opponent.hitStartTime = Date.now();
+                                        console.log(`Opponent took ${damageToApply} damage from Arme box hit.`);
+                                        showCCRMessage(); // <--- ADAUGĂ ACEASTĂ LINIE PENTRU A AFIȘA MESAJUL
+                                        updateUI(); // Actualizează HP-ul pe ecran
+                                        checkGameOver(); // Verifică dacă jocul s-a terminat
+                                    }
+                                    // --- SFÂRȘIT LINII ADĂUGATE ---
+   
                                 } else {
-                                     console.log("Opponent hit ARME box, Player gets Consti buff for next shot.");
-                                     playerPowerUp = { type: 'consti_target', multiplier: POWERUP_DAMAGE_MULTIPLIER, ballImage: null };
+                                    console.log("Opponent hit ARME box, Player gets Consti buff for next shot AND takes damage.");
+                                    playerPowerUp = { type: 'consti_target', multiplier: POWERUP_DAMAGE_MULTIPLIER, ballImage: null };
+   
+                                    // --- ADAUGĂ ACESTE LINII ---
+                                     if (player) { // Verifică dacă jucătorul există
+                                        player.hp = Math.max(0, player.hp - damageToApply); // Aplică damage-ul
+                                        player.isHit = true; // Activează animația de lovitură
+                                        player.hitStartTime = Date.now();
+                                        console.log(`Player took ${damageToApply} damage from Arme box hit.`);
+                                        showCCRMessage(); // <--- ADAUGĂ ACEASTĂ LINIE PENTRU A AFIȘA MESAJUL
+                                        updateUI(); // Actualizează HP-ul pe ecran
+                                        checkGameOver(); // Verifică dacă jocul s-a terminat
+                                    }
+                                    // --- SFÂRȘIT LINII ADĂUGATE ---
                                 }
                                 break;
                         }
