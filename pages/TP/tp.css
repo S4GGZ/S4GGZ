@@ -1,333 +1,178 @@
-     
-@media screen and (max-width: 768px) {
-    .close-btn {
-        width: 50px !important;
-        height: 50px !important;
-        font-size: 32px !important;
-        top: 5% !important;
-        right: 15px !important;
-    }
-    
-    .menu {
-        touch-action: none;
-        user-select: none;
-        max-width: 90vw;
-        left: 5% !important;
-        top: 20% !important;
-    }
+/* TP page: theme-aligned stylesheet while preserving the periodic table grid. */
+
+:root{
+    --bg-1: #0b1220;
+    --panel: rgba(255,255,255,0.03);
+    --muted: rgba(203,213,225,0.7);
+    --text: #e6eef8;
+    --accent-solid: #7c5cff;
+    --max-width:1100px;
 }
 
-html, body {
-    touch-action: manipulation;
+*{box-sizing:border-box;margin:0;padding:0}
+
+html,body{width:100%;min-height:100%;background:var(--bg-1);font-family:Inter,Arial,Helvetica,sans-serif;color:var(--text)}
+
+/* Top bar: full-width background with centered inner content */
+.top-bar{width:100%;height:64px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,0.02);position:fixed;top:0;left:0;z-index:1000;box-shadow:0 6px 24px rgba(2,6,23,0.35)}
+.top-bar-inner{max-width:var(--max-width);height:64px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:center;gap:12px}
+.top-bar .socials{position:absolute;left:16px;top:50%;transform:translateY(-50%);display:flex;gap:12px;align-items:center}
+.top-bar .faq{position:absolute;right:16px;top:50%;transform:translateY(-50%)}
+
+/* social link visuals */
+.socials a{color:var(--muted);text-decoration:none;font-weight:600;padding:6px;border-radius:8px;display:inline-flex;align-items:center;gap:8px;transition:background .15s ease,color .12s ease}
+.socials a img{width:20px;height:20px;object-fit:contain;margin-right:8px}
+.socials a:hover{background:rgba(255,255,255,0.12);color:var(--text)}
+
+.faq a{color:var(--text);text-decoration:none;font-weight:600}
+
+/* page container centered */
+.container{max-width:var(--max-width);margin:90px auto;padding:28px;display:flex;flex-direction:column;gap:16px}
+
+/* table grid preserved: 18 columns for main table */
+.table{display:grid;grid-template-columns:repeat(18,72px);gap:10px;justify-content:center;margin-top:12px}
+.lanthanide-actinide{display:grid;grid-template-columns:repeat(15,72px);gap:10px;justify-content:center;margin-top:-96px;z-index:2}
+
+/* Responsive grid: try to fit the table within the viewport using minmax, fall back to horizontal scroll */
+.table-responsive{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(48px, 1fr));
+  gap:8px;
+  justify-items:center;
+  width:100%;
 }
 
-#periodic-table {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    margin: 2% auto;
+/* footer */
+footer{width:100%;padding:16px 0;color:var(--muted);text-align:center;border-top:1px solid rgba(255,255,255,0.03);margin-top:28px}
+
+/* Home link pill to match site */
+.home-link{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:linear-gradient(90deg,var(--accent-solid,#7c5cff),#ff6b6b);color:white;font-weight:700;text-decoration:none}
+
+.element{width:72px;height:72px;display:flex;align-items:center;justify-content:center;border-radius:10px;padding:8px;border:1px solid rgba(255,255,255,0.06);font-weight:700;color:var(--text);cursor:pointer;position:relative;font-size:1rem}
+.element .name,.element .number{display:none;opacity:0;transition:opacity .12s ease;font-size:0.72rem;position:absolute;color:var(--text)}
+.element .name{bottom:8px}
+.element .number{top:8px;right:8px}
+.element:hover{transform:translateY(-6px);box-shadow:0 14px 34px rgba(2,6,23,0.65)}
+.element:hover .name, .element:hover .number{display:block;opacity:1}
+
+/* element color categories (kept from original) */
+.alkali{background:#ff6666}
+.alkaline{background:#ffcc66}
+.transition{background:#66ccff}
+.metalloid{background:#66ff99}
+.nonmetal{background:#ffff66}
+.halogen{background:#cc99ff}
+.noble{background:#9999ff}
+.lanthanide{background:#ff9933}
+.actinide{background:#ff3333}
+.post-transition{background:#ff9966}
+
+/* responsive: scale grid down on small screens */
+@media (max-width:1000px){
+  .table{grid-template-columns:repeat(18,56px)}
+  .lanthanide-actinide{grid-template-columns:repeat(15,56px);margin-top:-48px}
+  .element{width:56px;height:56px;font-size:0.95rem}
+  .element .name,.element .number{font-size:0.64rem}
 }
 
-body {
-    overflow-x: auto;
-    overflow-y: auto;
-}
-.table-container {
-    overflow: auto;
-    max-width: auto;
-    max-height: auto;
-}
-/* Butonul de închidere */
-.menu button {
-    width: 20px !important; 
-    height: 20px !important;
-    font-size: 1rem !important;
-    top: 10px !important;
-    right: 10px !important;
+@media (max-width:520px){
+  .top-bar-inner{padding:0 12px}
+  .container{padding:18px;margin:18px}
+  .table{grid-template-columns:repeat(18,44px)}
+  .lanthanide-actinide{grid-template-columns:repeat(15,44px);margin-top:-36px}
+  .element{width:44px;height:44px;font-size:0.9rem}
+  .element .name,.element .number{font-size:0.6rem}
 }
 
-@media screen and (max-width: 1000px) {
-    .menu button {
-        width: 30px !important; /* Zonă mai mare pentru atingere */
-        height: 30px !important;
-        top: px !important;
-        right: 5px !important;
-    }
+/* Glassy legend panel (reinforced here so injected styles render consistently) */
+.legend{
+  position: absolute;
+  /* sit to the left of the toggle button so they don't overlap */
+  right: 72px;
+  top: 100px;
+  width: 220px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,0.06);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 12px 30px rgba(2,6,23,0.6);
+  z-index: 45;
+}
+.legend{ /* ensure transition-ready hidden state */
+  opacity: 0;
+  transform: translateY(-8px);
+  visibility: hidden;
+  transition: opacity .18s ease, transform .18s ease, visibility .18s ease;
+}
+.legend.show{
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+}
+.legend h2{font-size:1.1rem;margin-bottom:10px}
+.legend ul{list-style:none;padding:0;margin:0}
+.legend li{display:flex;align-items:center;margin-bottom:8px}
+.color-box{width:18px;height:18px;margin-right:10px;display:inline-block;border-radius:4px;box-shadow:inset 0 -2px 6px rgba(0,0,0,0.18)}
+.legend-toggle{position:absolute;right:20px;top:80px;padding:8px 12px;background:var(--accent-solid);color:var(--text);border:0;border-radius:8px;cursor:pointer}
+.legend-toggle:hover{filter:brightness(1.05)}
+
+@media (max-width:1000px){
+  .legend{right:12px;top:120px}
+  .legend-toggle{right:12px;top:100px}
 }
 
-        .menu {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center; 
-            text-align: center;
-            width: 300px; 
-            min-height: 250px; 
-            position: absolute;
-        }
-
-            .menu img {
-                display: block;
-                max-width: 100%;
-                max-height: 200px; 
-                margin: 0px auto; 
-            }
-
-        .menu {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center; 
-            text-align: center;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background: #1e1e1e;
-            font-family: 'Inter', sans-serif;
-            color: white;
-            text-align: center;
-            
-        }
-
-        .top-bar {
-            width: 100%;
-            position: fixed;
-            top: 0;
-            left: 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-            font-size: 1rem;
-            background: #292929;
-            z-index: 1000;
-        }
-
-        .socials {
-            display: flex;
-            gap: 20px;
-        }
-
-            .socials a {
-                color: white;
-                text-decoration: none;
-                font-weight: 500;
-                display: flex;
-                align-items: center;
-            }
-
-            .socials img {
-                width: 24px;
-                height: 24px;
-                margin-right: 8px;
-            }
-
-        .home-btn {
-            padding: 12px 24px;
-            font-size: 1rem;
-            font-weight: bold;
-            background-color: #ff4757;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-            color: white;
-        }
-
-            .home-btn:hover {
-                background-color: #e8414b;
-            }
-
-        .container {
-            margin-top: 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-        }
-
-        .table {
-            display: flex;
-            grid-template-columns: repeat(18, 1fr);
-            gap: 5px;
-            margin-top: 20px;
-        }
-      .delimiter {
-        width: 100%;
-        height: 1px;
-        background-color: #444;
-        margin: 10px 0;
-    }
-
-        .element {
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid white;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-            .element:hover {
-                opacity: 0.8;
-            }
-
-        .alkali {
-            background-color: #ff6666;
-        }
-
-        .alkaline {
-            background-color: #ffcc66;
-        }
-
-        .transition {
-            background-color: #66ccff;
-        }
-
-        .metalloid {
-            background-color: #66ff99;
-        }
-
-        .nonmetal {
-            background-color: #ffff66;
-        }
-
-        .halogen {
-            background-color: #cc99ff;
-        }
-
-        .noble {
-            background-color: #9999ff;
-        }
-
-        .lanthanide {
-            background-color: #ff9933; 
-        }
-
-        .actinide {
-            background-color: #ff3333;
-        }
-
-        .post-transition {
-            background-color: #ff9966;
-        }
- 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* Atom info menu: glassy panel and centered text */
+.menu{
+  /* override inline bg/padding with !important so JS-created inline styles don't block it */
+  /* add a darker translucent layer + glass gradient to improve contrast */
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)), rgba(11,18,32,0.6) !important;
+  /* subtle tactile dot texture overlay to give the panel some material feel */
+  background-image: radial-gradient(rgba(255,255,255,0.012) 1px, transparent 1px), linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)), rgba(11,18,32,0.6) !important;
+  background-blend-mode: overlay, overlay, normal !important;
+  background-size: 6px 6px, cover, cover !important;
+  backdrop-filter: blur(10px) saturate(120%);
+  -webkit-backdrop-filter: blur(10px) saturate(120%);
+  border: 1px solid rgba(255,255,255,0.07) !important;
+  /* stronger drop shadow for readability over busy backgrounds */
+  box-shadow: 0 24px 60px rgba(2,6,23,0.75), inset 0 -2px 8px rgba(0,0,0,0.25) !important;
+  color: var(--text) !important;
+  border-radius: 12px !important;
+  padding: 14px !important;
+  text-align: center;
+  z-index: 120 !important;
 }
+.menu h2, .menu p, .menu .info { text-align: center; }
 
-html, body {
-    width: 100%;
-    height: 100%;
-    background: #1e1e1e;
-    font-family: 'Inter', sans-serif;
-    color: white;
-    text-align: center;
-    overflow-x: hidden;
+/* improve menu text readability on top of the glassy background */
+.menu, .menu p, .menu .info { text-shadow: 0 2px 6px rgba(0,0,0,0.6); }
+.menu h2 { text-shadow: 0 4px 12px rgba(0,0,0,0.6); }
+
+/* Close button inside the menu */
+.menu .close-btn{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(0,0,0,0.12));
+  color: white;
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.6);
+  transition: transform .12s ease, background .12s ease, box-shadow .12s ease;
+  z-index:125;
 }
-@media only screen and (max-width: 1000px) {
- html, body {
-    width: 120%;
-    height: 130%;
-    background: #1e1e1e;
-    font-family: 'Inter', sans-serif;
-    color: white;
-    text-align: right;
-}
-}
+.menu .close-btn:hover{ transform: translateY(-1px); background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(0,0,0,0.16)); box-shadow:0 10px 22px rgba(0,0,0,0.65) }
+.menu .close-btn:active{ transform: translateY(0); box-shadow:0 4px 10px rgba(0,0,0,0.5) }
+.menu .close-btn:focus{ outline:3px solid rgba(124,92,255,0.18); outline-offset:3px }
 
-.table {
-    display: grid;
-    grid-template-columns: repeat(18, 1fr);
-    gap: 5px;
-    margin-top: 20px;
-}
-
-.element {
-    width: 60px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid white;
-    font-size: 1.2rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s ease;
-    position: relative;
-    flex-direction: column;
-    color: white;
-}
-
-    .element .name, .element .number {
-        display: none;
-        font-size: 0.7rem;
-        position: absolute;
-        color: white;
-    }
-
-    .element .name {
-        bottom: 5px;
-    }
-
-    .element .number {
-        top: 5px;
-        right: 5px;
-    }
-
-    .element:hover .name, .element:hover .number {
-        display: block;
-    }
-
-    .table {
-        display: grid;
-        grid-template-columns: repeat(18, 1fr);
-        gap: 5px;
-        max-width: auto;
-        margin: auto;
-    }
-
-    .lanthanide-actinide {
-        display: grid;
-        grid-template-columns: repeat(15, 1fr);
-        gap: 5px;
-        max-width: auto;
-        margin: auto;
-    }
-
-    .element {
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: bold;
-        cursor: pointer;
-        transition: background 0.3s ease;
-        flex-direction: column;
-        padding: 10px;
-        border: 1px solid black;
-        text-align: center;
-    }
-
-        .element .name, .element .number {
-            font-size: 0.7rem;
-        }
+/* Center the page title */
+.container h1{ text-align: center; font-size: 1.9rem; letter-spacing: 0.6px; margin-top: 6px }

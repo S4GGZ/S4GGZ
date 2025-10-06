@@ -135,8 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 'nicusor', name: 'Nicusor', menuImage: 'assets/characters/Nicusor.png', gameImage: 'assets/characters/Mucusor.png' },
         { id: 'lasconi', name: 'Lasconi', menuImage: 'assets/characters/Lasconi.png', gameImage: 'assets/characters/TusaConi.png' },
         { id: 'ponta', name: 'Ciolacu', menuImage: 'assets/characters/Ciolacu.png', gameImage: 'assets/characters/Ciorapu.png' },
-        { id: 'monta', name: 'Monta', menuImage: 'assets/characters/Monta.png', gameImage: 'assets/characters/Ponta.png' }, // Added Monta
-        { id: 'ove', name: 'Ove', menuImage: 'assets/characters/Ove.png', gameImage: 'assets/characters/Ovidiu.png' }       // Added Ove // Note: ID vs Name difference
+    { id: 'monta', name: 'Monta', menuImage: 'assets/characters/Monta.png', gameImage: 'assets/characters/Ponta.png' }
     ];
 
     // Audio & Mute State
@@ -421,8 +420,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Play the appropriate audio based on the selected character
         if (selectedCharacter === 'basescu') {
             characterAudio = new Audio(basescuAudioPath);
-        } else if (selectedCharacter === 'ove') {
-            characterAudio = new Audio(oveAudioPath); // Redă melodia lui Ovidiu
         } else {
             characterAudio = new Audio(NormalAudioPath);
         }
@@ -1576,11 +1573,32 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Draw custom image if set by power-up
                 ctx.drawImage(p.customBallImage, drawX, drawY, drawRadius * 2, drawRadius * 2);
             } else {
-                // Draw default colored circle
-                ctx.fillStyle = p.owner === 'player' ? '#4ecdc4' : '#ff6b6b'; // Player vs Opponent color
+                // Draw default shaded ball with radial gradient, soft shadow and specular highlight
+                const baseColor = p.owner === 'player' ? '#4ecdc4' : '#ff6b6b';
+                const r = p.originalRadius;
+
+                // soft shadow
+                ctx.shadowColor = 'rgba(0,0,0,0.45)';
+                ctx.shadowBlur = Math.max(6, r * 0.9);
+                ctx.shadowOffsetY = Math.max(2, r * 0.15);
+
+                // radial gradient: slight offset for light source from top-left
+                const grad = ctx.createRadialGradient(p.x - r * 0.35, p.y - r * 0.35, r * 0.1, p.x, p.y, r);
+                grad.addColorStop(0, 'rgba(255,255,255,0.95)');
+                grad.addColorStop(0.12, 'rgba(255,255,255,0.28)');
+                grad.addColorStop(0.45, baseColor);
+                grad.addColorStop(1, 'rgba(0,0,0,0.25)');
+
                 ctx.beginPath();
-                // Draw using the original radius for consistency if needed, but visual radius `p.radius` looks better
-                ctx.arc(p.x, p.y, p.originalRadius, 0, Math.PI * 2);
+                ctx.fillStyle = grad;
+                ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
+                ctx.fill();
+
+                // small specular highlight (no shadow for highlight)
+                ctx.shadowColor = 'transparent';
+                ctx.beginPath();
+                ctx.fillStyle = 'rgba(255,255,255,0.8)';
+                ctx.arc(p.x - r * 0.35, p.y - r * 0.35, Math.max(2, r * 0.28), 0, Math.PI * 2);
                 ctx.fill();
             }
             ctx.restore(); // Restore context state

@@ -13,26 +13,30 @@
     
    
     <div class="top-bar">
-        <a href="../../index.html" class="home-btn">Home</a>
-        <div class="socials">
-            <a href="#"><img src="../../assets/images/facebook.png" alt="Facebook"> Facebook</a>
-            <a href="#"><img src="../../assets/images/onlyfans.png" alt="OnlyFans"> OnlyFans</a>
-            <a href="#"><img src="../../assets/images/instagram.png" alt="Instagram"> Instagram</a>
-            <script>
-                document.addEventListener("DOMContentLoaded", function () {
-                    const onlyFansAudio = new Audio('../../assets/audio/onlyfans.mp3');
-                    const onlyFansButton = document.querySelector(".socials a[href='#'] img[alt='OnlyFans']");
-
-                    if (onlyFansButton) {
-                        onlyFansButton.parentElement.addEventListener('click', function (event) {
-                            event.preventDefault(); 
-                            onlyFansAudio.play();
-                        });
-                    }
-                });
-            </script>
+        <div class="top-bar-inner">
+            <div class="socials">
+                <a href="#"><img src="../../assets/images/facebook.png" alt="Facebook">Facebook</a>
+                <a href="#"><img src="../../assets/images/Onlyfans.webp" alt="OnlyFans">OnlyFans</a>
+                <a href="#"><img src="../../assets/images/instagram.png" alt="Instagram">Instagram</a>
+            </div>
+            <div class="faq">
+                <a href="../../index.html" class="home-link">Home</a>
+            </div>
         </div>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const onlyFansAudio = new Audio('../../assets/audio/onlyfans.mp3');
+            const onlyFansButton = document.querySelector(".socials a[href='#'] img[alt='OnlyFans']");
+
+            if (onlyFansButton) {
+                onlyFansButton.parentElement.addEventListener('click', function (event) {
+                    event.preventDefault(); 
+                    onlyFansAudio.play();
+                });
+            }
+        });
+    </script>
     <div class="container">
         <h1>Tabelul Periodic</h1>
         <div class="table"></div>
@@ -46,7 +50,7 @@
 
             const legend = document.createElement('div');
             legend.classList.add('legend');
-            legend.style.display = 'none';
+            // start hidden; visibility/opacity handled by CSS (.legend and .legend.show)
             legend.innerHTML = `
                                             <h2>Legenda</h2>
                                             <ul>
@@ -66,50 +70,68 @@
             const toggleButton = document.createElement('button');
             toggleButton.textContent = 'Show Legend';
             toggleButton.classList.add('legend-toggle');
-            toggleButton.onclick = function () {
-                if (legend.style.display === 'none') {
-                    legend.style.display = 'block';
-                    toggleButton.textContent = 'Hide Legend';
-                } else {
-                    legend.style.display = 'none';
-                    toggleButton.textContent = 'Show Legend';
+            // accessibility
+            toggleButton.setAttribute('aria-expanded', 'false');
+            toggleButton.setAttribute('aria-controls', 'legend');
+            legend.setAttribute('role', 'region');
+            legend.setAttribute('id', 'legend');
+
+            toggleButton.addEventListener('click', function () {
+                const isShown = legend.classList.toggle('show');
+                toggleButton.textContent = isShown ? 'Hide Legend' : 'Show Legend';
+                toggleButton.setAttribute('aria-expanded', String(!!isShown));
+            });
+            // keyboard support
+            toggleButton.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggleButton.click();
                 }
-            };
+            });
 
             container.appendChild(toggleButton);
             container.appendChild(legend);
 
             const style = document.createElement('style');
             style.innerHTML = `
-                                           .legend {
+                                            .legend {
                                                 position: absolute;
-                                                right: 20px;
+                                                /* sit left of the toggle button */
+                                                right: 72px;
                                                 top: 100px;
-                                                background: #292929;
-                                                padding: 15px;
-                                                border-radius: 8px;
-                                                color: white;
+                                                background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+                                                padding: 16px;
+                                                border-radius: 12px;
+                                                color: var(--text);
                                                 font-size: 1rem;
-                                                width: 200px;
+                                                width: 220px;
+                                                backdrop-filter: blur(8px);
+                                                -webkit-backdrop-filter: blur(8px);
+                                                border: 1px solid rgba(255,255,255,0.06);
+                                                box-shadow: 0 12px 30px rgba(2,6,23,0.6);
                                             }
                                                  .legend h2 {
-                                                font-size: 1.2rem;
+                                                font-size: 1.15rem;
                                                 margin-bottom: 10px;
+                                                letter-spacing: 0.2px;
                                             }
                                             .legend ul {
                                                 list-style: none;
                                                 padding: 0;
+                                                margin: 0;
                                             }
                                             .legend li {
                                                 display: flex;
                                                 align-items: center;
-                                                margin-bottom: 5px;
+                                                margin-bottom: 8px;
                                             }
                                             .color-box {
-                                                width: 20px;
-                                                height: 20px;
+                                                width: 18px;
+                                                height: 18px;
                                                 margin-right: 10px;
                                                 display: inline-block;
+                                                border-radius:4px;
+                                                box-shadow: inset 0 -2px 6px rgba(0,0,0,0.18);
                                             }
                                             .alkali { background-color: #ff6666; }
                                             .alkaline { background-color: #ffcc66; }
@@ -126,8 +148,8 @@
                                                 right: 20px;
                                                 top: 80px;
                                                 padding: 10px 15px;
-                                                background: #ff4757;
-                                                color: white;
+                                                background: var(--accent-solid);
+                                                color: var(--text);
                                                 border: none;
                                                 border-radius: 8px;
                                                 cursor: pointer;
@@ -137,10 +159,10 @@
                                                 position: absolute;
                                                 right: -525px;
                                                 top: 120px;
-                                                background: #292929;
+                                                background: var(--surface);
                                                 padding: 15px;
                                                 border-radius: 8px;
-                                                color: white;
+                                                color: var(--text);
                                                 font-size: 1rem;
                                                 width: 200px;
                                             }
@@ -179,8 +201,8 @@
                                                 right: 20px;
                                                 top: 80px;
                                                 padding: 10px 15px;
-                                                background: #ff4757;
-                                                color: white;
+                                                background: var(--accent-solid);
+                                                color: var(--text);
                                                 border: none;
                                                 border-radius: 8px;
                                                 cursor: pointer;
@@ -192,7 +214,7 @@
                                                 right: 200px; /* Mută butonul în partea dreaptă pe mobil */
                                             }
                                             .legend-toggle:hover {
-                                                background: #e8414b;
+                                                background: var(--accent-strong);
                                             }
                                         `;
             document.head.appendChild(style);
@@ -1783,42 +1805,26 @@
                 });
 
                 const closeButton = document.createElement('button');
-closeButton.innerHTML = '×';
-closeButton.classList.add('close-btn');
+                closeButton.innerHTML = '&times;';
+                closeButton.classList.add('close-btn');
+                closeButton.setAttribute('aria-label', 'Close menu');
+                closeButton.title = 'Close';
 
-// Funcție de închidere universală
-const handleCloseMenu = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    menu.style.display = 'none';
-    activeElement = null;
-    table.style.transform = "translateX(0)";
-};
+                // Funcție de închidere universală
+                const handleCloseMenu = (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    menu.style.display = 'none';
+                    activeElement = null;
+                    table.style.transform = "translateX(0)";
+                };
 
-// Adaugă ambele tipuri de evenimente
-closeButton.addEventListener('click', handleCloseMenu);
-closeButton.addEventListener('touchend', handleCloseMenu);
+                // Adaugă ambele tipuri de evenimente
+                closeButton.addEventListener('click', handleCloseMenu);
+                closeButton.addEventListener('touchend', handleCloseMenu);
 
-// Stilizare avansată pentru buton (adaugă în CSS)
-Object.assign(closeButton.style, {
-    background: '#ff4757',
-    border: 'none',
-    borderRadius: '50%',
-    width: '40px',
-    height: '40px',
-    color: 'white',
-    fontSize: '28px',
-    position: 'absolute',
-    top: '10px',
-    right: '10px',
-    cursor: 'pointer',
-    zIndex: '1001',
-    touchAction: 'manipulation' // Dezactivează zoom-ul pe dublu-touch
-});
-
-// Adaugă butonul în meniu ÎNAINTE de alte elemente
-menu.insertBefore(closeButton, menu.firstChild);
-                menu.appendChild(closeButton);
+                // Insert the button into the menu before other content
+                menu.insertBefore(closeButton, menu.firstChild);
 
                 const title = document.createElement('h2');
                 title.id = 'element-title';
@@ -2184,6 +2190,12 @@ closeButton.addEventListener("touchend", handleCloseMenu); // Pentru mobil
 
 
 </script>
+
+    <footer>
+        <div class="footer-inner">
+            © 2025 S4GGZ's Company. All rights reserved. Terms &amp; Conditions apply.
+        </div>
+    </footer>
 
 </body>
 </html>
