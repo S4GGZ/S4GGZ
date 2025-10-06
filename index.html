@@ -1,92 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Political Ball Battle - S4GGZ</title>
-
-        <link rel="stylesheet" href="./style.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S4GGZ's homepage</title>
+    <link rel="stylesheet" a href="./style.css">
+</head>
 <body>
     <div class="top-bar">
-       <div class="socials">
-           <a href="../../../index.html"><img src="./assets/images/home.png" alt="Home" title="Back to Homepage">Home</a>
-            <a href="#"><img src="./assets/images/Onlyfans.webp" alt="OnlyFans">OnlyFans</a>
+        <div class="top-bar-inner">
+            <div class="socials">
+                <a href=""><img src="./assets/images/facebook.png" alt="Facebook">Facebook</a>
+                <a href="#"><img src="./assets/images/Onlyfans.webp" alt="OnlyFans">OnlyFans</a>
+                <a href="#"><img src="./assets/images/instagram.png" alt="Instagram">Instagram</a>
             </div>
-        <div class="faq">
-             </div>
+            <div class="faq">
+                <a href="./pages/FAQ/FAQ.html">FAQ</a>
+            </div>
+        </div>
     </div>
-
-    <main id="game-container">
-
-        <div id="start-menu">
-            <h1>Voteaza</h1>
-            <p>Alege-ti panarama politica</p>
-            <div id="character-select" class="character-grid">
-                <div class="loading-placeholder">Se-ncarca in pula mea...</div>
+    <div class="container">
+        <h2>    Iadul e gol si toti demonii vor sa ajunga pe marte
+</h2>
+        <h1>Welcome</h1>
+        <p>Nici eu nu stiu unde duce butonu ala, dar</p>
+            <div class="button-group">
+            <button class="btn" onclick="window.location.href='./pages/TP/TP.html'">Apasa-l :3</button>
+            <button class="btn" onclick="window.location.href='./pages/Bonus/Bataie la Cotroceni 2/index.html'">Go to Bonus Page</button>
             </div>
-            <button id="start-button" class="btn" disabled>Sa-n ceapa futaiu</button>
         </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const onlyFansAudio = new Audio('./assets/audio/onlyfans.mp3');
+            const onlyFansButton = document.querySelector(".socials a[href='#'] img[alt='OnlyFans']");
 
-        <div id="game-area" style="display: none;">
-            <div id="ui">
-                <div id="player-info" class="info-box">
-                    <span class="label">Player HP:</span> <span id="player-hp" class="hp-value">100</span>
-                </div>
-                 <div id="turn-indicator" class="info-box turn-display">
-                    Your Turn
-                </div>
-                 <div id="power-meter-container" class="info-box power-display" style="display: none;">
-                     <span class="label">Puterea:</span> <span id="power-value">0</span>%
-                     <div id="power-bar-bg">
-                         <div id="power-bar-fg"></div>
-                     </div>
-                 </div>
-                 <div id="ccr-message" class="info-box ccr-display" style="display: none;">
-                     Anulat de CCR!
-                 </div>
-                 <div id="opponent-info" class="info-box">
-                   <span class="label">Opponent HP:</span> <span id="opponent-hp" class="hp-value">100</span>
-                </div>
-            </div>
-
-            <canvas id="game-canvas" width="900" height="500">
-                Your browser does not support the HTML canvas tag.
-            </canvas>
-
-             <div id="game-over-message" style="display: none;">
-                 <h2>Bataie de joc!</h2>
-                 <p id="winner-message"></p>
-                 <button id="restart-button" class="btn">Mai incearca</button>
-             </div>
-        </div>
-        <div id="popup-ad" style="display: none;">
-            <button id="close-ad-btn" class="close-btn">&times;</button>
-            <img src="./assets/background/reclama.png" alt="Reclama">
-        </div>
-    </main>
-
+            if (onlyFansButton) {
+                onlyFansButton.parentElement.addEventListener('click', function (event) {
+                    event.preventDefault(); // Prevent default navigation
+                    onlyFansAudio.play();
+                });
+            }
+        });
+    </script>
     <footer>
-        &copy; 2025 S4GGZ's Company. All rights reserved. Terms & Conditions apply.
+        <div class="footer-inner">
+            &copy; 2025 S4GGZ's Company. All rights reserved. Terms & Conditions apply.
+        </div>
     </footer>
-
-    <script src="./script.js"></script>
-     <script>
-         // Existing script for OnlyFans audio
-         document.addEventListener("DOMContentLoaded", function () {
-             const onlyFansAudio = new Audio('./assets/audio/onlyfans.mp3');
-             const onlyFansButton = document.querySelector(".top-bar .socials a[href='#'] img[alt='OnlyFans']");
-
-             if (onlyFansButton) {
-                 onlyFansButton.parentElement.addEventListener('click', function (event) {
-                     event.preventDefault();
-                     onlyFansAudio.play();
-                 });
-             }
-         });
-     </script>
 </body>
 </html>
