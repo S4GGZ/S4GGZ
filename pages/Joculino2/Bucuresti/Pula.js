@@ -3,7 +3,7 @@
 const levels = [
     // PAGINA 1 (0-7)
     // Piața Romană - Coordonate verificate din fișierul tău
-    { name: "Piața Romană", img: "romana.png", items: [{t: 'bottle', x: 56, y: 50}, {t: 'bottle', x: 61, y: 51}, {t: 'bottle', x: 62, y: 22}, {t: 'bottle', x: 94, y: 30}, {t: 'bottle', x: 76, y: 55}, {t: 'bottle', x: 93, y: 81}, {t: 'bottle', x: 71, y: 86}, {t: 'bottle', x: 59, y: 98}, {t: 'bottle', x: 43, y: 92}, {t: 'bottle', x: 40, y: 99}, {t: 'bottle', x: 35, y: 95}, {t: 'bottle', x: 29, y: 98}] },
+    { name: "Piața Romană", img: "romana.png", items: [{t: 'bottle', x: 42, y: 49},{t: 'bottle', x: 56, y: 50}, {t: 'bottle', x: 61, y: 51}, {t: 'bottle', x: 62, y: 22}, {t: 'bottle', x: 94, y: 30}, {t: 'bottle', x: 76, y: 55}, {t: 'bottle', x: 93, y: 81}, {t: 'bottle', x: 71, y: 86}, {t: 'bottle', x: 59, y: 98}, {t: 'bottle', x: 43, y: 92}, {t: 'bottle', x: 40, y: 99}, {t: 'bottle', x: 35, y: 95}, {t: 'bottle', x: 29, y: 98}] },
     { name: "Piața Unirii", img: "unirii.png", items: [ {t: 'bottle', x: 71, y: 67}, {t: 'bottle', x: 84, y: 89}, {t: 'bottle', x: 40, y: 84}, {t: 'bottle', x: 48, y: 84}, {t: 'bottle', x: 7, y: 66}, {t: 'bottle', x: 74, y: 90} ] },
     { name: "Piața Obor", img: "obor.png", items: [{t: 'bottle', x: 48, y: 74}, {t: 'bottle', x: 30, y: 69}, {t: 'bottle', x: 11, y: 85}, {t: 'bottle', x: 82, y: 86}, {t: 'bottle', x: 89, y: 89}, {t: 'bottle', x: 94, y: 66}] },
     { name: "Timpuri Noi", img: "timpurinoi.png", items: [ {t:'bottle', x:88, y:91}, {t:'bottle', x:87, y:77}, {t:'bottle', x:68, y:85}, {t:'bottle', x:60, y:92}, {t:'bottle', x:54, y:89}, {t:'bottle', x:41, y:66}, {t:'bottle', x:51, y:65}, {t:'bottle', x:11, y:68} ] },
