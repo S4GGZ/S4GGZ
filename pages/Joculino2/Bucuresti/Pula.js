@@ -668,6 +668,12 @@ function showStickyNote(text, title) {
     tEl.innerText = text || '';
     panel.classList.remove('hidden');
     panel.setAttribute('aria-hidden', 'false');
+    panel.style.display = 'flex';
+    // On mobile, ensure overlay is visible and not hidden
+    if (window.innerWidth <= 900 || window.innerHeight <= 600) {
+        panel.classList.remove('hidden');
+        panel.style.display = 'flex';
+    }
 }
 function hideStickyNote() {
     const panel = document.getElementById('sticky-note-panel');
