@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bucharest Bottle Hunt</title>
+    <link rel="stylesheet" href="Pula.css">
+</head>
+<body>
+
+<div id="game-container">
+    
+    <div id="hud">
+        <button class="hud-btn" onclick="openLevelMenu()">☰ Meniu</button>
+        <div>📍 <span id="level-name">Loading...</span></div>
+        <div><span id="score-icon">🍾</span> <span id="score-text">0/5</span></div>
+        <div>📝 <span id="stick-text">0</span></div>
+    </div>
+
+    <div id="scene"></div>
+
+    <div id="notification" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.8); color: white; padding: 10px 20px; border-radius: 20px; opacity: 0; transition: opacity 0.5s; z-index: 50; pointer-events: none;">Notification</div>
+
+    <div id="menu-overlay" class="overlay" style="display: flex;">
+        <div id="menu-right-panel">
+            <div id="level-grid"></div>
+            
+            <div class="pagination-controls">
+                <button class="big-btn" id="prev-page-btn" onclick="changeMenuPage(-1)" style="display:none;">&lt; Înapoi</button>
+                <button class="big-btn" id="next-page-btn" onclick="changeMenuPage(1)">Înainte &gt;</button>
+            </div>
+
+            <button id="reset-btn" class="big-btn" onclick="resetProgress()">⚠ Reset Progres</button>
+        </div>
+    </div>
+
+    <div id="cutscene-overlay" class="overlay" onclick="nextCutsceneFrame()">
+        <img id="cutscene-img" src="" alt="Story">
+        <div class="cutscene-text">Click pentru a continua...</div>
+    </div>
+
+    <div id="win-overlay" class="overlay">
+        <h2>Locație Completă!</h2>
+        <p id="win-msg">Toate sticlele au fost găsite.</p>
+        <button class="big-btn" onclick="nextLevelOrMenu()">Continuă</button>
+    </div>
+
+</div>
+
+<!-- Sticky note panel (appears next to the game) -->
+<div id="sticky-note-panel" class="hidden" aria-hidden="true" role="dialog" aria-label="Sticky note">
+    <button id="sticky-close" aria-label="Close sticky note" onclick="hideStickyNote()">✖</button>
+    <div id="sticky-note-pin" aria-hidden="true"></div>
+    <div id="sticky-note-content">
+        <h4 id="sticky-note-title">Sticky Note</h4>
+        <p id="sticky-note-text">(No text; add the note text to the level item using the `note` property)</p>
+    </div>
+</div>
+
+<script src="Pula.js"></script>
+</body>
+</html>
