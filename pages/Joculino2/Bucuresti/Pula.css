@@ -130,10 +130,12 @@
     text-decoration: none;
     margin-left: 12px;
     transition: background 0.2s, color 0.2s;
+
 }
 .home-icon:hover {
     background: #7c5cff !important;
     color: #fff !important;
+
 }
 #game-container {
     margin-top: 64px !important;

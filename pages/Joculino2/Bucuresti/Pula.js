@@ -3,73 +3,73 @@
 const levels = [
     // PAGINA 1 (0-7)
     // Piața Romană - Coordonate verificate din fișierul tău
-    { name: "Piața Romană", img: "romana.png", items: [{t: 'bottle', x: 42, y: 49},{t: 'bottle', x: 56, y: 50}, {t: 'bottle', x: 61, y: 51}, {t: 'bottle', x: 62, y: 22}, {t: 'bottle', x: 94, y: 30}, {t: 'bottle', x: 76, y: 55}, {t: 'bottle', x: 93, y: 81}, {t: 'bottle', x: 71, y: 86}, {t: 'bottle', x: 59, y: 98}, {t: 'bottle', x: 43, y: 92}, {t: 'bottle', x: 40, y: 99}, {t: 'bottle', x: 35, y: 95}, {t: 'bottle', x: 29, y: 98}] },
-    { name: "Piața Unirii", img: "unirii.png", items: [ {t: 'bottle', x: 71, y: 67}, {t: 'bottle', x: 84, y: 89}, {t: 'bottle', x: 40, y: 84}, {t: 'bottle', x: 48, y: 84}, {t: 'bottle', x: 7, y: 66}, {t: 'bottle', x: 74, y: 90} ] },
-    { name: "Piața Obor", img: "obor.png", items: [{t: 'bottle', x: 48, y: 74}, {t: 'bottle', x: 30, y: 69}, {t: 'bottle', x: 11, y: 85}, {t: 'bottle', x: 82, y: 86}, {t: 'bottle', x: 89, y: 89}, {t: 'bottle', x: 94, y: 66}] },
-    { name: "Timpuri Noi", img: "timpurinoi.png", items: [ {t:'bottle', x:88, y:91}, {t:'bottle', x:87, y:77}, {t:'bottle', x:68, y:85}, {t:'bottle', x:60, y:92}, {t:'bottle', x:54, y:89}, {t:'bottle', x:41, y:66}, {t:'bottle', x:51, y:65}, {t:'bottle', x:11, y:68} ] },
-    { name: "Militari", img: "militari.png", items: [ {t: 'bottle', x: 62, y: 84}, {t: 'bottle', x: 79, y: 89}, {t: 'bottle', x: 90, y: 87}, {t: 'bottle', x: 19, y: 90}, {t: 'bottle', x: 39, y: 74}, {t: 'bottle', x: 9, y: 86} ] },
-    { name: "Piața Sudului", img: "sudului.png", items: [ {t:'bottle', x:70, y:82}, {t:'bottle', x:79, y:92}, {t:'bottle', x:90, y:87}, {t:'bottle', x:49, y:84}, {t:'bottle', x:43, y:81}, {t:'bottle', x:18, y:76} ] },
-    { name: "Arcul de Triumf", img: "arcul.png", items: [ {t: 'bottle', x: 52, y: 63}, {t: 'bottle', x: 48, y: 63}, {t: 'bottle', x: 33, y: 62}, {t: 'bottle', x: 79, y: 64}, {t: 'bottle', x: 75, y: 86}, {t: 'bottle', x: 19, y: 92} ] },
+    { name: "Piața Romană", img: "romana.webp", items: [{t: 'bottle', x: 42, y: 49},{t: 'bottle', x: 56, y: 50}, {t: 'bottle', x: 61, y: 51}, {t: 'bottle', x: 62, y: 22}, {t: 'bottle', x: 94, y: 30}, {t: 'bottle', x: 76, y: 55}, {t: 'bottle', x: 93, y: 81}, {t: 'bottle', x: 71, y: 86}, {t: 'bottle', x: 59, y: 98}, {t: 'bottle', x: 43, y: 92}, {t: 'bottle', x: 40, y: 99}, {t: 'bottle', x: 35, y: 95}, {t: 'bottle', x: 29, y: 98}] },
+    { name: "Piața Unirii", img: "unirii.webp", items: [ {t: 'bottle', x: 71, y: 67}, {t: 'bottle', x: 84, y: 89}, {t: 'bottle', x: 40, y: 84}, {t: 'bottle', x: 48, y: 84}, {t: 'bottle', x: 7, y: 66}, {t: 'bottle', x: 74, y: 90} ] },
+    { name: "Piața Obor", img: "obor.webp", items: [{t: 'bottle', x: 48, y: 74}, {t: 'bottle', x: 30, y: 69}, {t: 'bottle', x: 11, y: 85}, {t: 'bottle', x: 82, y: 86}, {t: 'bottle', x: 89, y: 89}, {t: 'bottle', x: 94, y: 66}] },
+    { name: "Timpuri Noi", img: "timpurinoi.webp", items: [ {t:'bottle', x:88, y:91}, {t:'bottle', x:87, y:77}, {t:'bottle', x:68, y:85}, {t:'bottle', x:60, y:92}, {t:'bottle', x:54, y:89}, {t:'bottle', x:41, y:66}, {t:'bottle', x:51, y:65}, {t:'bottle', x:11, y:68} ] },
+    { name: "Militari", img: "militari.webp", items: [ {t: 'bottle', x: 62, y: 84}, {t: 'bottle', x: 79, y: 89}, {t: 'bottle', x: 90, y: 87}, {t: 'bottle', x: 19, y: 90}, {t: 'bottle', x: 39, y: 74}, {t: 'bottle', x: 9, y: 86} ] },
+    { name: "Piața Sudului", img: "sudului.webp", items: [ {t:'bottle', x:70, y:82}, {t:'bottle', x:79, y:92}, {t:'bottle', x:90, y:87}, {t:'bottle', x:49, y:84}, {t:'bottle', x:43, y:81}, {t:'bottle', x:18, y:76} ] },
+    { name: "Arcul de Triumf", img: "arcul.webp", items: [ {t: 'bottle', x: 52, y: 63}, {t: 'bottle', x: 48, y: 63}, {t: 'bottle', x: 33, y: 62}, {t: 'bottle', x: 79, y: 64}, {t: 'bottle', x: 75, y: 86}, {t: 'bottle', x: 19, y: 92} ] },
     // Nivel Secret
-    { name: "Palatul Parlamentului", img: "parliament.png", isSecret: true, items: [{t: 'bottle', x: 63, y: 51}, {t: 'bottle', x: 51, y: 56}, {t: 'bottle', x: 54, y: 64}, {t: 'bottle', x: 97, y: 58}, {t: 'bottle', x: 21, y: 91}, {t: 'bottle', x: 69, y: 89}] },
+    { name: "Palatul Parlamentului", img: "parliament.webp", isSecret: true, items: [{t: 'bottle', x: 63, y: 51}, {t: 'bottle', x: 51, y: 56}, {t: 'bottle', x: 54, y: 64}, {t: 'bottle', x: 97, y: 58}, {t: 'bottle', x: 21, y: 91}, {t: 'bottle', x: 69, y: 89}] },
 
     // PAGINA 2 (8-15) - Placeholders
-    { name: "Centrul Vechi", img: "centruvechi.png", items: [ {t: 'bottle', x: 92, y: 86},{t: 'bottle', x: 91, y: 65},{t: 'bottle', x: 80, y: 75},{t: 'bottle', x: 69, y: 79},{t: 'bottle', x: 39, y: 75},{t: 'bottle', x: 31, y: 85},{t: 'bottle', x: 20, y: 63},{t: 'bottle', x: 12, y: 64}] },
-    { name: "Parcul Cișmigiu", img: "parculcismigiu.png", items: [  {t: 'bottle', x: 56, y: 41},{t: 'bottle', x: 79, y: 75},{t: 'bottle', x: 41, y: 79},{t: 'bottle', x: 33, y: 69},{t: 'bottle', x: 25, y: 65},{t: 'bottle', x: 20, y: 55}] },
-    { name: "Gara de Nord", img: "garadenord.png", items: [ {t: 'bottle', x: 79, y: 40}, {t: 'bottle', x: 71, y: 59}, {t: 'bottle', x: 93, y: 58}, {t: 'bottle', x: 91, y: 89}, {t: 'bottle', x: 83, y: 86}, {t: 'bottle', x: 74, y: 89}, {t: 'bottle', x: 75, y: 75}, {t: 'bottle', x: 65, y: 87}, {t: 'bottle', x: 53, y: 83}, {t: 'bottle', x: 33, y: 86}, {t: 'bottle', x: 8, y: 74}, {t: 'bottle', x: 51, y: 57}, {t: 'bottle', x: 62, y: 56}] },
-    { name: "Arena Națională", img: "arenanationala.png", items: [   {t: 'bottle', x: 90, y: 72},{t: 'bottle', x: 81, y: 59},{t: 'bottle', x: 55, y: 56},{t: 'bottle', x: 60, y: 66},{t: 'bottle', x: 66, y: 72},{t: 'bottle', x: 44, y: 73},{t: 'bottle', x: 14, y: 82}] },
-    { name: "Metrou ", img: "metrou.png", items: [  {t: 'bottle', x: 85, y: 84},{t: 'bottle', x: 60, y: 65},{t: 'bottle', x: 45, y: 59},{t: 'bottle', x: 23, y: 44}] },
-    { name: "AFI Mall", img: "afimall.png", items: [ {t: 'bottle', x: 50, y: 86},{t: 'bottle', x: 66, y: 53},{t: 'bottle', x: 82, y: 45},{t: 'bottle', x: 69, y: 84},{t: 'bottle', x: 86, y: 89},{t: 'bottle', x: 9, y: 88}] },
-    { name: "Politehnica", img: "politehnica.png", items: [   {t: 'bottle', x: 76, y: 74},{t: 'bottle', x: 96, y: 95},{t: 'bottle', x: 81, y: 89},{t: 'bottle', x: 69, y: 83},{t: 'bottle', x: 63, y: 81},{t: 'bottle', x: 46, y: 80},{t: 'bottle', x: 27, y: 82},{t: 'bottle', x: 19, y: 85},{t: 'bottle', x: 14, y: 88}] },
-    { name: "La Becali", img: "labecali.png", items: [{t: 'bottle', x: 71, y: 93},{t: 'bottle', x: 81, y: 77},{t: 'bottle', x: 75, y: 69},{t: 'bottle', x: 72, y: 45},{t: 'bottle', x: 57, y: 45},{t: 'bottle', x: 94, y: 77},{t: 'bottle', x: 65, y: 77},{t: 'bottle', x: 40, y: 80},{t: 'bottle', x: 30, y: 83},{t: 'bottle', x: 20, y: 71}] },
+    { name: "Centrul Vechi", img: "centruvechi.webp", items: [ {t: 'bottle', x: 92, y: 86},{t: 'bottle', x: 91, y: 65},{t: 'bottle', x: 80, y: 75},{t: 'bottle', x: 69, y: 79},{t: 'bottle', x: 39, y: 75},{t: 'bottle', x: 31, y: 85},{t: 'bottle', x: 20, y: 63},{t: 'bottle', x: 12, y: 64}] },
+    { name: "Parcul Cișmigiu", img: "parculcismigiu.webp", items: [  {t: 'bottle', x: 56, y: 41},{t: 'bottle', x: 79, y: 75},{t: 'bottle', x: 41, y: 79},{t: 'bottle', x: 33, y: 69},{t: 'bottle', x: 25, y: 65},{t: 'bottle', x: 20, y: 55}] },
+    { name: "Gara de Nord", img: "garadenord.webp", items: [ {t: 'bottle', x: 79, y: 40}, {t: 'bottle', x: 71, y: 59}, {t: 'bottle', x: 93, y: 58}, {t: 'bottle', x: 91, y: 89}, {t: 'bottle', x: 83, y: 86}, {t: 'bottle', x: 74, y: 89}, {t: 'bottle', x: 75, y: 75}, {t: 'bottle', x: 65, y: 87}, {t: 'bottle', x: 53, y: 83}, {t: 'bottle', x: 33, y: 86}, {t: 'bottle', x: 8, y: 74}, {t: 'bottle', x: 51, y: 57}, {t: 'bottle', x: 62, y: 56}] },
+    { name: "Arena Națională", img: "arenanationala.webp", items: [   {t: 'bottle', x: 90, y: 72},{t: 'bottle', x: 81, y: 59},{t: 'bottle', x: 55, y: 56},{t: 'bottle', x: 60, y: 66},{t: 'bottle', x: 66, y: 72},{t: 'bottle', x: 44, y: 73},{t: 'bottle', x: 14, y: 82}] },
+    { name: "Metrou ", img: "metrou.webp", items: [  {t: 'bottle', x: 85, y: 84},{t: 'bottle', x: 60, y: 65},{t: 'bottle', x: 45, y: 59},{t: 'bottle', x: 23, y: 44}] },
+    { name: "AFI Mall", img: "afimall.webp", items: [ {t: 'bottle', x: 50, y: 86},{t: 'bottle', x: 66, y: 53},{t: 'bottle', x: 82, y: 45},{t: 'bottle', x: 69, y: 84},{t: 'bottle', x: 86, y: 89},{t: 'bottle', x: 9, y: 88}] },
+    { name: "Politehnica", img: "politehnica.webp", items: [   {t: 'bottle', x: 76, y: 74},{t: 'bottle', x: 96, y: 95},{t: 'bottle', x: 81, y: 89},{t: 'bottle', x: 69, y: 83},{t: 'bottle', x: 63, y: 81},{t: 'bottle', x: 46, y: 80},{t: 'bottle', x: 27, y: 82},{t: 'bottle', x: 19, y: 85},{t: 'bottle', x: 14, y: 88}] },
+    { name: "La Becali", img: "labecali.webp", items: [{t: 'bottle', x: 71, y: 93},{t: 'bottle', x: 81, y: 77},{t: 'bottle', x: 75, y: 69},{t: 'bottle', x: 72, y: 45},{t: 'bottle', x: 57, y: 45},{t: 'bottle', x: 94, y: 77},{t: 'bottle', x: 65, y: 77},{t: 'bottle', x: 40, y: 80},{t: 'bottle', x: 30, y: 83},{t: 'bottle', x: 20, y: 71}] },
 
     // PAGINA 3 (16-23) - Placeholders (editează după preferințe)
-    { name: "Ateneul Roman", img: "ateneulroman.png", items: [{t: 'bottle', x: 60, y: 91},{t: 'bottle', x: 88, y: 73},{t: 'bottle', x: 33, y: 78},{t: 'bottle', x: 14, y: 69},{t: 'bottle', x: 24, y: 68}] },
-    { name: "Parcul Carol", img: "parculcarol.png", items: [    {t: 'bottle', x: 67, y: 92},{t: 'bottle', x: 96, y: 80},{t: 'bottle', x: 62, y: 82},{t: 'bottle', x: 56, y: 80},{t: 'bottle', x: 28, y: 87},{t: 'bottle', x: 37, y: 76},{t: 'bottle', x: 7, y: 75}] },
-    { name: "Intercontinental", img: "intercontinental.png", items: [ {t: 'bottle', x: 87, y: 97},{t: 'bottle', x: 63, y: 94},{t: 'bottle', x: 45, y: 93},{t: 'bottle', x: 40, y: 90},{t: 'bottle', x: 28, y: 97},{t: 'bottle', x: 16, y: 93}] },
-    { name: "Teatrul National Bucuresti", img: "TNB.png", items: [{t: 'bottle', x: 85, y: 80},{t: 'bottle', x: 83, y: 50},{t: 'bottle', x: 80, y: 58},{t: 'bottle', x: 62, y: 71},{t: 'bottle', x: 71, y: 89},{t: 'bottle', x: 34, y: 86},{t: 'bottle', x: 23, y: 68}] },
-    { name: "Biblioteca Nationala", img: "bibliotecanationala.png", items: [{t: 'bottle', x: 46, y: 92},{t: 'bottle', x: 33, y: 90},{t: 'bottle', x: 37, y: 71},{t: 'bottle', x: 11, y: 66},{t: 'bottle', x: 46, y: 83},{t: 'bottle', x: 57, y: 98}] },
-    { name: "Parcul Herastrau", img: "herastrau.png", items: [{t: 'bottle', x: 79, y: 77},{t: 'bottle', x: 70, y: 86},{t: 'bottle', x: 55, y: 82},{t: 'bottle', x: 40, y: 74},{t: 'bottle', x: 33, y: 65},{t: 'bottle', x: 14, y: 67},{t: 'bottle', x: 10, y: 77},{t: 'bottle', x: 4, y: 74},{t: 'bottle', x: 5, y: 65}] },
-    { name: "Gradina Japoneza", img: "gradinajaponeza.png", items: [{t: 'bottle', x: 61, y: 71},{t: 'bottle', x: 87, y: 68},{t: 'bottle', x: 71, y: 86},{t: 'bottle', x: 36, y: 89},{t: 'bottle', x: 37, y: 69},{t: 'bottle', x: 24, y: 78},{t: 'bottle', x: 12, y: 87},{t: 'bottle', x: 70, y: 71}] },
-    { name: "Acasa la Corporatristi", img: "corporatristi.png", items: [{t: 'bottle', x: 67, y: 92},{t: 'bottle', x: 89, y: 77},{t: 'bottle', x: 82, y: 77},{t: 'bottle', x: 51, y: 79},{t: 'bottle', x: 23, y: 75},{t: 'bottle', x: 19, y: 80},{t: 'bottle', x: 13, y: 87}] },
+    { name: "Ateneul Roman", img: "ateneulroman.webp", items: [{t: 'bottle', x: 60, y: 91},{t: 'bottle', x: 88, y: 73},{t: 'bottle', x: 33, y: 78},{t: 'bottle', x: 14, y: 69},{t: 'bottle', x: 24, y: 68}] },
+    { name: "Parcul Carol", img: "parculcarol.webp", items: [    {t: 'bottle', x: 67, y: 92},{t: 'bottle', x: 96, y: 80},{t: 'bottle', x: 62, y: 82},{t: 'bottle', x: 56, y: 80},{t: 'bottle', x: 28, y: 87},{t: 'bottle', x: 37, y: 76},{t: 'bottle', x: 7, y: 75}] },
+    { name: "Intercontinental", img: "intercontinental.webp", items: [ {t: 'bottle', x: 87, y: 97},{t: 'bottle', x: 63, y: 94},{t: 'bottle', x: 45, y: 93},{t: 'bottle', x: 40, y: 90},{t: 'bottle', x: 28, y: 97},{t: 'bottle', x: 16, y: 93}] },
+    { name: "Teatrul National Bucuresti", img: "TNB.webp", items: [{t: 'bottle', x: 85, y: 80},{t: 'bottle', x: 83, y: 50},{t: 'bottle', x: 80, y: 58},{t: 'bottle', x: 62, y: 71},{t: 'bottle', x: 71, y: 89},{t: 'bottle', x: 34, y: 86},{t: 'bottle', x: 23, y: 68}] },
+    { name: "Biblioteca Nationala", img: "bibliotecanationala.webp", items: [{t: 'bottle', x: 46, y: 92},{t: 'bottle', x: 33, y: 90},{t: 'bottle', x: 37, y: 71},{t: 'bottle', x: 11, y: 66},{t: 'bottle', x: 46, y: 83},{t: 'bottle', x: 57, y: 98}] },
+    { name: "Parcul Herastrau", img: "herastrau.webp", items: [{t: 'bottle', x: 79, y: 77},{t: 'bottle', x: 70, y: 86},{t: 'bottle', x: 55, y: 82},{t: 'bottle', x: 40, y: 74},{t: 'bottle', x: 33, y: 65},{t: 'bottle', x: 14, y: 67},{t: 'bottle', x: 10, y: 77},{t: 'bottle', x: 4, y: 74},{t: 'bottle', x: 5, y: 65}] },
+    { name: "Gradina Japoneza", img: "gradinajaponeza.webp", items: [{t: 'bottle', x: 61, y: 71},{t: 'bottle', x: 87, y: 68},{t: 'bottle', x: 71, y: 86},{t: 'bottle', x: 36, y: 89},{t: 'bottle', x: 37, y: 69},{t: 'bottle', x: 24, y: 78},{t: 'bottle', x: 12, y: 87},{t: 'bottle', x: 70, y: 71}] },
+    { name: "Acasa la Corporatristi", img: "corporatristi.webp", items: [{t: 'bottle', x: 67, y: 92},{t: 'bottle', x: 89, y: 77},{t: 'bottle', x: 82, y: 77},{t: 'bottle', x: 51, y: 79},{t: 'bottle', x: 23, y: 75},{t: 'bottle', x: 19, y: 80},{t: 'bottle', x: 13, y: 87}] },
 
     // PAGINA 4 (24-31) - Placeholders (temporar) - items are sticknotes
-    { name: "Lobby", img: "lobbycorpo.png", items: [ {t: 'sticknote', x: 91, y: 51},{t: 'sticknote', x: 87, y: 61},{t: 'sticknote', x: 82, y: 64},{t: 'sticknote', x: 50, y: 70},{t: 'sticknote', x: 43, y: 68},{t: 'sticknote', x: 50, y: 57},{t: 'sticknote', x: 45, y: 56}, {t: 'sticknote', x: 30, y: 61},{t: 'sticknote', x: 19, y: 52},{t: 'sticknote', x: 11, y: 49}] },
-    { name: "ART", img: "living.png", items: [ {t: 'sticknote', x: 90, y: 51},{t: 'sticknote', x: 77, y: 49},{t: 'sticknote', x: 73, y: 68},{t: 'sticknote', x: 70, y: 61},{t: 'sticknote', x: 64, y: 65},{t: 'sticknote', x: 50, y: 69},{t: 'sticknote', x: 17, y: 55},{t: 'sticknote', x: 21, y: 62},{t: 'sticknote', x: 42, y: 80},{t: 'sticknote', x: 64, y: 52}] },
-    { name: "Sala de conferinte mica", img: "conferinta.png", items: [{t: 'sticknote', x: 25, y: 42}, {t: 'sticknote', x: 16, y: 48}, {t: 'sicknote', x: 19, y: 67}, {t: 'sticknote', x: 20, y: 76}, {t: 'sitcknote', x: 33, y: 65}, {t: 'sticknote', x: 37, y: 71}, {t: 'sticknote', x: 50, y: 80}, {t: 'sticknote', x: 54, y: 69}, {t: 'sticknote', x: 53, y: 61}, {t: 'sticknote', x: 72, y: 67}, {t: 'sticknote', x: 82, y: 87}, {t: 'sticknote', x: 95, y: 65}] },
-    { name: "Birou 1", img: "sala3.png", items: [{t: 'sticknote', x: 74, y: 82}, {t: 'sticknote', x: 71, y: 62}, {t: 'sticknote', x: 62, y: 48}, {t: 'sticknote', x: 58, y: 17}, {t: 'sticknote', x: 54, y: 58}, {t: 'sticknote', x: 45, y: 60}, {t: 'sticknote', x: 42, y: 57}, {t: 'sticknote', x: 34, y: 51}, {t: 'sticknote', x: 29, y: 53}, {t: 'sticknote', x: 22, y: 45}, {t: 'sticknote', x: 56, y: 77}, {t: 'sticknote', x: 17, y: 86}] },
-    { name: "Birou 2", img: "birou1.png", items: [ {t: 'sticknote', x: 92, y: 70},{t: 'sticknote', x: 74, y: 61},{t: 'sticknote', x: 77, y: 41},{t: 'sticknote', x: 50, y: 73},{t: 'sticknote', x: 46, y: 62},{t: 'sticknote', x: 28, y: 62},{t: 'sticknote', x: 27, y: 39},{t: 'sticknote', x: 5, y: 72}] },
-    { name: "La Canapea", img: "canapea.png", items: [{t: 'sticknote', x: 91, y: 50},{t: 'sticknote', x: 87, y: 44},{t: 'sticknote', x: 81, y: 41},{t: 'sticknote', x: 82, y: 48},{t: 'sticknote', x: 78, y: 54},{t: 'sticknote', x: 75, y: 49},{t: 'sticknote', x: 65, y: 65},{t: 'sticknote', x: 59, y: 74},{t: 'sticknote', x: 52, y: 64},{t: 'sticknote', x: 48, y: 75},{t: 'sticknote', x: 25, y: 42},{t: 'sticknote', x: 23, y: 53},{t: 'sticknote', x: 19, y: 41},{t: 'sticknote', x: 12, y: 40},{t: 'sticknote', x: 6, y: 49} ] },
-    { name: "Birou 3", img: "sala4.png", items: [{t: 'sticknote', x: 78, y: 70},{t: 'sticknote', x: 75, y: 40},{t: 'sticknote', x: 73, y: 53},{t: 'sticknote', x: 67, y: 54},{t: 'sticknote', x: 54, y: 66},{t: 'sticknote', x: 46, y: 53},{t: 'sticknote', x: 43, y: 81},{t: 'sticknote', x: 24, y: 48} ] },
-    { name: "Sala de conferinta mare", img: "conferinta2.png", items: [ {t: 'sticknote', x: 86, y: 35}, {t: 'sticknote', x: 65, y: 58}, {t: 'sticknote', x: 55, y: 51}, {t: 'sticknote', x: 56, y: 40}, {t: 'sticknote', x: 55, y: 35}, {t: 'sticknote', x: 52, y: 48}, {t: 'sticknote', x: 50, y: 47}, {t: 'sticknote', x: 23, y: 71}, {t: 'sticknote', x: 56, y: 84}, {t: 'sticknote', x: 8, y: 42}, {t: 'sticknote', x: 5, y: 32}] }
+    { name: "Lobby", img: "lobbycorpo.webp", items: [ {t: 'sticknote', x: 91, y: 51},{t: 'sticknote', x: 87, y: 61},{t: 'sticknote', x: 82, y: 64},{t: 'sticknote', x: 50, y: 70},{t: 'sticknote', x: 43, y: 68},{t: 'sticknote', x: 50, y: 57},{t: 'sticknote', x: 45, y: 56}, {t: 'sticknote', x: 30, y: 61},{t: 'sticknote', x: 19, y: 52},{t: 'sticknote', x: 11, y: 49}] },
+    { name: "ART", img: "living.webp", items: [ {t: 'sticknote', x: 90, y: 51},{t: 'sticknote', x: 77, y: 49},{t: 'sticknote', x: 73, y: 68},{t: 'sticknote', x: 70, y: 61},{t: 'sticknote', x: 64, y: 65},{t: 'sticknote', x: 50, y: 69},{t: 'sticknote', x: 17, y: 55},{t: 'sticknote', x: 21, y: 62},{t: 'sticknote', x: 42, y: 80},{t: 'sticknote', x: 64, y: 52}] },
+    { name: "Sala de conferinte mica", img: "conferinta.webp", items: [{t: 'sticknote', x: 25, y: 42}, {t: 'sticknote', x: 16, y: 48}, {t: 'sicknote', x: 19, y: 67}, {t: 'sticknote', x: 20, y: 76}, {t: 'sitcknote', x: 33, y: 65}, {t: 'sticknote', x: 37, y: 71}, {t: 'sticknote', x: 50, y: 80}, {t: 'sticknote', x: 54, y: 69}, {t: 'sticknote', x: 53, y: 61}, {t: 'sticknote', x: 72, y: 67}, {t: 'sticknote', x: 82, y: 87}, {t: 'sticknote', x: 95, y: 65}] },
+    { name: "Birou 1", img: "sala3.webp", items: [{t: 'sticknote', x: 74, y: 82}, {t: 'sticknote', x: 71, y: 62}, {t: 'sticknote', x: 62, y: 48}, {t: 'sticknote', x: 58, y: 17}, {t: 'sticknote', x: 54, y: 58}, {t: 'sticknote', x: 45, y: 60}, {t: 'sticknote', x: 42, y: 57}, {t: 'sticknote', x: 34, y: 51}, {t: 'sticknote', x: 29, y: 53}, {t: 'sticknote', x: 22, y: 45}, {t: 'sticknote', x: 56, y: 77}, {t: 'sticknote', x: 17, y: 86}] },
+    { name: "Birou 2", img: "birou1.webp", items: [ {t: 'sticknote', x: 92, y: 70},{t: 'sticknote', x: 74, y: 61},{t: 'sticknote', x: 77, y: 41},{t: 'sticknote', x: 50, y: 73},{t: 'sticknote', x: 46, y: 62},{t: 'sticknote', x: 28, y: 62},{t: 'sticknote', x: 27, y: 39},{t: 'sticknote', x: 5, y: 72}] },
+    { name: "La Canapea", img: "canapea.webp", items: [{t: 'sticknote', x: 91, y: 50},{t: 'sticknote', x: 87, y: 44},{t: 'sticknote', x: 81, y: 41},{t: 'sticknote', x: 82, y: 48},{t: 'sticknote', x: 78, y: 54},{t: 'sticknote', x: 75, y: 49},{t: 'sticknote', x: 65, y: 65},{t: 'sticknote', x: 59, y: 74},{t: 'sticknote', x: 52, y: 64},{t: 'sticknote', x: 48, y: 75},{t: 'sticknote', x: 25, y: 42},{t: 'sticknote', x: 23, y: 53},{t: 'sticknote', x: 19, y: 41},{t: 'sticknote', x: 12, y: 40},{t: 'sticknote', x: 6, y: 49} ] },
+    { name: "Birou 3", img: "sala4.webp", items: [{t: 'sticknote', x: 78, y: 70},{t: 'sticknote', x: 75, y: 40},{t: 'sticknote', x: 73, y: 53},{t: 'sticknote', x: 67, y: 54},{t: 'sticknote', x: 54, y: 66},{t: 'sticknote', x: 46, y: 53},{t: 'sticknote', x: 43, y: 81},{t: 'sticknote', x: 24, y: 48} ] },
+    { name: "Sala de conferinta mare", img: "conferinta2.webp", items: [ {t: 'sticknote', x: 86, y: 35}, {t: 'sticknote', x: 65, y: 58}, {t: 'sticknote', x: 55, y: 51}, {t: 'sticknote', x: 56, y: 40}, {t: 'sticknote', x: 55, y: 35}, {t: 'sticknote', x: 52, y: 48}, {t: 'sticknote', x: 50, y: 47}, {t: 'sticknote', x: 23, y: 71}, {t: 'sticknote', x: 56, y: 84}, {t: 'sticknote', x: 8, y: 42}, {t: 'sticknote', x: 5, y: 32}] }
 ];
 
 // --- CONFIG CUTSCENE ---
 const cutsceneData = [
-    { img: "cutseen0.png", audio: "cutseen0.mp3" },
-    { img: "cutseen1.png", audio: "cutseen1.mp3" },
-    { img: "cutseen2.png", audio: "cutseen2.mp3" },
-    { img: "cutseen3.png", audio: "cutseen3.mp3" },
-    { img: "cutseen4.png", audio: "cutseen4.mp3" },
-    { img: "cutseen5.png", audio: "cutseen5.mp3" },
-    { img: "cutseen6.png", audio: "cutseen6.mp3" },
-    { img: "cutseen7.png", audio: "cutseen7.mp3" },
-    { img: "cutseen8.png", audio: "cutseen8.mp3" },
-    { img: "cutseen9.png", audio: "cutseen9.mp3" },
-    { img: "cutseen10.png", audio: "cutseen10.mp3" },
-    { img: "cutseen11.png", audio: "cutseen11.mp3" },
-    { img: "cutseen12.png", audio: "cutseen12.mp3" },
-    { img: "cutseen13.png", audio: "cutseen13.mp3" },
+    { img: "cutseen0.webp", audio: "cutseen0.mp3" },
+    { img: "cutseen1.webp", audio: "cutseen1.mp3" },
+    { img: "cutseen2.webp", audio: "cutseen2.mp3" },
+    { img: "cutseen3.webp", audio: "cutseen3.mp3" },
+    { img: "cutseen4.webp", audio: "cutseen4.mp3" },
+    { img: "cutseen5.webp", audio: "cutseen5.mp3" },
+    { img: "cutseen6.webp", audio: "cutseen6.mp3" },
+    { img: "cutseen7.webp", audio: "cutseen7.mp3" },
+    { img: "cutseen8.webp", audio: "cutseen8.mp3" },
+    { img: "cutseen9.webp", audio: "cutseen9.mp3" },
+    { img: "cutseen10.webp", audio: "cutseen10.mp3" },
+    { img: "cutseen11.webp", audio: "cutseen11.mp3" },
+    { img: "cutseen12.webp", audio: "cutseen12.mp3" },
+    { img: "cutseen13.webp", audio: "cutseen13.mp3" },
     // Placeholders for future cutscenes 14..21 (optional assets)
-    { img: "cutseen14.png", audio: "cutseen14.mp3" },
-    { img: "cutseen15.png", audio: "cutseen15.mp3" },
-    { img: "cutseen16.png", audio: "cutseen16.mp3" },
-    { img: "cutseen17.png", audio: "cutseen17.mp3" },
-    { img: "cutseen18.png", audio: "cutseen18.mp3" },
-    { img: "cutseen19.png", audio: "cutseen19.mp3" },
-    { img: "cutseen20.png", audio: "cutseen20.mp3" },
-    { img: "cutseen21.png", audio: "cutseen21.mp3" },
-    { img: "cutseen22.png", audio: "cutseen22.mp3" }
+    { img: "cutseen14.webp", audio: "cutseen14.mp3" },
+    { img: "cutseen15.webp", audio: "cutseen15.mp3" },
+    { img: "cutseen16.webp", audio: "cutseen16.mp3" },
+    { img: "cutseen17.webp", audio: "cutseen17.mp3" },
+    { img: "cutseen18.webp", audio: "cutseen18.mp3" },
+    { img: "cutseen19.webp", audio: "cutseen19.mp3" },
+    { img: "cutseen20.webp", audio: "cutseen20.mp3" },
+    { img: "cutseen21.webp", audio: "cutseen21.mp3" },
+    { img: "cutseen22.webp", audio: "cutseen22.mp3" }
 ];
 let currentCutsceneIndex = 0;
 // Când un cutscene se termina, aceste variabile definesc ce trebuie deblocat/arat
@@ -92,7 +92,16 @@ let currentLevelTarget = 5;
 
 // Persistent background audio element (keeps playing across levels)
 let bgAudio = null;
+
 function ensureBackgroundMusicForLevel(index) {
+    // 1. DACĂ ESTE MUTE, ANULĂM TOT ȘI IEȘIM IMEDIAT
+    if (isMuted) {
+        if (bgAudio && !bgAudio.paused) {
+            bgAudio.pause();
+        }
+        return; // <--- Această linie "anulează" restul funcției
+   } 
+
     // Mapping of level ranges to audio files
     let desired = null;
     if (index >= 24 && index <= 31) {
@@ -104,10 +113,9 @@ function ensureBackgroundMusicForLevel(index) {
     } else if (index >= 0 && index <= 7) {
         desired = 'assets/audio/summer3.mp3';
     }
-    if (!desired) return;
 
     try {
-        // If we don't have an audio element yet, create and play (looped)
+        // 2. Dacă nu există player-ul audio, îl creăm
         if (!bgAudio) {
             bgAudio = new Audio(desired);
             bgAudio.loop = true;
@@ -115,38 +123,44 @@ function ensureBackgroundMusicForLevel(index) {
             bgAudio.play().catch(e => console.log('bgAudio play error:', e));
             return;
         }
-        // If the current src already matches desired, do nothing (preserve currentTime)
-        const cur = bgAudio.src || '';
-        if (cur.indexOf(desired) !== -1 || cur.endsWith(desired)) {
-            // already playing this track; leave as-is so it doesn't restart
-            return;
+
+        // 3. Verificăm dacă melodia este deja cea corectă
+        // Folosim includes() pentru că bgAudio.src returnează adresa URL completă
+        if (bgAudio.src.includes(desired)) {
+            if (bgAudio.paused) {
+                bgAudio.play().catch(e => console.log('resume error:', e));
+            }
+            return; 
         }
-        // Different track: replace src but preserve playing state
-        const wasPlaying = !bgAudio.paused && !bgAudio.ended;
-        try { bgAudio.pause(); } catch(e){}
+
+        // 4. Dacă e o piesă diferită, schimbăm sursa
+        bgAudio.pause();
         bgAudio.src = desired;
-        bgAudio.loop = true;
-        // Only start playing automatically if it was previously playing
-        if (wasPlaying) {
-            bgAudio.play().catch(e => console.log('bgAudio play error:', e));
-        }
+        bgAudio.play().catch(e => console.log('bgAudio play error:', e));
+
     } catch(e) {
         console.log('ensureBackgroundMusicForLevel error', e);
     }
 }
 
-// --- MENIU AUDIO ---
+// --- MENIU AUDIO (Reparat) ---
 let menuAudio = null;
+
 function playMenuAudio() {
+    if (isMuted) return; // Dacă e mute, ieșim
+
     if (!menuAudio) {
         menuAudio = new Audio('assets/audio/menu.mp3');
         menuAudio.loop = true;
         menuAudio.volume = 0.45;
     }
+    
+    // Dăm play doar dacă nu cântă deja
     if (menuAudio.paused) {
         menuAudio.play().catch(e => console.log('menuAudio play error:', e));
     }
 }
+
 function pauseMenuAudio() {
     if (menuAudio && !menuAudio.paused) {
         try { menuAudio.pause(); } catch(e){}
@@ -200,7 +214,7 @@ function renderMainMenu() {
 
     grid.innerHTML = "";
 
-    let imgUrl = 'assets/menu.png';
+    let imgUrl = 'assets/menu.webp';
     const maxPage = Math.ceil(levels.length / 8) - 1;
     prevBtn.style.display = menuPage === 0 ? "none" : "block";
     nextBtn.style.display = menuPage === maxPage ? "none" : "block";
@@ -253,9 +267,12 @@ function startLevel(index) {
     pauseMenuAudio();
     // Always play bg music for this level
     ensureBackgroundMusicForLevel(index);
-    if (bgAudio) {
+
+    // Verificăm dacă NU este pus mut înainte de a forța pornirea sau volumul
+    if (bgAudio && !isMuted) { 
         // Restore volume if it was faded out
         bgAudio.volume = 0.45;
+        
         if (bgAudio.paused) {
             bgAudio.play().catch(e => console.log('bgAudio play error:', e));
         }
@@ -292,7 +309,7 @@ function startLevel(index) {
     const scene = document.getElementById('scene');
     scene.innerHTML = "";
     
-    if(levels[index].img === "placeholder.png") {
+    if(levels[index].img === "placeholder.webp") {
         scene.style.backgroundColor = "#555";
         scene.style.backgroundImage = "none";
     } else {
@@ -397,6 +414,7 @@ function handleItemClick(el, item) {
     const type = item.t;
     el.classList.add('collected');
     el.style.pointerEvents = 'none';
+    
     // Add a red circle marker
     if (!el.querySelector('.collected-marker')) {
         const marker = document.createElement('div');
@@ -407,9 +425,13 @@ function handleItemClick(el, item) {
     if (type === 'bottle') {
         bottlesFound++;
         document.getElementById('score-text').innerText = bottlesFound + "/" + currentLevelTarget;
-        try { playSound('pop'); } catch(e) {}
+        
+        // --- MODIFICARE 1: Verificăm mute pentru sunetul 'pop' ---
+        if (!isMuted) {
+            try { playSound('pop'); } catch(e) {}
+        }
 
-        // Play one random bottle audio from assets/audio/bottle1..5.mp3
+        // --- MODIFICARE 2: Verificăm mute pentru sunetele de sticlă ---
         try {
             const bottleSounds = [
                 'assets/audio/bottle1.mp3',
@@ -419,11 +441,16 @@ function handleItemClick(el, item) {
                 'assets/audio/bottle5.mp3'
             ];
             const choice = bottleSounds[Math.floor(Math.random() * bottleSounds.length)];
-            const bottleAudio = new Audio(choice);
-            bottleAudio.play().catch(err => console.log('Bottle audio play error:', err));
+            
+            // Doar dacă NU e mute, creăm și redăm audio
+            if (!isMuted) {
+                const bottleAudio = new Audio(choice);
+                bottleAudio.play().catch(err => console.log('Bottle audio play error:', err));
+            }
         } catch(e) { console.log('Bottle audio error:', e); }
 
         if (bottlesFound >= currentLevelTarget) handleLevelWin();
+
     } else if (type === 'sticknote') {
         currentLevelStickFound++;
         // mark that this level has at least one sticky note found (used for menu badges)
@@ -599,6 +626,9 @@ function showCutsceneFrame() {
     
     if(window.currentAudio) { window.currentAudio.pause(); window.currentAudio.onended = null; }
     window.currentAudio = new Audio(`assets/cutseen/${data.audio}`);
+    if (!isMuted) {
+    window.currentAudio.play().catch(e => console.log("Audio err:", e));
+}
     if (pendingCutsceneAutoPlay) {
         window.currentAudio.onended = () => {
             currentCutsceneIndex++;
@@ -686,3 +716,29 @@ function hideStickyNote() {
     panel.classList.add('hidden');
     panel.setAttribute('aria-hidden', 'true');
 }
+
+//MUTE BUTTON
+let isMuted = false;
+
+function toggleMute() {
+    isMuted = !isMuted;
+    const btn = document.getElementById('mute-btn');
+    if (!btn) return;
+
+    if (isMuted) {
+        btn.innerHTML = "🔇";
+        // Oprim tot ce cântă în momentul ăsta
+        if (bgAudio) bgAudio.pause();
+        if (menuAudio) menuAudio.pause();
+        if (window.currentAudio) window.currentAudio.pause();
+    } else {
+        btn.innerHTML = "🔊";
+        // Reluăm sunetul în funcție de unde ne aflăm (Meniu sau Nivel)
+        if (document.getElementById('menu-overlay').style.display === 'flex') {
+            playMenuAudio();
+        } else {
+            if (bgAudio) bgAudio.play().catch(e => {});
+        }
+    }
+}
+
