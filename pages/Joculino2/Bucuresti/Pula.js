@@ -1,22 +1,82 @@
+// --- Sticky Note Tap-to-Dismiss for Mobile ---
+function enableStickyNoteTapDismiss() {
+    const panel = document.getElementById('sticky-note-panel');
+    if (!panel) return;
+    function onTap() {
+        if (window.innerWidth <= 900 || window.innerHeight <= 600) {
+            panel.classList.add('hidden');
+            panel.setAttribute('aria-hidden', 'true');
+        }
+    }
+    panel.addEventListener('touchend', onTap);
+    panel.addEventListener('click', onTap);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    if (window.innerWidth <= 900 || window.innerHeight <= 600) {
+        enableStickyNoteTapDismiss();
+    }
+});
+// --- Sticky Note Swipe-to-Dismiss for Mobile ---
+function enableStickyNoteSwipeDismiss() {
+    const panel = document.getElementById('sticky-note-panel');
+    if (!panel) return;
+    let touchStartX = 0, touchStartY = 0, touchEndX = 0, touchEndY = 0;
+    let swiped = false;
+
+    function onTouchStart(e) {
+        if (e.touches.length !== 1) return;
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+        swiped = false;
+    }
+    function onTouchMove(e) {
+        if (e.touches.length !== 1) return;
+        touchEndX = e.touches[0].clientX;
+        touchEndY = e.touches[0].clientY;
+    }
+    function onTouchEnd() {
+        const dx = touchEndX - touchStartX;
+        const dy = touchEndY - touchStartY;
+        if (Math.abs(dx) > 50 || Math.abs(dy) > 50) {
+            // Considered a swipe
+            if (!swiped) {
+                panel.classList.add('hidden');
+                panel.setAttribute('aria-hidden', 'true');
+                swiped = true;
+            }
+        }
+    }
+    panel.addEventListener('touchstart', onTouchStart);
+    panel.addEventListener('touchmove', onTouchMove);
+    panel.addEventListener('touchend', onTouchEnd);
+}
+
+// Enable swipe-to-dismiss on DOMContentLoaded
+document.addEventListener('DOMContentLoaded', function() {
+    if (window.innerWidth <= 900 || window.innerHeight <= 600) {
+        enableStickyNoteSwipeDismiss();
+    }
+});
 // Pula.js - extracted from Pula.html
 // --- DEFINIREA NIVELELOR ---
 const levels = [
     // PAGINA 1 (0-7)
     // Piața Romană - Coordonate verificate din fișierul tău
-    { name: "Piața Romană", img: "romana.png", items: [{t: 'bottle', x: 28, y: 94}, {t: 'bottle', x: 35, y: 95}, {t: 'bottle', x: 43, y: 88}, {t: 'bottle', x: 41, y: 99}, {t: 'bottle', x: 41, y: 48}, {t: 'bottle', x: 61, y: 22}, {t: 'bottle', x: 94, y: 28}, {t: 'bottle', x: 56, y: 51}, {t: 'bottle', x: 62, y: 51}, {t: 'bottle', x: 77, y: 53}, {t: 'bottle', x: 94, y: 81}, {t: 'bottle', x: 71, y: 86}, {t: 'bottle', x: 60, y: 97}] },
-    { name: "Piața Unirii", img: "unirii.png", items: [ {t:'bottle', x:83, y:90}, {t:'bottle', x:74, y:92}, {t:'bottle', x:71, y:68}, {t:'bottle', x:48, y:84}, {t:'bottle', x:40, y:84}, {t:'bottle', x:7, y:66} ] },
-    { name: "Piața Obor", img: "obor.png", items: [ {t:'bottle', x:94, y:65}, {t:'bottle', x:90, y:89}, {t:'bottle', x:83, y:87}, {t:'bottle', x:49, y:75}, {t:'bottle', x:30, y:70}, {t:'bottle', x:11, y:85} ] },
+    { name: "Piața Romană", img: "romana.png", items: [{t: 'bottle', x: 42, y: 49},{t: 'bottle', x: 56, y: 50}, {t: 'bottle', x: 61, y: 51}, {t: 'bottle', x: 62, y: 22}, {t: 'bottle', x: 94, y: 30}, {t: 'bottle', x: 76, y: 55}, {t: 'bottle', x: 93, y: 81}, {t: 'bottle', x: 71, y: 86}, {t: 'bottle', x: 59, y: 98}, {t: 'bottle', x: 43, y: 92}, {t: 'bottle', x: 40, y: 99}, {t: 'bottle', x: 35, y: 95}, {t: 'bottle', x: 29, y: 98}] },
+    { name: "Piața Unirii", img: "unirii.png", items: [ {t: 'bottle', x: 71, y: 67}, {t: 'bottle', x: 84, y: 89}, {t: 'bottle', x: 40, y: 84}, {t: 'bottle', x: 48, y: 84}, {t: 'bottle', x: 7, y: 66}, {t: 'bottle', x: 74, y: 90} ] },
+    { name: "Piața Obor", img: "obor.png", items: [{t: 'bottle', x: 48, y: 74}, {t: 'bottle', x: 30, y: 69}, {t: 'bottle', x: 11, y: 85}, {t: 'bottle', x: 82, y: 86}, {t: 'bottle', x: 89, y: 89}, {t: 'bottle', x: 94, y: 66}] },
     { name: "Timpuri Noi", img: "timpurinoi.png", items: [ {t:'bottle', x:88, y:91}, {t:'bottle', x:87, y:77}, {t:'bottle', x:68, y:85}, {t:'bottle', x:60, y:92}, {t:'bottle', x:54, y:89}, {t:'bottle', x:41, y:66}, {t:'bottle', x:51, y:65}, {t:'bottle', x:11, y:68} ] },
-    { name: "Militari", img: "militari.png", items: [ {t:'bottle', x:89, y:87}, {t:'bottle', x:78, y:90}, {t:'bottle', x:62, y:82}, {t:'bottle', x:19, y:90}, {t:'bottle', x:39, y:73}, {t:'bottle', x:9, y:87} ] },
+    { name: "Militari", img: "militari.png", items: [ {t: 'bottle', x: 62, y: 84}, {t: 'bottle', x: 79, y: 89}, {t: 'bottle', x: 90, y: 87}, {t: 'bottle', x: 19, y: 90}, {t: 'bottle', x: 39, y: 74}, {t: 'bottle', x: 9, y: 86} ] },
     { name: "Piața Sudului", img: "sudului.png", items: [ {t:'bottle', x:70, y:82}, {t:'bottle', x:79, y:92}, {t:'bottle', x:90, y:87}, {t:'bottle', x:49, y:84}, {t:'bottle', x:43, y:81}, {t:'bottle', x:18, y:76} ] },
-    { name: "Arcul de Triumf", img: "arcul.png", items: [ {t:'bottle', x:53, y:62}, {t:'bottle', x:47, y:61}, {t:'bottle', x:34, y:62}, {t:'bottle', x:19, y:91}, {t:'bottle', x:75, y:87}, {t: 'bottle', x: 79, y: 64} ] },
+    { name: "Arcul de Triumf", img: "arcul.png", items: [ {t: 'bottle', x: 52, y: 63}, {t: 'bottle', x: 48, y: 63}, {t: 'bottle', x: 33, y: 62}, {t: 'bottle', x: 79, y: 64}, {t: 'bottle', x: 75, y: 86}, {t: 'bottle', x: 19, y: 92} ] },
     // Nivel Secret
-    { name: "Palatul Parlamentului", img: "parliament.png", isSecret: true, items: [{t:'bottle', x:64, y:50}, {t:'bottle', x:50, y:55}, {t:'bottle', x:54, y:68}, {t:'bottle', x:20, y:89}, {t:'bottle', x:97, y:59}, {t:'bottle', x:69, y:89}] },
+    { name: "Palatul Parlamentului", img: "parliament.png", isSecret: true, items: [{t: 'bottle', x: 63, y: 51}, {t: 'bottle', x: 51, y: 56}, {t: 'bottle', x: 54, y: 64}, {t: 'bottle', x: 97, y: 58}, {t: 'bottle', x: 21, y: 91}, {t: 'bottle', x: 69, y: 89}] },
 
     // PAGINA 2 (8-15) - Placeholders
     { name: "Centrul Vechi", img: "centruvechi.png", items: [ {t: 'bottle', x: 92, y: 86},{t: 'bottle', x: 91, y: 65},{t: 'bottle', x: 80, y: 75},{t: 'bottle', x: 69, y: 79},{t: 'bottle', x: 39, y: 75},{t: 'bottle', x: 31, y: 85},{t: 'bottle', x: 20, y: 63},{t: 'bottle', x: 12, y: 64}] },
     { name: "Parcul Cișmigiu", img: "parculcismigiu.png", items: [  {t: 'bottle', x: 56, y: 41},{t: 'bottle', x: 79, y: 75},{t: 'bottle', x: 41, y: 79},{t: 'bottle', x: 33, y: 69},{t: 'bottle', x: 25, y: 65},{t: 'bottle', x: 20, y: 55}] },
-    { name: "Gara de Nord", img: "garadenord.png", items: [ {t: 'bottle', x: 90, y: 87},{t: 'bottle', x: 83, y: 87},{t: 'bottle', x: 75, y: 74},{t: 'bottle', x: 73, y: 89},{t: 'bottle', x: 65, y: 86},{t: 'bottle', x: 53, y: 83},{t: 'bottle', x: 34, y: 86},{t: 'bottle', x: 93, y: 57},{t: 'bottle', x: 62, y: 56},{t: 'bottle', x: 50, y: 58},{t: 'bottle', x: 8, y: 75}] },
+    { name: "Gara de Nord", img: "garadenord.png", items: [ {t: 'bottle', x: 79, y: 40}, {t: 'bottle', x: 71, y: 59}, {t: 'bottle', x: 93, y: 58}, {t: 'bottle', x: 91, y: 89}, {t: 'bottle', x: 83, y: 86}, {t: 'bottle', x: 74, y: 89}, {t: 'bottle', x: 75, y: 75}, {t: 'bottle', x: 65, y: 87}, {t: 'bottle', x: 53, y: 83}, {t: 'bottle', x: 33, y: 86}, {t: 'bottle', x: 8, y: 74}, {t: 'bottle', x: 51, y: 57}, {t: 'bottle', x: 62, y: 56}] },
     { name: "Arena Națională", img: "arenanationala.png", items: [   {t: 'bottle', x: 90, y: 72},{t: 'bottle', x: 81, y: 59},{t: 'bottle', x: 55, y: 56},{t: 'bottle', x: 60, y: 66},{t: 'bottle', x: 66, y: 72},{t: 'bottle', x: 44, y: 73},{t: 'bottle', x: 14, y: 82}] },
     { name: "Metrou ", img: "metrou.png", items: [  {t: 'bottle', x: 85, y: 84},{t: 'bottle', x: 60, y: 65},{t: 'bottle', x: 45, y: 59},{t: 'bottle', x: 23, y: 44}] },
     { name: "AFI Mall", img: "afimall.png", items: [ {t: 'bottle', x: 50, y: 86},{t: 'bottle', x: 66, y: 53},{t: 'bottle', x: 82, y: 45},{t: 'bottle', x: 69, y: 84},{t: 'bottle', x: 86, y: 89},{t: 'bottle', x: 9, y: 88}] },
@@ -36,12 +96,12 @@ const levels = [
     // PAGINA 4 (24-31) - Placeholders (temporar) - items are sticknotes
     { name: "Lobby", img: "lobbycorpo.png", items: [ {t: 'sticknote', x: 91, y: 51},{t: 'sticknote', x: 87, y: 61},{t: 'sticknote', x: 82, y: 64},{t: 'sticknote', x: 50, y: 70},{t: 'sticknote', x: 43, y: 68},{t: 'sticknote', x: 50, y: 57},{t: 'sticknote', x: 45, y: 56}, {t: 'sticknote', x: 30, y: 61},{t: 'sticknote', x: 19, y: 52},{t: 'sticknote', x: 11, y: 49}] },
     { name: "ART", img: "living.png", items: [ {t: 'sticknote', x: 90, y: 51},{t: 'sticknote', x: 77, y: 49},{t: 'sticknote', x: 73, y: 68},{t: 'sticknote', x: 70, y: 61},{t: 'sticknote', x: 64, y: 65},{t: 'sticknote', x: 50, y: 69},{t: 'sticknote', x: 17, y: 55},{t: 'sticknote', x: 21, y: 62},{t: 'sticknote', x: 42, y: 80},{t: 'sticknote', x: 64, y: 52}] },
-    { name: "Sala de conferinte mica", img: "conferinta.png", items: [{t: 'sticknote', x: 95, y: 65},{t: 'sticknote', x: 82, y: 88},{t: 'sticknote', x: 72, y: 66},{t: 'sticknote', x: 53, y: 60},{t: 'sticknote', x: 54, y: 70},{t: 'sticknote', x: 49, y: 80},{t: 'sticknote', x: 37, y: 72},{t: 'sticknote', x: 32, y: 64},{t: 'sticknote', x: 20, y: 81},{t: 'sticknote', x: 18, y: 65},{t: 'sticknote', x: 15, y: 48},{t: 'sticknote', x: 25, y: 41} ] },
-    { name: "Birou 1", img: "sala3.png", items: [{t: 'sticknote', x: 71, y: 62},{t: 'sticknote', x: 74, y: 82},{t: 'sticknote', x: 62, y: 48},{t: 'sticknote', x: 57, y: 17},{t: 'sticknote', x: 54, y: 59},{t: 'sticknote', x: 46, y: 60},{t: 'sticknote', x: 41, y: 58},{t: 'sticknote', x: 34, y: 51},{t: 'sticknote', x: 28, y: 52},{t: 'sticknote', x: 22, y: 45},{t: 'sticknote', x: 16, y: 88} ] },
+    { name: "Sala de conferinte mica", img: "conferinta.png", items: [{t: 'sticknote', x: 25, y: 42}, {t: 'sticknote', x: 16, y: 48}, {t: 'sicknote', x: 19, y: 67}, {t: 'sticknote', x: 20, y: 76}, {t: 'sitcknote', x: 33, y: 65}, {t: 'sticknote', x: 37, y: 71}, {t: 'sticknote', x: 50, y: 80}, {t: 'sticknote', x: 54, y: 69}, {t: 'sticknote', x: 53, y: 61}, {t: 'sticknote', x: 72, y: 67}, {t: 'sticknote', x: 82, y: 87}, {t: 'sticknote', x: 95, y: 65}] },
+    { name: "Birou 1", img: "sala3.png", items: [{t: 'sticknote', x: 74, y: 82}, {t: 'sticknote', x: 71, y: 62}, {t: 'sticknote', x: 62, y: 48}, {t: 'sticknote', x: 58, y: 17}, {t: 'sticknote', x: 54, y: 58}, {t: 'sticknote', x: 45, y: 60}, {t: 'sticknote', x: 42, y: 57}, {t: 'sticknote', x: 34, y: 51}, {t: 'sticknote', x: 29, y: 53}, {t: 'sticknote', x: 22, y: 45}, {t: 'sticknote', x: 56, y: 77}, {t: 'sticknote', x: 17, y: 86}] },
     { name: "Birou 2", img: "birou1.png", items: [ {t: 'sticknote', x: 92, y: 70},{t: 'sticknote', x: 74, y: 61},{t: 'sticknote', x: 77, y: 41},{t: 'sticknote', x: 50, y: 73},{t: 'sticknote', x: 46, y: 62},{t: 'sticknote', x: 28, y: 62},{t: 'sticknote', x: 27, y: 39},{t: 'sticknote', x: 5, y: 72}] },
     { name: "La Canapea", img: "canapea.png", items: [{t: 'sticknote', x: 91, y: 50},{t: 'sticknote', x: 87, y: 44},{t: 'sticknote', x: 81, y: 41},{t: 'sticknote', x: 82, y: 48},{t: 'sticknote', x: 78, y: 54},{t: 'sticknote', x: 75, y: 49},{t: 'sticknote', x: 65, y: 65},{t: 'sticknote', x: 59, y: 74},{t: 'sticknote', x: 52, y: 64},{t: 'sticknote', x: 48, y: 75},{t: 'sticknote', x: 25, y: 42},{t: 'sticknote', x: 23, y: 53},{t: 'sticknote', x: 19, y: 41},{t: 'sticknote', x: 12, y: 40},{t: 'sticknote', x: 6, y: 49} ] },
     { name: "Birou 3", img: "sala4.png", items: [{t: 'sticknote', x: 78, y: 70},{t: 'sticknote', x: 75, y: 40},{t: 'sticknote', x: 73, y: 53},{t: 'sticknote', x: 67, y: 54},{t: 'sticknote', x: 54, y: 66},{t: 'sticknote', x: 46, y: 53},{t: 'sticknote', x: 43, y: 81},{t: 'sticknote', x: 24, y: 48} ] },
-    { name: "Sala de conferinta mare", img: "conferinta2.png", items: [ {t: 'sticknote', x: 54, y: 34},{t: 'sticknote', x: 56, y: 40},{t: 'sticknote', x: 66, y: 58},{t: 'sticknote', x: 54, y: 52},{t: 'sticknote', x: 51, y: 47},{t: 'sticknote', x: 5, y: 32},{t: 'sticknote', x: 8, y: 43},{t: 'sticknote', x: 21, y: 70},{t: 'sticknote', x: 57, y: 84},{t: 'sticknote', x: 86, y: 35}] }
+    { name: "Sala de conferinta mare", img: "conferinta2.png", items: [ {t: 'sticknote', x: 86, y: 35}, {t: 'sticknote', x: 65, y: 58}, {t: 'sticknote', x: 55, y: 51}, {t: 'sticknote', x: 56, y: 40}, {t: 'sticknote', x: 55, y: 35}, {t: 'sticknote', x: 52, y: 48}, {t: 'sticknote', x: 50, y: 47}, {t: 'sticknote', x: 23, y: 71}, {t: 'sticknote', x: 56, y: 84}, {t: 'sticknote', x: 8, y: 42}, {t: 'sticknote', x: 5, y: 32}] }
 ];
 
 // --- CONFIG CUTSCENE ---
@@ -392,6 +452,12 @@ function handleItemClick(el, item) {
     const type = item.t;
     el.classList.add('collected');
     el.style.pointerEvents = 'none';
+    // Add a red circle marker
+    if (!el.querySelector('.collected-marker')) {
+        const marker = document.createElement('div');
+        marker.className = 'collected-marker';
+        el.appendChild(marker);
+    }
 
     if (type === 'bottle') {
         bottlesFound++;
@@ -662,6 +728,12 @@ function showStickyNote(text, title) {
     tEl.innerText = text || '';
     panel.classList.remove('hidden');
     panel.setAttribute('aria-hidden', 'false');
+    panel.style.display = 'flex';
+    // On mobile, ensure overlay is visible and not hidden
+    if (window.innerWidth <= 900 || window.innerHeight <= 600) {
+        panel.classList.remove('hidden');
+        panel.style.display = 'flex';
+    }
 }
 function hideStickyNote() {
     const panel = document.getElementById('sticky-note-panel');

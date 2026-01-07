@@ -8,6 +8,15 @@
 </head>
 <body>
 
+<!-- Landscape recommendation popup for mobile (always overlays entire screen) -->
+<div id="landscape-popup">
+    <div class="popup-card">
+        <img src="assets/lnd.png" alt="Landscape" />
+        <div class="popup-title">Recomandare pentru mobil</div>
+        <div class="popup-desc">Pentru o experiență mai bună, rotește telefonul în <b>modul landscape</b>.</div>
+        <div class="popup-note">Acest mesaj va dispărea automat în modul landscape.</div>
+    </div>
+</div>
 <div id="game-container">
     
     <div id="hud">
@@ -58,5 +67,29 @@
 </div>
 
 <script src="Pula.js"></script>
+</body>
+<script>
+// Show/hide landscape popup based on orientation for mobile devices
+function isMobile() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+function checkOrientationAndTogglePopup() {
+    var popup = document.getElementById('landscape-popup');
+    if (!popup) return;
+    if (isMobile()) {
+        // Landscape if width > height
+        if (window.innerWidth > window.innerHeight) {
+            popup.style.display = 'none';
+        } else {
+            popup.style.display = 'flex';
+        }
+    } else {
+        popup.style.display = 'none';
+    }
+}
+window.addEventListener('DOMContentLoaded', checkOrientationAndTogglePopup);
+window.addEventListener('orientationchange', checkOrientationAndTogglePopup);
+window.addEventListener('resize', checkOrientationAndTogglePopup);
+</script>
 </body>
 </html>
