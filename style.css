@@ -126,16 +126,20 @@ footer{
   width:100%;
   background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.02));
   color:var(--muted);
-  font-size:0.95rem;
-  margin-top:48px;
+  font-size:0.80rem;
+  margin-top:18px;
   border-top:1px solid rgba(255,255,255,0.02);
+  padding: 6px 0 4px 0;
 }
 
 .footer-inner{
   max-width:var(--max-width);
   margin:0 auto;
-  padding:18px 20px;
+  padding:4px 8px;
   text-align:center;
+}
+.big-btn, button.big-btn {
+  color: #111 !important;
 }
 
 /* subtle decorative accent under headings */

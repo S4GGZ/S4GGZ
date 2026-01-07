@@ -4,69 +4,91 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bucharest Bottle Hunt</title>
+    <link rel="stylesheet" href="../../../style.css">
     <link rel="stylesheet" href="Pula.css">
 </head>
 <body>
-
-<!-- Landscape recommendation popup for mobile (always overlays entire screen) -->
-<div id="landscape-popup">
-    <div class="popup-card">
-        <img src="assets/lnd.png" alt="Landscape" />
-        <div class="popup-title">Recomandare pentru mobil</div>
-        <div class="popup-desc">Pentru o experiență mai bună, rotește telefonul în <b>modul landscape</b>.</div>
-        <div class="popup-note">Acest mesaj va dispărea automat în modul landscape.</div>
-    </div>
-</div>
-<div id="game-container">
-    
-    <div id="hud">
-        <button class="hud-btn" onclick="openLevelMenu()">☰ Meniu</button>
-        <div>📍 <span id="level-name">Loading...</span></div>
-        <div><span id="score-icon">🍾</span> <span id="score-text">0/5</span></div>
-        <div>📝 <span id="stick-text">0</span></div>
-    </div>
-
-    <div id="scene"></div>
-
-    <div id="notification" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.8); color: white; padding: 10px 20px; border-radius: 20px; opacity: 0; transition: opacity 0.5s; z-index: 50; pointer-events: none;">Notification</div>
-
-    <div id="menu-overlay" class="overlay" style="display: flex;">
-        <div id="menu-right-panel">
-            <div id="level-grid"></div>
-            
-            <div class="pagination-controls">
-                <button class="big-btn" id="prev-page-btn" onclick="changeMenuPage(-1)" style="display:none;">&lt; Înapoi</button>
-                <button class="big-btn" id="next-page-btn" onclick="changeMenuPage(1)">Înainte &gt;</button>
+    <!-- Header from index.html -->
+    <div class="top-bar">
+        <div class="top-bar-inner">
+            <div class="socials">
+                <a href=""><img src="../../../assets/images/facebook.png" alt="Facebook">Facebook</a>
+                <a href="#" id="onlyfans-btn"><img src="../../../assets/images/Onlyfans.webp" alt="OnlyFans" target="_blank">OnlyFans</a>
+                <a href="#"><img src="../../../assets/images/instagram.png" alt="Instagram">Instagram</a>
             </div>
-
-            <button id="reset-btn" class="big-btn" onclick="resetProgress()">⚠ Reset Progres</button>
+            <div style="flex:1"></div>
+            <a href="../../../index.html" class="home-icon" title="Home">
+                🏠
+            </a>
         </div>
     </div>
 
-    <div id="cutscene-overlay" class="overlay" onclick="nextCutsceneFrame()">
-        <img id="cutscene-img" src="" alt="Story">
-        <div class="cutscene-text">Click pentru a continua...</div>
+    <!-- Landscape recommendation popup for mobile (always overlays entire screen) -->
+    <div id="landscape-popup">
+        <div class="popup-card">
+            <img src="assets/lnd.png" alt="Landscape" />
+            <div class="popup-title">Recomandare pentru mobil</div>
+            <div class="popup-desc">Pentru o experiență mai bună, rotește telefonul în <b>modul landscape</b>.</div>
+            <div class="popup-note">Acest mesaj va dispărea automat în modul landscape.</div>
+        </div>
     </div>
-
-    <div id="win-overlay" class="overlay">
-        <h2>Locație Completă!</h2>
-        <p id="win-msg">Toate sticlele au fost găsite.</p>
-        <button class="big-btn" onclick="nextLevelOrMenu()">Continuă</button>
+    <div id="game-container">
+        <div id="hud">
+            <button class="hud-btn" onclick="openLevelMenu()">☰ Meniu</button>
+            <div>📍 <span id="level-name">Loading...</span></div>
+            <div><span id="score-icon">🍾</span> <span id="score-text">0/5</span></div>
+            <div>📝 <span id="stick-text">0</span></div>
+        </div>
+        <div id="scene"></div>
+        <div id="notification" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.8); color: white; padding: 10px 20px; border-radius: 20px; opacity: 0; transition: opacity 0.5s; z-index: 50; pointer-events: none;">Notification</div>
+        <div id="menu-overlay" class="overlay" style="display: flex;">
+            <div id="menu-right-panel">
+                <div id="level-grid"></div>
+                <div class="pagination-controls">
+                    <button class="big-btn" id="prev-page-btn" onclick="changeMenuPage(-1)" style="display:none;">&lt; Înapoi</button>
+                    <button class="big-btn" id="next-page-btn" onclick="changeMenuPage(1)">Înainte &gt;</button>
+                </div>
+                <button id="reset-btn" class="big-btn" onclick="resetProgress()">⚠ Reset Progres</button>
+            </div>
+        </div>
+        <div id="cutscene-overlay" class="overlay" onclick="nextCutsceneFrame()">
+            <img id="cutscene-img" src="" alt="Story">
+            <div class="cutscene-text">Click pentru a continua...</div>
+        </div>
+        <div id="win-overlay" class="overlay">
+            <h2>Locație Completă!</h2>
+            <p id="win-msg">Toate sticlele au fost găsite.</p>
+            <button class="big-btn" onclick="nextLevelOrMenu()">Continuă</button>
+        </div>
     </div>
-
-</div>
-
-<!-- Sticky note panel (appears next to the game) -->
-<div id="sticky-note-panel" class="hidden" aria-hidden="true" role="dialog" aria-label="Sticky note">
-    <button id="sticky-close" aria-label="Close sticky note" onclick="hideStickyNote()">✖</button>
-    <div id="sticky-note-pin" aria-hidden="true"></div>
-    <div id="sticky-note-content">
-        <h4 id="sticky-note-title">Sticky Note</h4>
-        <p id="sticky-note-text">(No text; add the note text to the level item using the `note` property)</p>
+    <div id="sticky-note-panel" class="hidden" aria-hidden="true" role="dialog" aria-label="Sticky note">
+        <button id="sticky-close" aria-label="Close sticky note" onclick="hideStickyNote()">✖</button>
+        <div id="sticky-note-pin" aria-hidden="true"></div>
+        <div id="sticky-note-content">
+            <h4 id="sticky-note-title">Sticky Note</h4>
+            <p id="sticky-note-text">(No text; add the note text to the level item using the `note` property)</p>
+        </div>
     </div>
-</div>
-
-<script src="Pula.js"></script>
+    <!-- Footer from index.html -->
+    <footer>
+        <div class="footer-inner">
+            &copy; 2025 S4GGZ's Company. All rights reserved. Terms & Conditions apply.
+        </div>
+    </footer>
+        <script src="Pula.js"></script>
+        <script>
+        // Play MP3 when OnlyFans button is clicked
+        document.addEventListener('DOMContentLoaded', function() {
+            var btn = document.getElementById('onlyfans-btn');
+            if (btn) {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                      var audio = new Audio('../../../assets/audio/onlyfans.mp3');
+                      audio.play();
+                });
+            }
+        });
+        </script>
 </body>
 <script>
 // Show/hide landscape popup based on orientation for mobile devices

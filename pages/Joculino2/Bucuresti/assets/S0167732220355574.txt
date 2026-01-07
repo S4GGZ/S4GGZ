@@ -1,0 +1,11 @@
+Davalasab Ilager, Nagaraj P. Shetti, Ramesh S. Malladi, Nitinkumar S. Shetty, Kakarla Raghava Reddy, Tejraj M. Aminabhavi,
+Synthesis of Ca-doped ZnO nanoparticles and its application as highly efficient electrochemical sensor for the determination of anti-viral drug, acyclovir,
+Journal of Molecular Liquids,
+Volume 322,
+2021,
+114552,
+ISSN 0167-7322,
+https://doi.org/10.1016/j.molliq.2020.114552.
+(https://www.sciencedirect.com/science/article/pii/S0167732220355574)
+Abstract: Recent developments to utilize nanostructured metal oxides for fabricating novel sensors with superior sensitivity have prompted advanced detection limits even at trace level. In the current study, development of calcium doped zinc oxide (Ca-ZnO) nanoparticles as a novel electroanalytical sensing tool for the detection of antiviral drug, acyclovir (ACV) was performed. Ca-ZnO nanoparticles modified sensors to enhance the electrochemical properties of ACV as compared to an unmodified glassy carbon electrode (GCE) in pH 5.0. The influence of various factors such as effect of pre-concentration time, sweep rate, and concentration on the oxidation peak current of ACV has been discussed. The experimental results showed the wide linearity range (8.0 × 10−8 M to 2.4 × 10−5 M) with lower values of detection (6.18 nM). Hence, developed novel nanosensor showed an intensification of peak current of ACV with significant sensitivity, selectivity, and reproducibility for ACV analysis and obtained results were apply for the determination of ACV in the analysis of urine and pharmaceutical dosage form.
+Keywords: Ca doped ZnO nanoparticles; Electrochemical sensor; Glassy carbon electrode; Acyclovir; Analytical applications; Healthcare

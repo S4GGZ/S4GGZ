@@ -1,3 +1,231 @@
+@media (min-width: 901px) {
+    .top-bar .socials a {
+        padding: 0 8px !important;
+        font-size: 0.95em !important;
+        height: 36px !important;
+        line-height: 36px !important;
+        display: flex;
+        align-items: center;
+    }
+    .top-bar .socials img {
+        height: 22px !important;
+        width: 22px !important;
+        margin-right: 4px !important;
+    }
+    .home-icon {
+        width: 32px !important;
+        height: 32px !important;
+        font-size: 1.2rem !important;
+        margin-left: 8px !important;
+    }
+}
+@media (min-width: 901px) {
+    .top-bar {
+        height: 44px !important;
+        min-height: 44px !important;
+        font-size: 0.95em !important;
+    }
+    .top-bar-inner {
+        min-height: 44px !important;
+        height: 44px !important;
+        display: flex;
+        align-items: center !important;
+    }
+    .top-bar .socials {
+    position: absolute;
+    left: 16px;
+    top: 5px;
+    transform: translateY(-50%);
+    z-index: 2;
+    }
+    .top-bar .socials a {
+        display: flex;
+        align-items: center !important;
+        height: 36px !important;
+        margin-top: 0 !important;
+    }
+    .home-icon {
+        display: flex;
+        align-items: center !important;
+        height: 36px !important;
+        margin-top: 0 !important;
+        align-self: center !important;
+    }
+    #game-container {
+        margin-top: 44px !important;
+    }
+    footer {
+        min-height: 64px !important;
+        font-size: 1.15em !important;
+        padding: 18px 0 !important;
+    }
+    .footer-inner {
+        min-height: 64px !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+@media (max-width: 900px) {
+    body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+    #game-container {
+        flex-shrink: 0;
+    }
+    #below-game-text {
+        margin-bottom: 80px !important;
+        display: block;
+    }
+}
+/* Hide header on mobile when a level is being played (menu-overlay hidden) */
+@media (max-width: 900px) {
+    body.level-active .top-bar {
+        display: none !important;
+    }
+}
+/* Bright red reset progress button */
+#reset-btn {
+    background: #ff2d2d !important;
+    color: #fff !important;
+    border-bottom: 3px solid #b30000 !important;
+}
+#reset-btn:hover {
+    background: #ff5555 !important;
+    color: #fff !important;
+    border-bottom: 2px solid #b30000 !important;
+}
+/* Green pagination buttons for Înainte and Înapoi */
+.pagination-controls .big-btn {
+    background: #27ae60 !important;
+    color: #fff !important;
+    border-bottom: 3px solid #1e8449 !important;
+}
+.pagination-controls .big-btn:hover {
+    background: #2ecc71 !important;
+    color: #fff !important;
+    border-bottom: 2px solid #1e8449 !important;
+}
+/* --- HEADER FIXED TO TOP & HOME ICON --- */
+.top-bar {
+    position: fixed !important;
+    top: 0; left: 0; right: 0;
+    z-index: 10000;
+    width: 100%;
+}
+.top-bar-inner {
+    position: relative;
+}
+.home-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: rgba(124,92,255,0.12);
+    border-radius: 50%;
+    font-size: 1.6rem;
+    text-decoration: none;
+    margin-left: 12px;
+    transition: background 0.2s, color 0.2s;
+}
+.home-icon:hover {
+    background: #7c5cff !important;
+    color: #fff !important;
+}
+#game-container {
+    margin-top: 64px !important;
+        margin-bottom: 32px !important;
+}
+
+@media (max-width: 900px) {
+    #game-container {
+        margin-bottom: 72px !important;
+    }
+}
+/* === S4GGZ GLOBAL STYLE OVERRIDES FOR CONSISTENCY === */
+body {
+    background: radial-gradient(2400px 1200px at 10% 10%, rgba(124,92,255,0.10), transparent 18%),
+                radial-gradient(2000px 800px at 90% 90%, rgba(94,231,211,0.06), transparent 20%),
+                #0b1220 !important;
+    color: #e6eef8 !important;
+    font-family: Inter, Segoe UI, Roboto, Arial, sans-serif !important;
+}
+
+#game-container {
+    background: rgba(255,255,255,0.03) !important;
+    border-radius: 18px !important;
+    border: 1.5px solid rgba(255,255,255,0.08) !important;
+    box-shadow: 0 0 24px 0 rgba(124,92,255,0.10), 0 2px 8px 0 rgba(0,0,0,0.10) !important;
+}
+
+#hud {
+    background: rgba(255,255,255,0.03) !important;
+    border-bottom: 1.5px solid rgba(255,255,255,0.08) !important;
+    color: #e6eef8 !important;
+    font-size: 1.1rem !important;
+}
+
+.hud-btn, button.big-btn, .big-btn {
+    background: #7c5cff !important;
+    color: #111 !important;
+    border-radius: 8px !important;
+    border: none !important;
+    font-family: inherit !important;
+    font-weight: 700 !important;
+    box-shadow: 0 8px 24px rgba(67,48,157,0.10), inset 0 -2px 8px rgba(0,0,0,0.10) !important;
+    transition: background 0.2s, color 0.2s, border-bottom 0.2s, margin-top 0.1s !important;
+}
+.hud-btn:hover, button.big-btn:hover, .big-btn:hover {
+    background: #6746f0 !important;
+    color: #000 !important;
+}
+
+.level-card {
+    background: #fffbe8 !important;
+    color: #111 !important;
+    border: 1.5px solid rgba(255,255,255,0.10) !important;
+    border-radius: 18px !important;
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+    box-shadow: 0 4px 18px 0 rgba(124,92,255,0.13), 0 1.5px 8px 0 rgba(0,0,0,0.10) !important;
+    transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.1s !important;
+}
+.level-card:hover {
+    background: linear-gradient(135deg,#7c5cff 0%, #5ee7d3 100%) !important;
+    color: #fff !important;
+    border-color: #7c5cff !important;
+}
+.level-card.locked {
+    background: #23243a !important;
+    color: #7f8c8d !important;
+    border-color: #444 !important;
+}
+.secret-level {
+    background: #7c5cff !important;
+    color: #fff !important;
+    border: 1.5px solid #5ee7d3 !important;
+}
+
+footer {
+    width: 100%;
+    background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.02)) !important;
+    color: rgba(230,238,248,0.6) !important;
+    font-size: 0.65rem !important;
+    border-top: 1px solid rgba(255,255,255,0.02) !important;
+    padding: 2px 0 2px 0 !important;
+    position: fixed !important;
+    left: 0; right: 0; bottom: 0;
+    z-index: 9999;
+}
+.footer-inner {
+    max-width: 1100px !important;
+    margin: 0 auto !important;
+    padding: 2px 4px !important;
+    text-align: center !important;
+}
 /* --- IMPORTS & FONTS --- */
 @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
 
@@ -74,22 +302,6 @@ button.big-btn:hover { background: #2ecc71; margin-top: 2px; border-bottom: 2px 
     cursor: pointer;
     z-index: 10;
 }
-.collected-marker {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    border: 4px solid red;
-    box-sizing: border-box;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    z-index: 20;
-}
-.collected {
-    pointer-events: none;
-}
 
 .collected-marker {
     position: absolute;
@@ -121,7 +333,6 @@ button.big-btn:hover { background: #2ecc71; margin-top: 2px; border-bottom: 2px 
     flex-direction: row;
     justify-content: flex-end;
     align-items: flex-start;
-    /* Ensure buttons are at least 20% below the top and never below the bottom */
     padding-top: 20%;
     padding-bottom: 8%;
     color: #2c3e50; 
@@ -176,7 +387,7 @@ p.menu-subtitle { font-size: 1.1rem; font-weight: bold; margin-bottom: 12px; col
     width:70%;
 }
 .level-card:hover { transform: translateY(-3px); border-color: #3498db;}
-.level-card.locked { background: #bdc3c7; color: #7f8c8d; cursor: not-allowed; border-color: #95a5a6; }
+.level-card.locked { background: #fff; color: #000; cursor: not-allowed; border-color: #95a5a6; }
 .secret-level { grid-column: span 1; background: #9b59b6; color: white; border: 2px solid #8e44ad; text-align:center; }
 
 .pagination-controls {
@@ -202,15 +413,7 @@ p.menu-subtitle { font-size: 1.1rem; font-weight: bold; margin-bottom: 12px; col
     border-radius: 10px; font-size: 1.5rem; pointer-events: none;
 }
 
-button.big-btn {
-    padding: 10px 25px; font-size: 1.2rem; font-family: inherit;
-    background: #27ae60; color: white; border: none; border-radius: 8px;
-    cursor: pointer; border-bottom: 4px solid #1e8449;
-}
-button.big-btn:hover { background: #2ecc71; margin-top: 2px; border-bottom: 2px solid #1e8449; }
-#reset-btn { background:#c0392b; border-bottom: 4px solid #962d22; font-size: 1rem; margin-top: 6px; position: static; }
-
-/* --- STICKY NOTE PANEL --- */
+/* --- STICKY NOTE PANEL (DESKTOP DEFAULT) --- */
 #sticky-note-panel {
     position: fixed;
     left: calc(50% + 512px + 12px);
@@ -228,6 +431,7 @@ button.big-btn:hover { background: #2ecc71; margin-top: 2px; border-bottom: 2px 
     flex-direction: column;
     gap: 8px;
     pointer-events: auto;
+    transition: transform 0.2s, opacity 0.2s;
 }
 #sticky-note-panel.hidden { display: none; }
 #sticky-close {
@@ -330,17 +534,26 @@ button.big-btn:hover { background: #2ecc71; margin-top: 2px; border-bottom: 2px 
     
     /* --- Fullscreen Game Logic --- */
     html, body {
-        width: 100vw; height: 100vh;
-        min-height: 100vh; min-width: 100vw;
+        width: 100vw; 
+        height: auto !important; /* Allow growing */
+        min-height: 100vh; 
+        min-width: 100vw;
         margin: 0; padding: 0;
-        overflow: hidden;
-        background: #2c3e50;
+        overflow-x: hidden;
+        overflow-y: auto !important; /* Force scroll capability */
+        display: block !important; /* Ensure block flow */
+        background: radial-gradient(2400px 1200px at 10% 10%, rgba(124,92,255,0.10), transparent 18%),
+                    radial-gradient(2000px 800px at 90% 90%, rgba(94,231,211,0.06), transparent 20%),
+                    #0b1220 !important;
+        padding-bottom: 100px; /* Extra space at bottom to scroll to footer */
     }
 
+    /* Remove fixed absolute positioning on mobile to allow flow */
     #game-container {
-        position: absolute;
-        left: 50%; top: 50%;
-        transform: translate(-50%, -50%);
+        position: relative !important;
+        left: auto !important; top: auto !important;
+        transform: none !important;
+        margin: 84px auto 30px auto !important; /* 84px top for header space */
         width: 100vw;
         height: 56.25vw; /* 16:9 aspect ratio */
         max-width: 100vw; max-height: 100vh;
@@ -348,6 +561,15 @@ button.big-btn:hover { background: #2ecc71; margin-top: 2px; border-bottom: 2px 
         border-radius: 0; border-width: 0;
         box-shadow: none;
         background: #333;
+        flex-shrink: 0;
+    }
+
+    /* Ensure text below game is visible and flows */
+    #below-game-text {
+        position: relative;
+        display: block !important;
+        margin-bottom: 60px !important;
+        padding: 0 20px;
     }
 
     /* Aspect Ratio Handling */
@@ -355,7 +577,8 @@ button.big-btn:hover { background: #2ecc71; margin-top: 2px; border-bottom: 2px 
         #game-container { width: 100vw; height: 56.25vw; }
     }
     @media (min-aspect-ratio: 16/9) {
-        #game-container { height: 100vh; width: 177.78vh; /* 16:9 */ }
+        /* On wider mobile screens, cap height but keep flow */
+        #game-container { height: 80vh; width: 142.22vh; margin-left: auto; margin-right: auto;}
     }
 
     /* --- UI Scaling --- */
@@ -374,12 +597,10 @@ button.big-btn:hover { background: #2ecc71; margin-top: 2px; border-bottom: 2px 
     }
 
     /* --- Sticky Note Mobile Transformation --- */
-    /* Note: Previously there was a conflict where one query hid it and another showed it.
-       Assuming the goal is to make it a small overlay in the corner. */
     #sticky-note-panel{
         position: fixed !important;
         right: auto !important;
-        top: 1vh !important;
+        top: 64px !important; /* height of header */
         left: 2vw !important;
         bottom: auto !important;
         transform: none !important;
@@ -401,6 +622,7 @@ button.big-btn:hover { background: #2ecc71; margin-top: 2px; border-bottom: 2px 
         color: #222 !important;
         touch-action: manipulation;
     }
+    
     #sticky-note-panel.hidden {
         display: none !important;
     }

@@ -1,63 +1,3 @@
-// --- Sticky Note Tap-to-Dismiss for Mobile ---
-function enableStickyNoteTapDismiss() {
-    const panel = document.getElementById('sticky-note-panel');
-    if (!panel) return;
-    function onTap() {
-        if (window.innerWidth <= 900 || window.innerHeight <= 600) {
-            panel.classList.add('hidden');
-            panel.setAttribute('aria-hidden', 'true');
-        }
-    }
-    panel.addEventListener('touchend', onTap);
-    panel.addEventListener('click', onTap);
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    if (window.innerWidth <= 900 || window.innerHeight <= 600) {
-        enableStickyNoteTapDismiss();
-    }
-});
-// --- Sticky Note Swipe-to-Dismiss for Mobile ---
-function enableStickyNoteSwipeDismiss() {
-    const panel = document.getElementById('sticky-note-panel');
-    if (!panel) return;
-    let touchStartX = 0, touchStartY = 0, touchEndX = 0, touchEndY = 0;
-    let swiped = false;
-
-    function onTouchStart(e) {
-        if (e.touches.length !== 1) return;
-        touchStartX = e.touches[0].clientX;
-        touchStartY = e.touches[0].clientY;
-        swiped = false;
-    }
-    function onTouchMove(e) {
-        if (e.touches.length !== 1) return;
-        touchEndX = e.touches[0].clientX;
-        touchEndY = e.touches[0].clientY;
-    }
-    function onTouchEnd() {
-        const dx = touchEndX - touchStartX;
-        const dy = touchEndY - touchStartY;
-        if (Math.abs(dx) > 50 || Math.abs(dy) > 50) {
-            // Considered a swipe
-            if (!swiped) {
-                panel.classList.add('hidden');
-                panel.setAttribute('aria-hidden', 'true');
-                swiped = true;
-            }
-        }
-    }
-    panel.addEventListener('touchstart', onTouchStart);
-    panel.addEventListener('touchmove', onTouchMove);
-    panel.addEventListener('touchend', onTouchEnd);
-}
-
-// Enable swipe-to-dismiss on DOMContentLoaded
-document.addEventListener('DOMContentLoaded', function() {
-    if (window.innerWidth <= 900 || window.innerHeight <= 600) {
-        enableStickyNoteSwipeDismiss();
-    }
-});
 // Pula.js - extracted from Pula.html
 // --- DEFINIREA NIVELELOR ---
 const levels = [
@@ -236,6 +176,8 @@ function openLevelMenu() {
     // Play menu music and pause bgAudio if needed
     playMenuAudio();
     if (bgAudio && !bgAudio.paused) { try { bgAudio.pause(); } catch(e){} }
+    // Remove class from body so header is visible again
+    document.body.classList.remove('level-active');
 }
 
 function changeMenuPage(direction) {
@@ -318,6 +260,9 @@ function startLevel(index) {
             bgAudio.play().catch(e => console.log('bgAudio play error:', e));
         }
     }
+
+    // Add class to body to indicate a level is active (for mobile header hiding)
+    document.body.classList.add('level-active');
 
     document.getElementById('menu-overlay').style.display = 'none';
     document.getElementById('win-overlay').style.display = 'none';
