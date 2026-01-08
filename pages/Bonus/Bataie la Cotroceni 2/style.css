@@ -141,10 +141,57 @@ button{font-family:inherit}
 #power-bar-fg{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),#ff8a8a);transition:width .12s linear}
 
 /* game-over modal */
-#game-over-message{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
-#game-over-message > .panel{pointer-events:auto;background:var(--surface);padding:28px;border-radius:14px;box-shadow:0 18px 60px rgba(2,6,23,0.8);text-align:center;border:1px solid rgba(255,255,255,0.03)}
-#game-over-message h2{margin:0 0 10px;color:var(--accent);font-size:2rem}
-#game-over-message p{margin:0 0 18px;color:var(--muted)}
+#game-over-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centrează perfect elementul */
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    background: rgba(15, 20, 28, 0.95); /* Fundal închis semi-transparent */
+    padding: 30px 40px;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8); /* Umbră puternică pentru profunzime */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    
+    z-index: 100; /* Se asigură că e peste canvas */
+    min-width: 320px; /* Lățime minimă ca să arate bine */
+    text-align: center;
+    backdrop-filter: blur(8px); /* Efect modern de sticlă mată */
+    animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Mică animație de intrare */
+}
+
+/* Stiluri pentru textul din interior */
+#game-over-message h2 {
+    margin: 0 0 15px;
+    color: var(--accent);
+    font-size: 2.2rem;
+    text-transform: uppercase;
+    text-shadow: 0 2px 10px rgba(255, 71, 87, 0.4);
+}
+
+#game-over-message p {
+    margin: 0 0 25px;
+    color: #e6eef8;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+/* Animație simplă de apariție */
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -40%) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
 
 /* CCR display (preserve existing behavior but modernized) */
 .ccr-display{background:linear-gradient(90deg,#ffdf00,#ffd24d);color:#2b0505;font-weight:800;padding:8px 12px;border-radius:999px;border:2px solid rgba(0,0,0,0.08);box-shadow:0 6px 20px rgba(0,0,0,0.2)}

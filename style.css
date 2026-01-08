@@ -1,17 +1,13 @@
 /* ---------------------------
    Clean, modern site stylesheet
-   - Header & footer span full width
-   - Main navigation (.top-bar) and main content (.container) are centered with a max-width
-   - Responsive button group and accessible controls
    --------------------------- */
-
 :root{
   /* Modern dark-blue + violet accent palette */
-  --bg-0: #070812; /* deepest */
-  --bg-1: #0b1220; /* page background */
-  --surface: rgba(255,255,255,0.03); /* translucent panels */
-  --accent: linear-gradient(135deg,#7c5cff 0%, #5ee7d3 100%); /* violet -> aqua */
-  --accent-solid: #7c5cff; /* fallback solid accent */
+  --bg-0: #070812; 
+  --bg-1: #0b1220; 
+  --surface: rgba(255,255,255,0.03); 
+  --accent: linear-gradient(135deg,#7c5cff 0%, #5ee7d3 100%); 
+  --accent-solid: #7c5cff; 
   --accent-strong: #6746f0;
   --muted: rgba(230,238,248,0.6);
   --text: #e6eef8;
@@ -23,6 +19,7 @@
 html,body{
   height:100%;
   min-height:100vh;
+  /* Fundalul principal */
   background: radial-gradient(1200px 600px at 10% 10%, rgba(124,92,255,0.08), transparent 8%),
               radial-gradient(1000px 400px at 90% 90%, rgba(94,231,211,0.04), transparent 10%),
               var(--bg-1);
@@ -32,7 +29,25 @@ html,body{
   -moz-osx-font-smoothing:grayscale;
 }
 
-/* Header: full width, centered text */
+/* --- STARFIELD SETUP --- */
+#starfield {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Z-index 0 îl pune peste background, dar sub conținut */
+    z-index: 0; 
+    pointer-events: none; /* Permite click-ul prin stele */
+}
+
+/* Asigură-te că elementele principale sunt PESTE stele */
+.container, .top-bar, footer {
+    position: relative;
+    z-index: 2; 
+}
+
+/* --- RESTUL STILURILOR TALE --- */
 header{
   width:100%;
   padding:28px 16px;
@@ -41,36 +56,28 @@ header{
   text-align:center;
 }
 
-/* Image & icon defaults: prevent stretching and keep aspect ratio
-  - img/svg/picture default to responsive sizing
-  - small UI icons (socials, buttons) get fixed visual size and use object-fit:contain
-*/
 img, picture, svg { max-width:100%; height:auto; display:block; }
 .socials img, .top-bar .socials img, .socials a img, .home-link img, .btn img { width:22px; height:22px; object-fit:contain; display:inline-block }
 
-
-/* Top bar and main content are visually centered within the page */
 .top-bar{
   background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  padding:1.25% 0; /* let inner element control horizontal padding */
+  padding:1.25% 0; 
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   border-bottom: 1px solid rgba(255,255,255,0.02);
-  position:relative; /* allow corner positioning */
+  position:relative; 
 }
 
 .top-bar-inner{
   max-width:var(--max-width);
   margin:0 auto;
-  /* add extra horizontal padding so centered content doesn't overlap corner buttons */
   padding:0 48px;
   display:flex;
   align-items:center;
-  justify-content:center; /* centered content remains centered */
+  justify-content:center; 
   gap:12px;
 }
 
-/* position socials and faq into the visible corners of the top-bar background */
 .top-bar .socials{position:absolute;left:16px;top:50%;transform:translateY(-50%);z-index:2}
 .top-bar .faq{position:absolute;right:16px;top:50%;transform:translateY(-50%);z-index:2}
 
@@ -81,7 +88,6 @@ img, picture, svg { max-width:100%; height:auto; display:block; }
 
 .faq a{color:var(--text);text-decoration:none;font-weight:600}
 
-/* Main content container centered with a limited width */
 .container{
   max-width:var(--max-width);
   margin:40px auto;
@@ -91,16 +97,15 @@ img, picture, svg { max-width:100%; height:auto; display:block; }
   align-items:center;
   justify-content:center;
   gap:18px;
-  /* allow the container to grow so footer stays at the bottom */
   flex:1 0 auto;
-  /* subtle elevated look */
   border-radius:14px;
 }
 
-h1{font-size:3.6rem;font-weight:800}
+h1{font-size:3.6rem;font-weight:800;position:relative}
+h1::after{content:'';display:block;height:6px;width:80px;margin:18px auto 0;border-radius:6px;background:linear-gradient(90deg,#7c5cff,#5ee7d3)}
+
 p{font-size:1.1rem;opacity:.9;max-width:680px}
 
-/* Buttons */
 .button-group{display:flex;gap:16px;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:8px}
 .btn{
   -webkit-tap-highlight-color:transparent;
@@ -121,7 +126,6 @@ p{font-size:1.1rem;opacity:.9;max-width:680px}
 .btn:active{transform:translateY(-1px)}
 .btn:focus{outline:3px solid rgba(124,92,255,0.18);outline-offset:3px}
 
-/* Footer stays full-width */
 footer{
   width:100%;
   background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.02));
@@ -138,28 +142,14 @@ footer{
   padding:4px 8px;
   text-align:center;
 }
-.big-btn, button.big-btn {
-  color: #111 !important;
-}
+.big-btn, button.big-btn { color: #111 !important; }
 
-/* subtle decorative accent under headings */
-h1{position:relative}
-h1::after{content:'';display:block;height:6px;width:80px;margin:18px auto 0;border-radius:6px;background:linear-gradient(90deg,#7c5cff,#5ee7d3)}
-
-/* Responsive tweaks */
 @media (max-width:720px){
   h1{font-size:2.4rem}
   .container{padding:28px 16px;margin:20px auto}
 }
-
 @media (max-width:520px){
   .button-group{flex-direction:column;gap:12px}
   .top-bar{padding:10px 12px}
 }
-
-/* Ensure footer sits at bottom when content is short */
 body{display:flex;flex-direction:column;min-height:100vh}
-main{flex:1}
-
-/* make sure footer stays at bottom if page content is short */
-/* container already has flex:1 0 auto; keep it inside a main tag for correct behavior */

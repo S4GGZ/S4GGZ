@@ -10,6 +10,33 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+        // =========================================================================
+        // Secret Key Sequence: "O M O A R A M I T O T I D U S M A N I"
+        // =========================================================================
+        const secretSequence = [
+            'O','M','O','A','R','A','M','I','T','O','T','I','D','U','S','M','A','N','I'
+        ];
+        let secretIndex = 0;
+
+        document.addEventListener('keydown', function(e) {
+            // Accept both lowercase and uppercase
+            const key = e.key.toUpperCase();
+            if (key === secretSequence[secretIndex]) {
+                secretIndex++;
+                if (secretIndex === secretSequence.length) {
+                    // Sequence complete: set opponent HP to 0 and trigger game over
+                    if (typeof opponent === 'object' && opponent !== null) {
+                        opponent.hp = 0;
+                        updateUI && updateUI();
+                        checkGameOver && checkGameOver();
+                    }
+                    secretIndex = 0;
+                }
+            } else {
+                // Reset if wrong key
+                secretIndex = 0;
+            }
+        });
     // =========================================================================
     // DOM Element References
     // =========================================================================
